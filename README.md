@@ -1,0 +1,4 @@
+Manganel
+========
+
+Elasticsearch for Mangan
