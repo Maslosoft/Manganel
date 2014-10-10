@@ -1,0 +1,21 @@
+{
+	"name": "maslosoft/manganel",
+	"license": "GNU LESSER GENERAL PUBLIC LICENSE",
+	"authors": [
+		{
+			"name": "Peter Maselkowski",
+			"email": "pmaselkowski@gmail.com",
+			"homepage": "http://maslosoft.com",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"maslosoft/addendum": "2.*",
+		"elasticsearch/elasticsearch": "~1.0"
+	},
+	"autoload": {
+		"psr-0": {
+			"Maslosoft\\Manganel": "./"
+		}
+	}
+}
