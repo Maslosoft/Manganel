@@ -1,0 +1,22 @@
+language: php
+sudo: false
+php:
+  - 5.6
+  - 5.5
+  - hhvm
+matrix:
+  allow_failures:
+    - php: hhvm
+services:
+  - mongodb
+install:
+  - composer install --dev --prefer-source
+  - composer update maslosoft/manganeltest
+before_script:
+# Wait for mongodb
+  - sleep 15
+  - phpenv config-add travis.ini
+after_script:
+  - wget --no-check-certificate https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --repository=g/Maslosoft/Manganel --revision=`git rev-parse HEAD` --format=php-clover ./tests/_output/coverage.clover
+script: vendor/bin/codecept run unit --coverage --html --coverage-html=. --coverage-xml=./coverage.clover

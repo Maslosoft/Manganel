@@ -1,0 +1,26 @@
+actor: Tester
+paths:
+    tests: vendor/maslosoft/manganeltest/tests
+    log: tests/_output
+    data: vendor/maslosoft/manganeltest/tests/_data
+    helpers: vendor/maslosoft/manganeltest/tests/_support
+extensions:
+    enabled: [Maslosoft\ManganTest\Extensions\MongoWipe]
+settings:
+    bootstrap: _bootstrap.php
+    colors: true
+    memory_limit: 1024M
+coverage:
+    enabled: true
+    remote: false
+    xml: coverage.clover
+    html: true
+    include:
+        - src/*
+modules:
+   enabled: [MongoDb]
+   config:
+      MongoDb:
+         dsn: 'mongodb://localhost:27017/ManganelTest'
+         user: ''
+         password: ''

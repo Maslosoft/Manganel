@@ -11,11 +11,17 @@
 	],
 	"require": {
 		"maslosoft/addendum": "2.*",
-		"elasticsearch/elasticsearch": "~1.0"
+		"elasticsearch/elasticsearch": "~1.0",
+		"maslosoft/mangan": "~3alpha"
 	},
+	"minimum-stability": "alpha",
 	"autoload": {
-		"psr-0": {
-			"Maslosoft\\Manganel": "./"
+		"psr-4": {
+			"Maslosoft\\Manganel\\": "src/"
 		}
+	},
+	"require-dev": {
+		"maslosoft/manganeltest": "dev-master",
+		"maslosoft/mangantest": "dev-master"
 	}
 }
