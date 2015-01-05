@@ -18,4 +18,6 @@ use Maslosoft\Addendum\Collections\MetaProperty;
 class DocumentPropertyMeta extends MetaProperty
 {
 
+	public $searchDecorators = [];
+
 }

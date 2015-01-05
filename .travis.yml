@@ -9,6 +9,7 @@ matrix:
     - php: hhvm
 services:
   - mongodb
+  - elasticsearch
 install:
   - composer install --dev --prefer-source
   - composer update maslosoft/manganeltest
