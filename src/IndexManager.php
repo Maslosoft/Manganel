@@ -13,6 +13,7 @@ use Maslosoft\Addendum\Interfaces\IAnnotated;
 use Maslosoft\Mangan\Helpers\CollectionNamer;
 use Maslosoft\Mangan\Transformers\FromDocument;
 use Maslosoft\Mangan\Transformers\FromRawArray;
+use Maslosoft\Manganel\Exceptions\ManganelException;
 
 /**
  * IndexMangager
@@ -37,6 +38,10 @@ class IndexManager
 	public function __construct($model)
 	{
 		$this->_model = $model;
+		if(!$this->_model->_id)
+		{
+			throw new ManganelException(sprintf('Id is not set in model `%s`', get_class($this->_model)));
+		}
 		$this->_manganel = Manganel::create($this->_model);
 	}
 
