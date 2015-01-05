@@ -32,6 +32,8 @@ class Manganel
 
 	public $index = 'my_index';
 
+	public $indexId = self::DefaultIndexId;
+
 	/**
 	 *
 	 * @var Client
@@ -46,7 +48,13 @@ class Manganel
 
 	public function __construct($indexId = self::DefaultIndexId)
 	{
-		$this->_di = new EmbeDi($indexId);
+		if(!$indexId)
+		{
+			$indexId = self::DefaultIndexId;
+		}
+		$this->indexId = $indexId;
+		$this->_di = new EmbeDi($this->indexId);
+		$this->_di->configure($this);
 	}
 
 	public static function create($model)

@@ -38,7 +38,7 @@ class IndexManager
 	public function __construct($model)
 	{
 		$this->_model = $model;
-		if(!$this->_model->_id)
+		if (!$this->_model->_id)
 		{
 			throw new ManganelException(sprintf('Id is not set in model `%s`', get_class($this->_model)));
 		}
@@ -77,7 +77,7 @@ class IndexManager
 	private function _getParams($params = [])
 	{
 		$result = [
-			'index' => $this->_manganel->index,
+			'index' => strtolower($this->_manganel->index),
 			'type' => CollectionNamer::nameCollection($this->_model),
 			'id' => (string) $this->_model->_id
 		];

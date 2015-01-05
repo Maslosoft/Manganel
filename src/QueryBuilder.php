@@ -45,9 +45,15 @@ class QueryBuilder
 	public function search($q = null)
 	{
 		$params = [
-			'index' => $this->_manganel->index,
+			'index' => strtolower($this->_manganel->index),
 			'type' => CollectionNamer::nameCollection($this->_model),
-			'body' => $q
+			'body' => [
+				'query' => [
+					'query_string' => [
+						'query' => $q
+					]
+				]
+			]
 		];
 
 		return $this->_manganel->getClient()->search($params);
