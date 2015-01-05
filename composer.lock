@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "86b69ce02967f7525120bfac9e6eabb1",
+    "hash": "c6b3d02369531baf0a1f8e8e41332a58",
     "packages": [
         {
             "name": "elasticsearch/elasticsearch",
@@ -263,27 +263,38 @@
         },
         {
             "name": "maslosoft/addendum",
-            "version": "2.1.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Addendum.git",
-                "reference": "32c2476df7cf6b421c48e85d1a69eb6a304ff0f1"
+                "reference": "548d0cec2a500895f1c80ea00678ab0030bdab1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Addendum/zipball/32c2476df7cf6b421c48e85d1a69eb6a304ff0f1",
-                "reference": "32c2476df7cf6b421c48e85d1a69eb6a304ff0f1",
+                "url": "https://api.github.com/repos/Maslosoft/Addendum/zipball/548d0cec2a500895f1c80ea00678ab0030bdab1e",
+                "reference": "548d0cec2a500895f1c80ea00678ab0030bdab1e",
                 "shasum": ""
+            },
+            "require": {
+                "maslosoft/miniview": "~1.0",
+                "php": ">=5.5.0",
+                "psr/log": "~1.0"
+            },
+            "require-dev": {
+                "maslosoft/addendumtest": "dev-master"
+            },
+            "suggest": {
+                "monolog/monolog": "Sends your logs to files, sockets, inboxes, databases and various web services"
             },
             "type": "yii-extension",
             "autoload": {
-                "psr-0": {
-                    "Maslosoft\\Addendum": "./"
+                "psr-4": {
+                    "Maslosoft\\Addendum\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GNU LESSER GENERAL PUBLIC LICENSE"
+                "New BSD"
             ],
             "authors": [
                 {
@@ -301,30 +312,180 @@
                 "metadata",
                 "yii"
             ],
-            "time": "2014-12-03 15:24:05"
+            "time": "2015-01-03 15:05:51"
         },
         {
-            "name": "maslosoft/mangan",
-            "version": "3.0.0-beta.2",
+            "name": "maslosoft/embedi",
+            "version": "0.0.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Maslosoft/Mangan.git",
-                "reference": "831e1a558eeeabf3f6b6c967f0c5f2b86fd415f7"
+                "url": "https://github.com/Maslosoft/EmbeDi.git",
+                "reference": "8866dbf6ae9d95d9d676793afe318d9285550a3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/831e1a558eeeabf3f6b6c967f0c5f2b86fd415f7",
-                "reference": "831e1a558eeeabf3f6b6c967f0c5f2b86fd415f7",
+                "url": "https://api.github.com/repos/Maslosoft/EmbeDi/zipball/8866dbf6ae9d95d9d676793afe318d9285550a3c",
+                "reference": "8866dbf6ae9d95d9d676793afe318d9285550a3c",
                 "shasum": ""
             },
-            "require": {
-                "maslosoft/addendum": "2.*",
-                "masterexploder/phpthumb": "2.0"
+            "require-dev": {
+                "maslosoft/embeditest": "dev-master"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Maslosoft\\Mangan": "./"
+                "psr-4": {
+                    "Maslosoft\\EmbeDi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "New BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Maselkowski",
+                    "email": "pmaselkowski@gmail.com",
+                    "homepage": "http://maslosoft.com",
+                    "role": "Developer"
+                }
+            ],
+            "time": "2014-12-29 16:49:35"
+        },
+        {
+            "name": "maslosoft/mangan",
+            "version": "3.0.3-alpha",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Maslosoft/Mangan.git",
+                "reference": "49afb56be7438821f9a1e1bf488337e3e3e2d0ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/49afb56be7438821f9a1e1bf488337e3e3e2d0ef",
+                "reference": "49afb56be7438821f9a1e1bf488337e3e3e2d0ef",
+                "shasum": ""
+            },
+            "require": {
+                "maslosoft/addendum": "~3alpha",
+                "maslosoft/embedi": "~0.0",
+                "maslosoft/signals": "~1",
+                "masterexploder/phpthumb": "2.0"
+            },
+            "require-dev": {
+                "maslosoft/mangantest": "dev-master"
+            },
+            "suggest": {
+                "mongofill/mongofill": "Polyfill of PECL Mongo extension",
+                "monolog/monolog": "Sends your logs to files, sockets, inboxes, databases and various web services"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maslosoft\\Mangan\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "New BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Maselkowski",
+                    "email": "pmaselkowski@gmail.com",
+                    "homepage": "http://maslosoft.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Ianaré Sévi",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Dariusz Górecki",
+                    "email": "darek.krk@gmail.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Invenzzia Group",
+                    "homepage": "http://www.invenzzia.org",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Philippe Gaultier",
+                    "email": "pgaultier@ibitux.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Ibitux",
+                    "homepage": "http://www.ibitux.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "CleverIT",
+                    "homepage": "http://www.cleverit.com.pl",
+                    "role": "Developrt"
+                },
+                {
+                    "name": "Florian Fackler",
+                    "email": "florian.fackler@mintao.com",
+                    "homepage": "http://mintao.com"
+                }
+            ],
+            "time": "2014-12-30 21:04:17"
+        },
+        {
+            "name": "maslosoft/miniview",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Maslosoft/MiniView.git",
+                "reference": "bf0f91e7cc2d1a657aea9b688d3da83b82523581"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Maslosoft/MiniView/zipball/bf0f91e7cc2d1a657aea9b688d3da83b82523581",
+                "reference": "bf0f91e7cc2d1a657aea9b688d3da83b82523581",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maslosoft\\MiniView\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "New BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Maselkowski",
+                    "email": "pmaselkowski@gmail.com"
+                }
+            ],
+            "description": "Mini view is minimal template rendering library based on Yii controller renderer",
+            "time": "2015-01-02 22:01:16"
+        },
+        {
+            "name": "maslosoft/signals",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Maslosoft/Signals.git",
+                "reference": "677bd1922d5c502b51b2cd9bd309efad2c66a996"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/677bd1922d5c502b51b2cd9bd309efad2c66a996",
+                "reference": "677bd1922d5c502b51b2cd9bd309efad2c66a996",
+                "shasum": ""
+            },
+            "require": {
+                "maslosoft/addendum": "~3"
+            },
+            "type": "yii-extension",
+            "autoload": {
+                "psr-4": {
+                    "Maslosoft\\Signals\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -339,7 +500,17 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-08-19 16:12:10"
+            "description": "Cross-component communication for Yii",
+            "keywords": [
+                "event",
+                "events",
+                "signal",
+                "signals",
+                "slot",
+                "slots",
+                "yii"
+            ],
+            "time": "2015-01-03 15:11:10"
         },
         {
             "name": "masterexploder/phpthumb",
@@ -393,16 +564,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "ec3961874c43840e96da3a8a1ed20d8c73d7e5aa"
+                "reference": "1fbe8c2641f2b163addf49cc5e18f144bec6b19f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/ec3961874c43840e96da3a8a1ed20d8c73d7e5aa",
-                "reference": "ec3961874c43840e96da3a8a1ed20d8c73d7e5aa",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1fbe8c2641f2b163addf49cc5e18f144bec6b19f",
+                "reference": "1fbe8c2641f2b163addf49cc5e18f144bec6b19f",
                 "shasum": ""
             },
             "require": {
@@ -416,7 +587,7 @@
                 "aws/aws-sdk-php": "~2.4, >2.4.8",
                 "doctrine/couchdb": "~1.0@dev",
                 "graylog2/gelf-php": "~1.0",
-                "phpunit/phpunit": "~3.7.0",
+                "phpunit/phpunit": "~4.0",
                 "raven/raven": "~0.5",
                 "ruflin/elastica": "0.90.*",
                 "videlalvaro/php-amqplib": "~2.4"
@@ -435,7 +606,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.11.x-dev"
+                    "dev-master": "1.12.x-dev"
                 }
             },
             "autoload": {
@@ -461,7 +632,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-09-30 13:30:58"
+            "time": "2014-12-29 21:29:35"
         },
         {
             "name": "pimple/pimple",
@@ -1033,12 +1204,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/ManganTest.git",
-                "reference": "249298b2f26d53119a182bd255805adf105174dc"
+                "reference": "5c0ba8466c1e20598b46dd102552f64f94cf185d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/ManganTest/zipball/249298b2f26d53119a182bd255805adf105174dc",
-                "reference": "249298b2f26d53119a182bd255805adf105174dc",
+                "url": "https://api.github.com/repos/Maslosoft/ManganTest/zipball/5c0ba8466c1e20598b46dd102552f64f94cf185d",
+                "reference": "5c0ba8466c1e20598b46dd102552f64f94cf185d",
                 "shasum": ""
             },
             "require": {
@@ -1048,8 +1219,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Maslosoft\\ManganTest\\Models\\": "./models",
-                    "Maslosoft\\ManganTest\\Extensions\\": "./extensions"
+                    "Maslosoft\\ManganTest\\Models\\": "models/",
+                    "Maslosoft\\ManganTest\\Extensions\\": "extensions/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1064,7 +1235,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-12-22 10:31:25"
+            "time": "2015-01-03 18:57:48"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1441,16 +1612,16 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.1.0",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "937b04f1b0ee8f6d180e75a0830aac778ca4bcd6"
+                "reference": "365fcee430dfa4ace1fbc75737ca60ceea7eeeef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/937b04f1b0ee8f6d180e75a0830aac778ca4bcd6",
-                "reference": "937b04f1b0ee8f6d180e75a0830aac778ca4bcd6",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/365fcee430dfa4ace1fbc75737ca60ceea7eeeef",
+                "reference": "365fcee430dfa4ace1fbc75737ca60ceea7eeeef",
                 "shasum": ""
             },
             "require": {
@@ -1467,7 +1638,7 @@
                     "React\\Promise\\": "src/"
                 },
                 "files": [
-                    "src/functions.php"
+                    "src/functions_include.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1481,7 +1652,7 @@
                 }
             ],
             "description": "A lightweight implementation of CommonJS Promises/A for PHP",
-            "time": "2014-10-15 20:05:57"
+            "time": "2014-12-30 13:32:42"
         },
         {
             "name": "sebastian/comparator",
@@ -1767,16 +1938,16 @@
         },
         {
             "name": "sebastian/version",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/version.git",
-                "reference": "b6e1f0cf6b9e1ec409a0d3e2f2a5fb0998e36b43"
+                "reference": "a77d9123f8e809db3fbdea15038c27a95da4058b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/b6e1f0cf6b9e1ec409a0d3e2f2a5fb0998e36b43",
-                "reference": "b6e1f0cf6b9e1ec409a0d3e2f2a5fb0998e36b43",
+                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/a77d9123f8e809db3fbdea15038c27a95da4058b",
+                "reference": "a77d9123f8e809db3fbdea15038c27a95da4058b",
                 "shasum": ""
             },
             "type": "library",
@@ -1798,7 +1969,7 @@
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
-            "time": "2014-03-07 15:35:33"
+            "time": "2014-12-15 14:25:24"
         },
         {
             "name": "symfony/browser-kit",
