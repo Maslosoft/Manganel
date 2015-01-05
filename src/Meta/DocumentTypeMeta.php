@@ -8,7 +8,7 @@
 
 namespace Maslosoft\Manganel\Meta;
 
-use Maslosoft\Addendum\Collections\MetaType;
+use Maslosoft\Mangan\Meta\DocumentTypeMeta as ManganTypeMeta;
 use Maslosoft\Manganel\Manganel;
 
 /**
@@ -16,7 +16,7 @@ use Maslosoft\Manganel\Manganel;
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class DocumentTypeMeta extends MetaType
+class DocumentTypeMeta extends ManganTypeMeta
 {
 
 	/**

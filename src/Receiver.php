@@ -8,6 +8,9 @@
 
 namespace Maslosoft\Manganel;
 
+use Maslosoft\Mangan\Signals\AfterDelete;
+use Maslosoft\Mangan\Signals\AfterSave;
+
 /**
  * Receiver
  *
@@ -18,18 +21,18 @@ class Receiver
 
 	/**
 	 * @ReactOn(Maslosoft\Mangan\Signals\AfterSave)
-	 * @param \Maslosoft\Mangan\Signals\AfterSave $signal
+	 * @param AfterSave $signal
 	 */
-	public function onSave(\Maslosoft\Mangan\Signals\AfterSave $signal)
+	public function onSave(AfterSave $signal)
 	{
-		$signal->model;
+		(new IndexManager($signal->model))->index();
 	}
 
 	/**
 	 * @ReactOn(Maslosoft\Mangan\Signals\AfterDelete)
-	 * @param \Maslosoft\Mangan\Signals\AfterDelete $signal
+	 * @param AfterDelete $signal
 	 */
-	public function onDelete(\Maslosoft\Mangan\Signals\AfterDelete $signal)
+	public function onDelete(AfterDelete $signal)
 	{
 		$signal->model;
 	}

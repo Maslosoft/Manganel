@@ -11,6 +11,7 @@ namespace Maslosoft\Manganel\Meta;
 use Maslosoft\Addendum\Collections\Meta;
 use Maslosoft\Addendum\Interfaces\IAnnotated;
 use Maslosoft\Addendum\Options\MetaOptions;
+use Maslosoft\Manganel\Options\ManganelMetaOptions;
 
 /**
  * Mangan metadata container class

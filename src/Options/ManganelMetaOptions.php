@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace Maslosoft\Mangan\Options;
+namespace Maslosoft\Manganel\Options;
 
 use Maslosoft\Addendum\Options\MetaOptions;
 use Maslosoft\Manganel\Annotations\SearchIndexAnnotation;
@@ -19,7 +19,7 @@ use Maslosoft\Manganel\Meta\DocumentTypeMeta;
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class ManganMetaOptions extends MetaOptions
+class ManganelMetaOptions extends MetaOptions
 {
 
 	/**

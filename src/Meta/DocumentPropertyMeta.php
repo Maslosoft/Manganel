@@ -8,14 +8,14 @@
 
 namespace Maslosoft\Manganel\Meta;
 
-use Maslosoft\Addendum\Collections\MetaProperty;
+use Maslosoft\Mangan\Meta\DocumentPropertyMeta as ManganPropertyMeta;
 
 /**
  * DocumentPropertyMeta
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class DocumentPropertyMeta extends MetaProperty
+class DocumentPropertyMeta extends ManganPropertyMeta
 {
 
 	public $searchDecorators = [];
