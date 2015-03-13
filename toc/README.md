@@ -2,7 +2,7 @@
 <!-- Auto generated do not modify between `header` and `/header` -->
 
 # <a href="http://maslosoft.com/manganel/">Maslosoft Manganel</a>
-<a href="http://maslosoft.com/manganel/">__</a>
+<a href="http://maslosoft.com/manganel/">_Elasticsearch for Mangan_</a>
 
 <a href="https://packagist.org/packages/maslosoft/manganel" title="Latest Stable Version">
 <img src="https://poser.pugx.org/maslosoft/manganel/v/stable.svg" alt="Latest Stable Version" style="height: 20px;"/>
@@ -16,7 +16,7 @@
 
 ### Quick Install
 ```bash
-	composer require maslosoft/manganel:"*"
+composer require maslosoft/manganel:"*"
 ```
 
 <!--/header-->

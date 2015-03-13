@@ -1,5 +1,6 @@
 {
 	"name": "maslosoft/manganel",
+	"description": "Elasticsearch for Mangan",
 	"license": [
 		"AGPL",
 		"Commercial"
@@ -26,6 +27,5 @@
 	"require-dev": {
 		"maslosoft/manganeltest": "dev-master",
 		"maslosoft/mangantest": "dev-master"
-	},
-	"description": ""
+	}
 }
