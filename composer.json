@@ -26,5 +26,6 @@
 	"require-dev": {
 		"maslosoft/manganeltest": "dev-master",
 		"maslosoft/mangantest": "dev-master"
-	}
+	},
+	"description": ""
 }
