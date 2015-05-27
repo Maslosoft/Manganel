@@ -11,8 +11,7 @@ namespace Maslosoft\Manganel;
 use Elasticsearch\Client;
 use Maslosoft\Addendum\Interfaces\IAnnotated;
 use Maslosoft\Mangan\Helpers\CollectionNamer;
-use Maslosoft\Mangan\Transformers\FromDocument;
-use Maslosoft\Mangan\Transformers\FromRawArray;
+use Maslosoft\Mangan\Transformers\DocumentArray;
 use Maslosoft\Manganel\Exceptions\ManganelException;
 
 /**
@@ -48,7 +47,7 @@ class IndexManager
 	public function index()
 	{
 		$params = [
-			'body' => FromDocument::toRawArray($this->_model)
+			'body' => DocumentArray::fromModel($this->_model)
 		];
 		$this->getClient()->index($this->_getParams($params));
 	}
@@ -62,7 +61,7 @@ class IndexManager
 	{
 		$params = $id ? ['id' => $id] : [];
 		$data = $this->getClient()->get($this->_getParams($params))['_source'];
-		return FromRawArray::toDocument($data);
+		return DocumentArray::toModel($data);
 	}
 
 	/**

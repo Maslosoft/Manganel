@@ -30,6 +30,9 @@ class Manganel
 	public $password = '';
 	public $params = [];
 
+	/**
+	 * TODO Enforce lowercase
+	 */
 	public $index = 'my_index';
 
 	public $indexId = self::DefaultIndexId;
