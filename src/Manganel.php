@@ -34,7 +34,6 @@ class Manganel
 	 * TODO Enforce lowercase
 	 */
 	public $index = 'my_index';
-
 	public $indexId = self::DefaultIndexId;
 
 	/**
@@ -51,7 +50,7 @@ class Manganel
 
 	public function __construct($indexId = self::DefaultIndexId)
 	{
-		if(!$indexId)
+		if (!$indexId)
 		{
 			$indexId = self::DefaultIndexId;
 		}
@@ -81,7 +80,9 @@ class Manganel
 				$this->password,
 				$this->auth
 			];
-			$this->_client = new Client($this->params);
+			$cb = \Elasticsearch\ClientBuilder::create();
+			$cb->setHosts($this->hosts);
+			$this->_client = $cb->build();
 		}
 		return $this->_client;
 	}

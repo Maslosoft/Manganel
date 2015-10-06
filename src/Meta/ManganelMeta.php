@@ -9,6 +9,7 @@
 namespace Maslosoft\Manganel\Meta;
 
 use Maslosoft\Addendum\Collections\Meta;
+use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Addendum\Interfaces\IAnnotated;
 use Maslosoft\Addendum\Options\MetaOptions;
 use Maslosoft\Manganel\Options\ManganelMetaOptions;
@@ -26,7 +27,7 @@ class ManganelMeta extends Meta
 	 * @param MetaOptions $options
 	 * @return ManganelMeta
 	 */
-	protected function __construct(IAnnotated $component = null, MetaOptions $options = null)
+	protected function __construct(AnnotatedInterface $component = null, MetaOptions $options = null)
 	{
 		if (null === $options)
 		{

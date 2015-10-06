@@ -14,11 +14,11 @@
 		}
 	],
 	"require": {
-		"maslosoft/addendum": "~3",
-		"elasticsearch/elasticsearch": "~1.0",
-		"maslosoft/mangan": "~3alpha"
+		"maslosoft/addendum": "*",
+		"elasticsearch/elasticsearch": "*",
+		"maslosoft/mangan": "*"
 	},
-	"minimum-stability": "alpha",
+	"minimum-stability": "stable",
 	"autoload": {
 		"psr-4": {
 			"Maslosoft\\Manganel\\": "src/"
