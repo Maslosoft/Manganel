@@ -11,8 +11,9 @@
 <img src="https://poser.pugx.org/maslosoft/manganel/license.svg" alt="License" style="height: 20px;"/>
 </a>
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Maslosoft/Manganel/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Maslosoft/Manganel/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/Maslosoft/Manganel/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Maslosoft/Manganel/?branch=master)
 <img src="https://travis-ci.org/Maslosoft/Manganel.svg?branch=master"/>
-<img src="https://travis-ci.org/Maslosoft/Manganel.svg?branch=master"/>
+<img src="http://hhvm.h4cc.de/badge/maslosoft/manganel.svg?style=flat"/>
 
 ### Quick Install
 ```bash
