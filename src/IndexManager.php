@@ -11,7 +11,7 @@ namespace Maslosoft\Manganel;
 use Elasticsearch\Client;
 use Maslosoft\Addendum\Interfaces\IAnnotated;
 use Maslosoft\Mangan\Helpers\CollectionNamer;
-use Maslosoft\Mangan\Transformers\DocumentArray;
+use Maslosoft\Mangan\Transformers\JsonArray;
 use Maslosoft\Manganel\Exceptions\ManganelException;
 
 /**
@@ -46,8 +46,9 @@ class IndexManager
 
 	public function index()
 	{
+		// NOTE: Use JsonArray here - DocumentArray fails - probably because id is object. Will need to change it to SearchArray or so.
 		$params = [
-			'body' => DocumentArray::fromModel($this->_model)
+			'body' => JsonArray::fromModel($this->_model)
 		];
 		$this->getClient()->index($this->_getParams($params));
 	}
@@ -61,7 +62,7 @@ class IndexManager
 	{
 		$params = $id ? ['id' => $id] : [];
 		$data = $this->getClient()->get($this->_getParams($params))['_source'];
-		return DocumentArray::toModel($data);
+		return JsonArray::toModel($data);
 	}
 
 	/**

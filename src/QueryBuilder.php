@@ -55,7 +55,7 @@ class QueryBuilder
 				]
 			]
 		];
-
+		
 		return $this->_manganel->getClient()->search($params);
 	}
 

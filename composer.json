@@ -16,7 +16,8 @@
 	"require": {
 		"maslosoft/addendum": "*",
 		"elasticsearch/elasticsearch": "*",
-		"maslosoft/mangan": "*"
+		"maslosoft/mangan": "*",
+		"mongofill/mongofill": "@dev"
 	},
 	"minimum-stability": "stable",
 	"autoload": {
