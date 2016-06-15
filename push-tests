@@ -1,5 +1,5 @@
 #!/bin/bash
-cd vendor/maslosoft/manganeltest && \
-git add * && \ 
-git commit -am'+ Tests' && \
+cd vendor/maslosoft/manganeltest
+git add *
+git commit -am'+ Tests'
 git push

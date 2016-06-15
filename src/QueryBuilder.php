@@ -8,7 +8,7 @@
 
 namespace Maslosoft\Manganel;
 
-use Maslosoft\Addendum\Interfaces\IAnnotated;
+use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Helpers\CollectionNamer;
 
 /**
@@ -23,18 +23,18 @@ class QueryBuilder
 	 * Manganel instance
 	 * @var Manganel
 	 */
-	private $_manganel = null;
+	private $manganel = null;
 
 	/**
 	 * Annotated model
-	 * @var IAnnotated
+	 * @var AnnotatedInterface
 	 */
-	private $_model;
+	private $model;
 
 	public function __construct($model)
 	{
-		$this->_model = $model;
-		$this->_manganel = Manganel::create($this->_model);
+		$this->model = $model;
+		$this->manganel = Manganel::create($this->model);
 	}
 
 	public function range($field, $start, $end = null)
@@ -45,8 +45,8 @@ class QueryBuilder
 	public function search($q = null)
 	{
 		$params = [
-			'index' => strtolower($this->_manganel->index),
-			'type' => CollectionNamer::nameCollection($this->_model),
+			'index' => strtolower($this->manganel->index),
+			'type' => CollectionNamer::nameCollection($this->model),
 			'body' => [
 				'query' => [
 					'query_string' => [
@@ -55,8 +55,8 @@ class QueryBuilder
 				]
 			]
 		];
-		
-		return $this->_manganel->getClient()->search($params);
+
+		return $this->manganel->getClient()->search($params);
 	}
 
 }

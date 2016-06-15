@@ -10,9 +10,10 @@ namespace Maslosoft\Manganel;
 
 use Maslosoft\Mangan\Signals\AfterDelete;
 use Maslosoft\Mangan\Signals\AfterSave;
+use Maslosoft\Mangan\Signals\ConfigInit;
 
 /**
- * Receiver
+ * Receiver of Mangan signals
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
@@ -20,7 +21,7 @@ class Receiver
 {
 
 	/**
-	 * @ReactOn(Maslosoft\Mangan\Signals\AfterSave)
+	 * @SlotFor(AfterSave)
 	 * @param AfterSave $signal
 	 */
 	public function onSave(AfterSave $signal)
@@ -29,12 +30,21 @@ class Receiver
 	}
 
 	/**
-	 * @ReactOn(Maslosoft\Mangan\Signals\AfterDelete)
+	 * @SlotFor(AfterDelete)
 	 * @param AfterDelete $signal
 	 */
 	public function onDelete(AfterDelete $signal)
 	{
-		$signal->model;
+		(new IndexManager($signal->model))->index();
+	}
+
+	/**
+	 * @SlotFor(ConfigInit)
+	 * @param ConfigInit $signal
+	 */
+	public function onInit(ConfigInit $signal)
+	{
+		$signal->apply(require __DIR__ . '/../config/mangan.cfg.php');
 	}
 
 }
