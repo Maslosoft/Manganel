@@ -9,6 +9,7 @@
 namespace Maslosoft\Manganel;
 
 use Elasticsearch\Client;
+use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\EmbeDi\EmbeDi;
 use Maslosoft\Manganel\Meta\ManganelMeta;
 
@@ -40,13 +41,25 @@ class Manganel
 	 *
 	 * @var Client
 	 */
-	private $_client = null;
+	private $client = null;
 
 	/**
-	 *
+	 * Dependency injection container
 	 * @var EmbeDi
 	 */
-	private $_di = null;
+	private $di = null;
+
+	/**
+	 * Instances of manganel
+	 * @var Manganel[]
+	 */
+	private static $mnl = [];
+
+	/**
+	 * Hash map of class name to id. This is to reduce overhead of Mangan::fromModel()
+	 * @var string[]
+	 */
+	private static $classToId = [];
 
 	public function __construct($indexId = self::DefaultIndexId)
 	{
@@ -55,24 +68,61 @@ class Manganel
 			$indexId = self::DefaultIndexId;
 		}
 		$this->indexId = $indexId;
-		$this->_di = new EmbeDi($this->indexId);
-		$this->_di->configure($this);
+		$this->di = new EmbeDi($this->indexId);
+		$this->di->configure($this);
+
+		if (empty(self::$mnl[$indexId]))
+		{
+			self::$mnl[$indexId] = $this;
+		}
+		codecept_debug(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3));
 	}
 
-	public static function create($model)
+	public static function create(AnnotatedInterface $model)
 	{
-		$meta = ManganelMeta::create($model);
-		return new static($meta->type()->indexId);
+		$key = get_class($model);
+		if (isset(self::$classToId[$key]))
+		{
+			$indexId = self::$classToId[$key];
+		}
+		else
+		{
+			$indexId = ManganelMeta::create($model)->type()->indexId;
+			self::$classToId[$key] = $indexId;
+		}
+
+		return static::fly($indexId);
+	}
+
+	/**
+	 * Get flyweight instance of Manganel component.
+	 * Only one instance will be created for each `$indexId`.
+	 *
+	 * @new
+	 * @param string $indexId
+	 * @return Manganel
+	 */
+	public static function fly($indexId = self::DefaultIndexId)
+	{
+		if (empty($indexId))
+		{
+			$indexId = self::DefaultIndexId;
+		}
+		if (empty(self::$mnl[$indexId]))
+		{
+			self::$mnl[$indexId] = new static($indexId);
+		}
+		return self::$mnl[$indexId];
 	}
 
 	public function init()
 	{
-		$this->_di->store($this);
+		$this->di->store($this);
 	}
 
 	public function getClient()
 	{
-		if (null === $this->_client)
+		if (null === $this->client)
 		{
 			$this->params['hosts'] = $this->hosts;
 			$this->params['connectionParams']['auth'] = [
@@ -82,9 +132,9 @@ class Manganel
 			];
 			$cb = \Elasticsearch\ClientBuilder::create();
 			$cb->setHosts($this->hosts);
-			$this->_client = $cb->build();
+			$this->client = $cb->build();
 		}
-		return $this->_client;
+		return $this->client;
 	}
 
 }

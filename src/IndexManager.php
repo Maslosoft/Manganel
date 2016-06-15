@@ -9,10 +9,11 @@
 namespace Maslosoft\Manganel;
 
 use Elasticsearch\Client;
-use Maslosoft\Addendum\Interfaces\IAnnotated;
+use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Helpers\CollectionNamer;
-use Maslosoft\Mangan\Transformers\JsonArray;
+use Maslosoft\Mangan\Mangan;
 use Maslosoft\Manganel\Exceptions\ManganelException;
+use Maslosoft\Manganel\Meta\ManganelMeta;
 
 /**
  * IndexMangager
@@ -26,43 +27,72 @@ class IndexManager
 	 * Manganel instance
 	 * @var Manganel
 	 */
-	private $_manganel = null;
+	private $manganel = null;
+
+	/**
+	 * Model meta data
+	 * @var ManganelMeta
+	 */
+	private $meta = null;
 
 	/**
 	 * Annotated model
-	 * @var IAnnotated
+	 * @var AnnotatedInterface
 	 */
-	private $_model;
+	private $model;
+
+	/**
+	 * Whether model is indexable
+	 * @var bool
+	 */
+	private $isIndexable = false;
 
 	public function __construct($model)
 	{
-		$this->_model = $model;
-		if (!$this->_model->_id)
+		$this->model = $model;
+		if (!isset($this->model->_id))
 		{
-			throw new ManganelException(sprintf('Id is not set in model `%s`', get_class($this->_model)));
+			throw new ManganelException(sprintf('Propoerty `_id` is not set in model `%s`, this is required by Manganel', get_class($this->model)));
 		}
-		$this->_manganel = Manganel::create($this->_model);
+		$this->manganel = Manganel::create($this->model);
+		$this->meta = ManganelMeta::create($this->model);
+		if (!empty($this->meta->type()->indexId) && false !== $this->meta->type()->indexId)
+		{
+			$this->isIndexable = true;
+		}
 	}
 
 	public function index()
 	{
-		// NOTE: Use JsonArray here - DocumentArray fails - probably because id is object. Will need to change it to SearchArray or so.
+		if (!$this->isIndexable)
+		{
+			return;
+		}
+		// NOTE: Transformer must ensure that _id is string, not MongoId
 		$params = [
-			'body' => JsonArray::fromModel($this->_model)
+			'body' => SearchArray::fromModel($this->model)
 		];
-		$this->getClient()->index($this->_getParams($params));
+		$this->getClient()->index($this->getParams($params));
 	}
 
 	public function delete()
 	{
-		$this->getClient()->delete($this->_getParams());
+		if (!$this->isIndexable)
+		{
+			return;
+		}
+		$this->getClient()->delete($this->getParams());
 	}
 
 	public function get($id = null)
 	{
-		$params = $id ? ['id' => $id] : [];
-		$data = $this->getClient()->get($this->_getParams($params))['_source'];
-		return JsonArray::toModel($data);
+		if (!$this->isIndexable)
+		{
+			return;
+		}
+		$params = $id ? ['id' => (string) $id] : [];
+		$data = $this->getClient()->get($this->getParams($params))['_source'];
+		return SearchArray::toModel($data);
 	}
 
 	/**
@@ -71,15 +101,15 @@ class IndexManager
 	 */
 	public function getClient()
 	{
-		return $this->_manganel->getClient();
+		return $this->manganel->getClient();
 	}
 
-	private function _getParams($params = [])
+	private function getParams($params = [])
 	{
 		$result = [
-			'index' => strtolower($this->_manganel->index),
-			'type' => CollectionNamer::nameCollection($this->_model),
-			'id' => (string) $this->_model->_id
+			'index' => strtolower($this->manganel->index),
+			'type' => CollectionNamer::nameCollection($this->model),
+			'id' => (string) $this->model->_id
 		];
 		return array_merge($result, $params);
 	}
