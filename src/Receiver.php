@@ -14,7 +14,8 @@ use Maslosoft\Mangan\Signals\ConfigInit;
 
 /**
  * Receiver of Mangan signals
- *
+ * TODO: Should remove from index on trash
+ * TODO: Should add to index on trash restore
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
 class Receiver
@@ -35,7 +36,7 @@ class Receiver
 	 */
 	public function onDelete(AfterDelete $signal)
 	{
-		(new IndexManager($signal->model))->index();
+		(new IndexManager($signal->model))->delete();
 	}
 
 	/**

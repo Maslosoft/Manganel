@@ -8,6 +8,7 @@
 
 namespace Maslosoft\Manganel\Filters;
 
+use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Interfaces\Filters\Property\TransformatorFilterInterface;
 use Maslosoft\Mangan\Meta\DocumentPropertyMeta;
 
@@ -19,6 +20,19 @@ use Maslosoft\Mangan\Meta\DocumentPropertyMeta;
 class SearchFilter implements TransformatorFilterInterface
 {
 
+	/**
+	 * TODO: Should filter out:
+	 *
+	 * 1. Fields marked with:
+	 * ```
+	 * @Search(false)
+	 * ```
+	 * 2. Empty strings
+	 *
+	 * @param AnnotatedInterface $model
+	 * @param DocumentPropertyMeta $fieldMeta
+	 * @return boolean
+	 */
 	public function fromModel($model, DocumentPropertyMeta $fieldMeta)
 	{
 		return true;
