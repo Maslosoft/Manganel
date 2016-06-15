@@ -28,6 +28,7 @@ class SearchFilter implements TransformatorFilterInterface
 	 * @Search(false)
 	 * ```
 	 * 2. Empty strings
+	 * 3. Possibly _class fields, as it might blur search results
 	 *
 	 * @param AnnotatedInterface $model
 	 * @param DocumentPropertyMeta $fieldMeta
