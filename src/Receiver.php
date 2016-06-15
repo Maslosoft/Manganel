@@ -44,7 +44,7 @@ class Receiver
 	 */
 	public function onInit(ConfigInit $signal)
 	{
-		$signal->apply(require __DIR__ . '/../config/mangan.cfg.php');
+		$signal->apply(require __DIR__ . '/config/mangan.cfg.php');
 	}
 
 }

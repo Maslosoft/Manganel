@@ -75,7 +75,6 @@ class Manganel
 		{
 			self::$mnl[$indexId] = $this;
 		}
-		codecept_debug(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3));
 	}
 
 	public static function create(AnnotatedInterface $model)
