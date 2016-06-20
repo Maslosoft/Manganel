@@ -10,7 +10,6 @@ namespace Maslosoft\Manganel\Meta;
 
 use Maslosoft\Addendum\Collections\Meta;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
-use Maslosoft\Addendum\Interfaces\IAnnotated;
 use Maslosoft\Addendum\Options\MetaOptions;
 use Maslosoft\Manganel\Options\ManganelMetaOptions;
 
@@ -22,18 +21,28 @@ class ManganelMeta extends Meta
 {
 
 	/**
-	 * Create instance of Metadata specifically designed for Mangan
-	 * @param IAnnotated $component
+	 * Create instance of Metadata specifically designed for Manganel
+	 * @param AnnotatedInterface $component
 	 * @param MetaOptions $options
 	 * @return ManganelMeta
 	 */
-	protected function __construct(AnnotatedInterface $component = null, MetaOptions $options = null)
+	public static function create(AnnotatedInterface $component, MetaOptions $options = null)
 	{
 		if (null === $options)
 		{
 			$options = new ManganelMetaOptions();
 		}
-		parent::__construct($component, $options);
+		return parent::create($component, $options);
+	}
+
+	/**
+	 * Get field by name
+	 * @param string $name
+	 * @return DocumentPropertyMeta
+	 */
+	public function field($name)
+	{
+		return parent::field($name);
 	}
 
 	/**
