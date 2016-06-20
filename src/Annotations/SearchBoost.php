@@ -13,7 +13,7 @@ use Maslosoft\Manganel\Meta\ManganelTypeAnnotation;
 /**
  * SearchBoost
  * 
- * Use this annotation to increase or decreate importance of field in search
+ * Use this annotation to increase or decrease importance of field in search
  * results. Use positive values to increase importance, and negative to
  * decrease.
  * 
