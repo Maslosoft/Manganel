@@ -50,15 +50,18 @@ class IndexManager
 	public function __construct($model)
 	{
 		$this->model = $model;
-		if (!isset($this->model->_id))
-		{
-			throw new ManganelException(sprintf('Propoerty `_id` is not set in model `%s`, this is required by Manganel', get_class($this->model)));
-		}
-		$this->manganel = Manganel::create($this->model);
 		$this->meta = ManganelMeta::create($this->model);
 		if (!empty($this->meta->type()->indexId) && false !== $this->meta->type()->indexId)
 		{
 			$this->isIndexable = true;
+		}
+		if ($this->isIndexable)
+		{
+			if (!isset($this->model->_id))
+			{
+				throw new ManganelException(sprintf('Property `_id` is not set in model `%s`, this is required by Manganel', get_class($this->model)));
+			}
+			$this->manganel = Manganel::create($this->model);
 		}
 	}
 
