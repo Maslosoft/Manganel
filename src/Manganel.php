@@ -63,7 +63,7 @@ class Manganel
 
 	public function __construct($indexId = self::DefaultIndexId)
 	{
-		if (!$indexId)
+		if (empty($indexId))
 		{
 			$indexId = self::DefaultIndexId;
 		}
