@@ -28,7 +28,7 @@ class SearchAnnotation extends ManganelTypeAnnotation
 
 	public function init()
 	{
-		$this->getEntity()->indexId = $this->value;
+		$this->getEntity()->searchable = (bool) $this->value;
 	}
 
 }
