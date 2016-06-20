@@ -9,6 +9,7 @@
 namespace Maslosoft\Manganel\Options;
 
 use Maslosoft\Addendum\Options\MetaOptions;
+use Maslosoft\Mangan\Options\ManganMetaOptions;
 use Maslosoft\Manganel\Annotations\SearchIndexAnnotation;
 use Maslosoft\Manganel\Meta\DocumentMethodMeta;
 use Maslosoft\Manganel\Meta\DocumentPropertyMeta;
@@ -47,5 +48,12 @@ class ManganelMetaOptions extends MetaOptions
 	public $namespaces = [
 		SearchIndexAnnotation::Ns
 	];
+
+	public function __construct()
+	{
+		// Include Mangan annotations namespaces too
+		$manganOptions = new ManganMetaOptions;
+		$this->namespaces = array_merge($manganOptions->namespaces, $this->namespaces);
+	}
 
 }
