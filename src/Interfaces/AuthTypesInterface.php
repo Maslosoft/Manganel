@@ -6,23 +6,19 @@
  * and open the template in the editor.
  */
 
-namespace Maslosoft\Manganel\Meta;
+namespace Maslosoft\Manganel\Interfaces;
 
 /**
- * ManganTypeAnnotation
+ * Auth types
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-abstract class ManganelTypeAnnotation extends ManganelAnnotation
+interface AuthTypesInterface
 {
 
-	/**
-	 * 
-	 * @return DocumentTypeMeta
-	 */
-	public function getEntity()
-	{
-		return parent::getEntity();
-	}
+	const Basic = 'Basic';
+	const Digests = 'Digests';
+	const NTLM = 'NTLM';
+	const Any = 'Any';
 
 }
