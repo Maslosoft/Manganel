@@ -6,19 +6,14 @@
  * and open the template in the editor.
  */
 
-namespace Maslosoft\Manganel\Interfaces;
+namespace Maslosoft\Manganel;
 
 /**
- * IAuth
+ * SearchCriteria
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-interface IAuth
+class SearchCriteria implements \Maslosoft\Mangan\Interfaces\CriteriaInterface
 {
-
-	const Basic = 'Basic';
-	const Digests = 'Digests';
-	const NTLM = 'NTLM';
-	const Any = 'Any';
-
+	
 }

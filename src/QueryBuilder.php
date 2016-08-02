@@ -59,4 +59,15 @@ class QueryBuilder
 		return $this->manganel->getClient()->search($params);
 	}
 
+	/**
+	 * TODO Return true if search has hits
+	 * @return boolean
+	 * @throws Exception
+	 */
+	public function hasHits()
+	{
+		throw new Exception('Not implemented');
+		return true;
+	}
+
 }

@@ -26,4 +26,11 @@ class DocumentTypeMeta extends ManganTypeMeta
 	 */
 	public $indexId;
 
+	/**
+	 * Document type name. Used to search from child classes, 
+	 * while indexed types are parent classes.
+	 * @var string
+	 */
+	public $type = '';
+
 }

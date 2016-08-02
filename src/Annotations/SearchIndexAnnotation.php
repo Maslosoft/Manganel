@@ -43,7 +43,7 @@ class SearchIndexAnnotation extends ManganelTypeAnnotation
 		{
 			$this->value = Manganel::DefaultIndexId;
 		}
-		$this->_entity->indexId = $this->value;
+		$this->getEntity()->indexId = $this->value;
 	}
 
 }
