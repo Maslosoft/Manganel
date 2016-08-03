@@ -9,6 +9,14 @@ use Maslosoft\Manganel\SearchArray;
 
 // Mangan additional configuration
 return [
+	'decorators' => [
+		SearchArray::class => [
+			ClassNameDecorator::class,
+			EmbedRefDecorator::class,
+			EmbedRefArrayDecorator::class,
+			I18NDecorator::class,
+		]
+	],
 	'filters' => [
 		SearchArray::class => [
 			SearchFilter::class,
