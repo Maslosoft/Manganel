@@ -8,14 +8,14 @@
 
 namespace Maslosoft\Manganel;
 
-use Maslosoft\Mangan\Transformers\JsonArray;
+use Maslosoft\Mangan\Transformers\RawArray;
 
 /**
  * SearchArray
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class SearchArray extends JsonArray
+class SearchArray extends RawArray
 {
 	
 }
