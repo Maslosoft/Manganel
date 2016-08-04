@@ -9,6 +9,7 @@
 namespace Maslosoft\Manganel;
 
 use Elasticsearch\Client;
+use Elasticsearch\ClientBuilder;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\EmbeDi\EmbeDi;
 use Maslosoft\Manganel\Meta\ManganelMeta;
@@ -61,6 +62,11 @@ class Manganel
 	 */
 	private static $classToId = [];
 
+	/**
+	 * Class constructor
+	 * @codeCoverageIgnore This is implicitly tested
+	 * @param string $indexId
+	 */
 	public function __construct($indexId = self::DefaultIndexId)
 	{
 		if (empty($indexId))
@@ -77,6 +83,11 @@ class Manganel
 		}
 	}
 
+	/**
+	 * @codeCoverageIgnore This is implicitly tested
+	 * @param AnnotatedInterface $model
+	 * @return static
+	 */
 	public static function create(AnnotatedInterface $model)
 	{
 		$key = get_class($model);
@@ -97,6 +108,7 @@ class Manganel
 	 * Get flyweight instance of Manganel component.
 	 * Only one instance will be created for each `$indexId`.
 	 *
+	 * @codeCoverageIgnore This is implicitly tested
 	 * @new
 	 * @param string $indexId
 	 * @return Manganel
@@ -114,13 +126,16 @@ class Manganel
 		return self::$mnl[$indexId];
 	}
 
+	/**
+	 * @codeCoverageIgnore This is implicitly tested
+	 */
 	public function init()
 	{
 		$this->di->store($this);
 	}
 
 	/**
-	 * 
+	 * @codeCoverageIgnore This is implicitly tested
 	 * @return Client
 	 */
 	public function getClient()
@@ -133,7 +148,7 @@ class Manganel
 				$this->password,
 				$this->auth
 			];
-			$cb = \Elasticsearch\ClientBuilder::create();
+			$cb = ClientBuilder::create();
 			$cb->setHosts($this->hosts);
 			$this->client = $cb->build();
 		}

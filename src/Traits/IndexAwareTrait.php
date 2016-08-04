@@ -29,7 +29,7 @@ trait IndexAwareTrait
 	{
 		if (!$this instanceof IndexAwareInterface)
 		{
-			throw new UnexpectedValueException(sprintf('Class `%s` using `%s` must implement `%s`', get_class($this), __CLASS__, IndexAwareInterface::class));
+			throw new UnexpectedValueException(sprintf('Class `%s` using `%s` must implement `%s`', get_class($this), __CLASS__, IndexAwareInterface::class)); // @codeCoverageIgnore
 		}
 		return $this->index;
 	}
@@ -43,7 +43,7 @@ trait IndexAwareTrait
 	{
 		if (!$this instanceof IndexAwareInterface)
 		{
-			throw new UnexpectedValueException(sprintf('Class `%s` using `%s` must implement `%s`', get_class($this), __CLASS__, IndexAwareInterface::class));
+			throw new UnexpectedValueException(sprintf('Class `%s` using `%s` must implement `%s`', get_class($this), __CLASS__, IndexAwareInterface::class)); // @codeCoverageIgnore
 		}
 		$this->index = $index;
 		return $this;

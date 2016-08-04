@@ -22,14 +22,20 @@ class SearchFilter implements TransformatorFilterInterface
 {
 
 	/**
-	 * TODO: Should filter out:
+	 * This will filter out:
 	 *
 	 * 1. Fields marked with:
 	 * ```
 	 * @Search(false)
 	 * ```
-	 * 2. Empty strings
-	 * 3. Possibly _class fields, as it might blur search results
+	 * 2. Secret fields marked in any way with:
+	 * ```
+	 * @Secret
+	 * ```
+	 * 3. Non-persistent fields marked with:
+	 * ```
+	 * @Persistent(false)
+	 * ```
 	 *
 	 * @param AnnotatedInterface $model
 	 * @param DocumentPropertyMeta $fieldMeta
@@ -61,6 +67,12 @@ class SearchFilter implements TransformatorFilterInterface
 		return true;
 	}
 
+	/**
+	 * Allow any previously set fields to be set.
+	 * @param AnnotatedInterface $model
+	 * @param DocumentPropertyMeta $fieldMeta
+	 * @return boolean
+	 */
 	public function toModel($model, DocumentPropertyMeta $fieldMeta)
 	{
 		return true;
