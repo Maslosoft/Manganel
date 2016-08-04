@@ -16,7 +16,7 @@ namespace Maslosoft\Manganel\Interfaces;
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class IndexAwareInterface
+interface IndexAwareInterface
 {
 
 	/**

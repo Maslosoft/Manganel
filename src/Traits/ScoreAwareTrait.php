@@ -16,7 +16,7 @@ use UnexpectedValueException;
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class ScoreAwareTrait
+trait ScoreAwareTrait
 {
 
 	private $score = 0.0;
