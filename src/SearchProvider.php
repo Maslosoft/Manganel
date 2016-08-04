@@ -34,15 +34,29 @@ class SearchProvider implements DataProviderInterface
 
 	const CriteriaClass = SearchCriteria::class;
 
-	public function __construct($modelClass, $config)
+	/**
+	 * Total items count cache
+	 * @var int
+	 */
+	private $totalItemCount = null;
+
+	public function __construct($modelClass, $config = [])
 	{
 		$this->configure($modelClass, $config);
 	}
 
 	protected function fetchData()
 	{
+		$criteria = $this->getCriteria();
 		$qb = new QueryBuilder($this->getModel());
-		$qb->search($this->getCriteria()->getSearch());
+		$qb->setCriteria($criteria);
+		$rawResults = $qb->search($criteria->getSearch());
+		$results = [];
+		foreach ($rawResults as $data)
+		{
+			$results[] = SearchArray::toModel($data);
+		}
+		return $results;
 	}
 
 	public function getItemCount($refresh = false)
