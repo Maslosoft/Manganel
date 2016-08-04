@@ -47,14 +47,15 @@ class SearchProvider implements DataProviderInterface
 
 	protected function fetchData()
 	{
-		$criteria = $this->getCriteria();
+		$criteria = $this->configureFetch();
+
 		$qb = new QueryBuilder($this->getModel());
 		$qb->setCriteria($criteria);
 		$rawResults = $qb->search($criteria->getSearch());
 		$results = [];
 		foreach ($rawResults as $data)
 		{
-			$results[] = SearchArray::toModel($data);
+			$results[] = SearchArray::toModel($data['_source']);
 		}
 		return $results;
 	}

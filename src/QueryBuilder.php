@@ -110,12 +110,21 @@ class QueryBuilder implements CriteriaAwareInterface
 				]
 			];
 		}
+		$body['query'] = $query;
+
+		if (!empty($criteria))
+		{
+			if ($criteria->getLimit() || $criteria->getOffset())
+			{
+				$body['from'] = $criteria->getOffset();
+				$body['size'] = $criteria->getLimit();
+			}
+		}
+
 		$params = [
 			'index' => strtolower($this->manganel->index),
 			'type' => CollectionNamer::nameCollection($this->model),
-			'body' => [
-				'query' => $query
-			]
+			'body' => $body
 		];
 		return $params;
 	}
