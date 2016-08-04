@@ -8,9 +8,13 @@
 
 namespace Maslosoft\Manganel;
 
+use Maslosoft\Mangan\Events\Event;
+use Maslosoft\Mangan\Events\ModelEvent;
+use Maslosoft\Mangan\Interfaces\TrashInterface;
 use Maslosoft\Mangan\Signals\AfterDelete;
 use Maslosoft\Mangan\Signals\AfterSave;
 use Maslosoft\Mangan\Signals\ConfigInit;
+use Maslosoft\Mangan\Traits\Model\TrashableTrait;
 
 /**
  * Receiver of Mangan signals
@@ -41,11 +45,34 @@ class Receiver
 
 	/**
 	 * @SlotFor(ConfigInit)
+	 * @codeCoverageIgnore Configuration is tested on Index/SearchArray test
 	 * @param ConfigInit $signal
 	 */
 	public function onInit(ConfigInit $signal)
 	{
 		$signal->apply(require __DIR__ . '/config/mangan.cfg.php');
+
+		// Trash does not emit signals
+		$this->attachTrashHandlers();
+	}
+
+	private function attachTrashHandlers()
+	{
+		static $once = true;
+		if ($once)
+		{
+			$handler = function(ModelEvent $event)
+			{
+				/* @var $event ModelEvent */
+				$model = $event->sender;
+				$this->onDelete(new AfterDelete($model));
+				$event->handled = true;
+				$event->isValid = true;
+			};
+			$handler->bindTo($this);
+			Event::on(TrashableTrait::class, TrashInterface::EventAfterTrash, $handler);
+			$once = false;
+		}
 	}
 
 }

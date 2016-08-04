@@ -1063,11 +1063,11 @@
         },
         {
             "name": "maslosoft/mangan",
-            "version": "4.2.34",
+            "version": "4.2.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Mangan.git",
-                "reference": "33fb861b11caf58473b0fa0c38f4f1bcfd107830",
+                "reference": "32d536c0fcba382a753e7f9790b13e4ee060e05e",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -1077,8 +1077,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/33fb861b11caf58473b0fa0c38f4f1bcfd107830",
-                "reference": "33fb861b11caf58473b0fa0c38f4f1bcfd107830",
+                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/32d536c0fcba382a753e7f9790b13e4ee060e05e",
+                "reference": "32d536c0fcba382a753e7f9790b13e4ee060e05e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1165,7 +1165,7 @@
                 }
             ],
             "description": "MongoDB Object Persister",
-            "time": "2016-08-02 07:32:06"
+            "time": "2016-08-04 10:49:50"
         },
         {
             "name": "maslosoft/miniview",
@@ -1367,11 +1367,11 @@
         },
         {
             "name": "maslosoft/signals",
-            "version": "1.1.17",
+            "version": "1.1.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Signals.git",
-                "reference": "7f35a082f32578313b057f5a66266bbfb866cbb1",
+                "reference": "19d6247ba2b8b5c68740220fc82b9e71d8e01307",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -1381,8 +1381,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/7f35a082f32578313b057f5a66266bbfb866cbb1",
-                "reference": "7f35a082f32578313b057f5a66266bbfb866cbb1",
+                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/19d6247ba2b8b5c68740220fc82b9e71d8e01307",
+                "reference": "19d6247ba2b8b5c68740220fc82b9e71d8e01307",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1432,7 +1432,7 @@
                 "slot",
                 "slots"
             ],
-            "time": "2016-06-15 14:06:27"
+            "time": "2016-08-04 09:10:00"
         },
         {
             "name": "masterexploder/phpthumb",
@@ -3791,7 +3791,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/ManganelTest.git",
-                "reference": "1ee563766958194c8511ab8e23fae2d061357571",
+                "reference": "ed0bb9c64d369f875c6507a1633da3fd82852f6a",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -3801,12 +3801,12 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/ManganelTest/zipball/1ee563766958194c8511ab8e23fae2d061357571",
-                "reference": "1ee563766958194c8511ab8e23fae2d061357571",
+                "url": "https://api.github.com/repos/Maslosoft/ManganelTest/zipball/ed0bb9c64d369f875c6507a1633da3fd82852f6a",
+                "reference": "ed0bb9c64d369f875c6507a1633da3fd82852f6a",
                 "shasum": "",
                 "mirrors": [
                     {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
+                        "url": "http://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
                         "preferred": true
                     }
                 ]
@@ -3834,7 +3834,7 @@
                 }
             ],
             "description": "Tests for manganel",
-            "time": "2016-06-15 13:33:11"
+            "time": "2016-08-04 10:03:21"
         },
         {
             "name": "maslosoft/mangantest",
@@ -3842,7 +3842,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/ManganTest.git",
-                "reference": "3d7dcf92da3c36ff4063bb617baf61e6ecd8bf33",
+                "reference": "be8000b33a9975472e804cdc9b1ccb8ea1bebc82",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -3852,8 +3852,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/ManganTest/zipball/3d7dcf92da3c36ff4063bb617baf61e6ecd8bf33",
-                "reference": "3d7dcf92da3c36ff4063bb617baf61e6ecd8bf33",
+                "url": "https://api.github.com/repos/Maslosoft/ManganTest/zipball/be8000b33a9975472e804cdc9b1ccb8ea1bebc82",
+                "reference": "be8000b33a9975472e804cdc9b1ccb8ea1bebc82",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3886,7 +3886,7 @@
                 }
             ],
             "description": "Tests for mangan",
-            "time": "2016-08-02 07:29:54"
+            "time": "2016-08-04 06:54:58"
         },
         {
             "name": "myclabs/deep-copy",
