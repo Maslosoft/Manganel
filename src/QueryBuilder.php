@@ -76,6 +76,7 @@ class QueryBuilder implements CriteriaAwareInterface
 
 	private function getParams($q = null)
 	{
+		$body = [];
 		// Try to get query from criteria if empty
 		$criteria = $this->getCriteria();
 		if (null === $q && !empty($criteria))
