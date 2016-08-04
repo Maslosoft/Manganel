@@ -15,6 +15,8 @@ use Maslosoft\Mangan\Traits\DataProvider\DataTrait;
 use Maslosoft\Mangan\Traits\DataProvider\PaginationTrait;
 use Maslosoft\Mangan\Traits\ModelAwareTrait;
 use Maslosoft\Mangan\Traits\SortAwareTrait;
+use Maslosoft\Manganel\Interfaces\IndexAwareInterface;
+use Maslosoft\Manganel\Interfaces\ScoreAwareInterface;
 
 /**
  * SearchProvider
@@ -55,7 +57,16 @@ class SearchProvider implements DataProviderInterface
 		$results = [];
 		foreach ($rawResults as $data)
 		{
-			$results[] = SearchArray::toModel($data['_source']);
+			$model = SearchArray::toModel($data['_source']);
+			if ($model instanceof IndexAwareInterface)
+			{
+				$model->setIndex($data['_index']);
+			}
+			if ($model instanceof ScoreAwareInterface)
+			{
+				$model->setScore($data['_score']);
+			}
+			$results[] = $model;
 		}
 		return $results;
 	}
