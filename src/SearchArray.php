@@ -8,7 +8,9 @@
 
 namespace Maslosoft\Manganel;
 
+use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Transformers\RawArray;
+use Maslosoft\Manganel\Meta\ManganelMeta;
 
 /**
  * SearchArray
@@ -17,5 +19,10 @@ use Maslosoft\Mangan\Transformers\RawArray;
  */
 class SearchArray extends RawArray
 {
-	
+
+	protected static function getMeta(AnnotatedInterface $model)
+	{
+		return ManganelMeta::create($model);
+	}
+
 }

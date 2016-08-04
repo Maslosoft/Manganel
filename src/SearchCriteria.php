@@ -8,12 +8,26 @@
 
 namespace Maslosoft\Manganel;
 
+use Maslosoft\Mangan\Criteria;
+
 /**
  * SearchCriteria
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class SearchCriteria implements \Maslosoft\Mangan\Interfaces\CriteriaInterface
+class SearchCriteria extends Criteria
 {
-	
+
+	private $query = '';
+
+	public function search($query)
+	{
+		$this->query = $query;
+	}
+
+	public function getSearch()
+	{
+		return $this->query;
+	}
+
 }

@@ -8,16 +8,21 @@
 
 namespace Maslosoft\Manganel;
 
+use Exception;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Helpers\CollectionNamer;
+use Maslosoft\Mangan\Interfaces\CriteriaAwareInterface;
+use Maslosoft\Mangan\Traits\CriteriaAwareTrait;
 
 /**
  * QueryBuilder
- *
+ * @method SearchCriteria getCriteria()
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class QueryBuilder
+class QueryBuilder implements CriteriaAwareInterface
 {
+
+	use CriteriaAwareTrait;
 
 	/**
 	 * Manganel instance
@@ -37,26 +42,36 @@ class QueryBuilder
 		$this->manganel = Manganel::create($this->model);
 	}
 
-	public function range($field, $start, $end = null)
+	/**
+	 *
+	 * @param string $q
+	 * @return int
+	 */
+	public function count($q = null)
 	{
-		return $this;
+		$params = $this->getParams($q);
+		$result = $this->manganel->getClient()->count($params);
+		if (empty($result) && empty($result['count']))
+		{
+			return 0;
+		}
+		return $result['count'];
 	}
 
+	/**
+	 * Get search results
+	 * @param string $q
+	 * @return array
+	 */
 	public function search($q = null)
 	{
-		$params = [
-			'index' => strtolower($this->manganel->index),
-			'type' => CollectionNamer::nameCollection($this->model),
-			'body' => [
-				'query' => [
-					'query_string' => [
-						'query' => $q
-					]
-				]
-			]
-		];
-
-		return $this->manganel->getClient()->search($params);
+		$params = $this->getParams($q);
+		$result = $this->manganel->getClient()->search($params);
+		if (empty($result) && empty($result['hits']) && empty($result['hits']['hits']))
+		{
+			return [];
+		}
+		return $result['hits']['hits'];
 	}
 
 	/**
@@ -68,6 +83,41 @@ class QueryBuilder
 	{
 		throw new Exception('Not implemented');
 		return true;
+	}
+
+	private function getParams($q = null)
+	{
+		// Try to get query from criteria if empty
+		$criteria = $this->getCriteria();
+		if (null === $q && !empty($criteria))
+		{
+			$q = $criteria->getSearch();
+		}
+
+		if (null === $q)
+		{
+			// Match all documents if query is null
+			$query = [
+				'match_all' => []
+			];
+		}
+		else
+		{
+			// Use query string matching
+			$query = [
+				'query_string' => [
+					'query' => $q
+				]
+			];
+		}
+		$params = [
+			'index' => strtolower($this->manganel->index),
+			'type' => CollectionNamer::nameCollection($this->model),
+			'body' => [
+				'query' => $query
+			]
+		];
+		return $params;
 	}
 
 }
