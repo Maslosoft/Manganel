@@ -53,7 +53,7 @@ class QueryBuilder implements CriteriaAwareInterface
 		$result = $this->manganel->getClient()->count($params);
 		if (empty($result) && empty($result['count']))
 		{
-			return 0;
+			return 0; // @codeCoverageIgnore
 		}
 		return $result['count'];
 	}
@@ -69,20 +69,9 @@ class QueryBuilder implements CriteriaAwareInterface
 		$result = $this->manganel->getClient()->search($params);
 		if (empty($result) && empty($result['hits']) && empty($result['hits']['hits']))
 		{
-			return [];
+			return []; // @codeCoverageIgnore
 		}
 		return $result['hits']['hits'];
-	}
-
-	/**
-	 * TODO Return true if search has hits
-	 * @return boolean
-	 * @throws Exception
-	 */
-	public function hasHits()
-	{
-		throw new Exception('Not implemented');
-		return true;
 	}
 
 	private function getParams($q = null)

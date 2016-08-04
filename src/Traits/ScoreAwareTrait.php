@@ -25,7 +25,7 @@ trait ScoreAwareTrait
 	{
 		if (!$this instanceof ScoreAwareInterface)
 		{
-			throw new UnexpectedValueException(sprintf('Class `%s` using `%s` must implement `%s`', get_class($this), __CLASS__, ScoreAwareInterface::class));
+			throw new UnexpectedValueException(sprintf('Class `%s` using `%s` must implement `%s`', get_class($this), __CLASS__, ScoreAwareInterface::class)); // @codeCoverageIgnore
 		}
 		return $this->score;
 	}
@@ -34,7 +34,7 @@ trait ScoreAwareTrait
 	{
 		if (!$this instanceof ScoreAwareInterface)
 		{
-			throw new UnexpectedValueException(sprintf('Class `%s` using `%s` must implement `%s`', get_class($this), __CLASS__, ScoreAwareInterface::class));
+			throw new UnexpectedValueException(sprintf('Class `%s` using `%s` must implement `%s`', get_class($this), __CLASS__, ScoreAwareInterface::class)); // @codeCoverageIgnore
 		}
 		$this->score = $score;
 		return $this;

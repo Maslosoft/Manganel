@@ -11,6 +11,7 @@ use Maslosoft\Mangan\Sanitizers\MongoWriteStringId;
 use Maslosoft\Manganel\Filters\SearchFilter;
 use Maslosoft\Manganel\SearchArray;
 
+// @codeCoverageIgnoreStart
 // Mangan additional configuration
 return [
 	'decorators' => [

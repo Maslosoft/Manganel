@@ -56,18 +56,24 @@ class Receiver
 		$this->attachTrashHandlers();
 	}
 
+	/**
+	 * @staticvar boolean $once
+	 */
 	private function attachTrashHandlers()
 	{
+		// @codeCoverageIgnoreStart
 		static $once = true;
 		if ($once)
 		{
 			$handler = function(ModelEvent $event)
 			{
+				// @codeCoverageIgnoreEnd
 				/* @var $event ModelEvent */
 				$model = $event->sender;
 				$this->onDelete(new AfterDelete($model));
 				$event->handled = true;
 				$event->isValid = true;
+				// @codeCoverageIgnoreStart
 			};
 			$handler->bindTo($this);
 			Event::on(TrashableTrait::class, TrashInterface::EventAfterTrash, $handler);
