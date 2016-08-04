@@ -119,6 +119,10 @@ class Manganel
 		$this->di->store($this);
 	}
 
+	/**
+	 * 
+	 * @return Client
+	 */
 	public function getClient()
 	{
 		if (null === $this->client)

@@ -1,5 +1,9 @@
 <?php
 
+use Maslosoft\Mangan\Decorators\EmbedRefArrayDecorator;
+use Maslosoft\Mangan\Decorators\EmbedRefDecorator;
+use Maslosoft\Mangan\Decorators\Model\ClassNameDecorator;
+use Maslosoft\Mangan\Decorators\Property\I18NDecorator;
 use Maslosoft\Mangan\Sanitizers\DateSanitizer;
 use Maslosoft\Mangan\Sanitizers\DateWriteUnixSanitizer;
 use Maslosoft\Mangan\Sanitizers\MongoObjectId;

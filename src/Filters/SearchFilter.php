@@ -47,6 +47,12 @@ class SearchFilter implements TransformatorFilterInterface
 			return false;
 		}
 
+		// Skip non-persistent fields
+		if (false === $meta->persistent)
+		{
+			return false;
+		}
+
 		// Skip secret fields
 		if ($meta->secret)
 		{
