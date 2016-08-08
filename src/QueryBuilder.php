@@ -95,7 +95,7 @@ class QueryBuilder implements CriteriaAwareInterface
 		{
 			// Use query string matching
 			$query = [
-				'query_string' => [
+				'simple_query_string' => [
 					'query' => $q
 				]
 			];

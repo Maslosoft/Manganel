@@ -14,6 +14,7 @@ use Maslosoft\Mangan\Helpers\CollectionNamer;
 use Maslosoft\Mangan\Mangan;
 use Maslosoft\Manganel\Exceptions\ManganelException;
 use Maslosoft\Manganel\Meta\ManganelMeta;
+use UnexpectedValueException;
 
 /**
  * IndexMangager
@@ -72,8 +73,21 @@ class IndexManager
 			return;
 		}
 		// NOTE: Transformer must ensure that _id is string, not MongoId
+		$body = SearchArray::fromModel($this->model);
+		if (array_key_exists('_id', $body))
+		{
+			$config = Mangan::fromModel($this->model)->sanitizersMap;
+			if (!array_key_exists(SearchArray::class, $config))
+			{
+				throw new UnexpectedValueException(sprintf('Mangan is not properly configured for Manganel. Signals must be generated or add configuration manually from `%s::getDefault()`', ConfigManager::class));
+			}
+			else
+			{
+				throw new UnexpectedValueException(sprintf('Cannot index `%s`, as it contains _id field. Either use MongoObjectId sanitizer on it, or rename.', get_class($this->model)));
+			}
+		}
 		$params = [
-			'body' => SearchArray::fromModel($this->model)
+			'body' => $body
 		];
 		$this->getClient()->index($this->getParams($params));
 	}
