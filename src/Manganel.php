@@ -100,7 +100,6 @@ class Manganel
 			$indexId = ManganelMeta::create($model)->type()->indexId;
 			self::$classToId[$key] = $indexId;
 		}
-
 		return static::fly($indexId);
 	}
 
