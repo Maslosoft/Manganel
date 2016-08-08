@@ -9,8 +9,11 @@
 namespace Maslosoft\Manganel\Decorators;
 
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
+use Maslosoft\Mangan\Helpers\Sanitizer\Sanitizer;
 use Maslosoft\Mangan\Interfaces\Decorators\Model\ModelDecoratorInterface;
 use Maslosoft\Mangan\Interfaces\Transformators\TransformatorInterface;
+use Maslosoft\Manganel\Meta\ManganelMeta;
+use Maslosoft\Manganel\SearchArray;
 
 /**
  * ElasticSearch 2.x does not allow `_id` fields, this is to prevent storing such fields.
@@ -37,7 +40,10 @@ class UnderscoreIdFieldDecorator implements ModelDecoratorInterface
 	{
 		if (isset($dbValues[self::Key]) && isset($model->_id))
 		{
-			$model->_id = $dbValues[self::Key];
+			$id = $dbValues[self::Key];
+			// Need to sanitize value, as $dbValues contains raw value
+			$sanitizer = new Sanitizer($model, SearchArray::class, ManganelMeta::create($model));
+			$model->_id = $sanitizer->read('_id', $id);
 			unset($dbValues[self::Key]);
 		}
 	}

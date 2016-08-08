@@ -5,11 +5,11 @@ use Maslosoft\Mangan\Decorators\EmbedRefDecorator;
 use Maslosoft\Mangan\Decorators\Model\ClassNameDecorator;
 use Maslosoft\Mangan\Decorators\Property\I18NDecorator;
 use Maslosoft\Mangan\Sanitizers\DateSanitizer;
-use Maslosoft\Mangan\Sanitizers\DateWriteUnixSanitizer;
 use Maslosoft\Mangan\Sanitizers\MongoObjectId;
 use Maslosoft\Mangan\Sanitizers\MongoWriteStringId;
 use Maslosoft\Manganel\Decorators\UnderscoreIdFieldDecorator;
 use Maslosoft\Manganel\Filters\SearchFilter;
+use Maslosoft\Manganel\Sanitizers\DateWriteEsSanitizer;
 use Maslosoft\Manganel\SearchArray;
 
 // @codeCoverageIgnoreStart
@@ -32,7 +32,7 @@ return [
 	'sanitizersMap' => [
 		SearchArray::class => [
 			MongoObjectId::class => MongoWriteStringId::class,
-			DateSanitizer::class => DateWriteUnixSanitizer::class
+			DateSanitizer::class => DateWriteEsSanitizer::class
 		],
 	]
 ];

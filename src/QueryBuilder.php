@@ -100,6 +100,29 @@ class QueryBuilder implements CriteriaAwareInterface
 				]
 			];
 		}
+
+//
+//		  TODO: Build somewhat similar query, if criteria has
+//		  ANY conditions. Add conditions to `filter` clause:
+//		  {
+//				"query": {
+//					"filtered": {
+//						"query": {
+//							"query_string": {
+//								"query": "jkow OR features"
+//							}
+//						},
+//						"filter": {
+//							"term": {
+//								"published.en": true
+//							}
+//						}
+//					}
+//				}
+//			}
+//
+
+
 		$body['query'] = $query;
 
 		if (!empty($criteria))
