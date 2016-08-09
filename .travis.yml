@@ -19,7 +19,7 @@ install:
   - composer install --prefer-dist --dev --no-interaction
   # Get fresh tests
   - rm -rf vendor/maslosoft/manganeltest
-  - git clone https://github.com/Maslosoft/ManganTest.git vendor/maslosoft/manganeltest
+  - git clone https://github.com/Maslosoft/ManganelTest.git vendor/maslosoft/manganeltest
 before_script:
   - cd $TRAVIS_BUILD_DIR
 script: 
