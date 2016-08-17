@@ -9,11 +9,13 @@
 namespace Maslosoft\Manganel;
 
 use Elasticsearch\Client;
+use Elasticsearch\Common\Exceptions\BadRequest400Exception;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Helpers\CollectionNamer;
 use Maslosoft\Mangan\Mangan;
 use Maslosoft\Manganel\Exceptions\ManganelException;
 use Maslosoft\Manganel\Meta\ManganelMeta;
+use MongoId;
 use UnexpectedValueException;
 
 /**
@@ -86,10 +88,33 @@ class IndexManager
 				throw new UnexpectedValueException(sprintf('Cannot index `%s`, as it contains _id field. Either use MongoObjectId sanitizer on it, or rename.', get_class($this->model)));
 			}
 		}
+
+		// In some cases $value *might* still be mongoId type,
+		// see https://github.com/Maslosoft/Addendum/issues/43
+		$func = function($value)
+		{
+			if ($value instanceof MongoId)
+			{
+				return (string) $value;
+			}
+			return $value;
+		};
+		$body = filter_var($body, \FILTER_CALLBACK, ['options' => $func]);
+
+		// Create proper elastic search request array
 		$params = [
 			'body' => $body
 		];
-		$this->getClient()->index($this->getParams($params));
+		try
+		{
+			$this->getClient()->index($this->getParams($params));
+		}
+		catch (BadRequest400Exception $e)
+		{
+			// Throw previous exception,
+			// as it holds more meaningfull information
+			throw $e->getPrevious();
+		}
 	}
 
 	public function delete()
