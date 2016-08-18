@@ -17,7 +17,8 @@ abstract class ManganelTypeAnnotation extends ManganelAnnotation
 {
 
 	/**
-	 * 
+	 * Annotations entity, it can be either class, property, or method
+	 * Its concrete annotation implementation responsibility to decide what to do with it.
 	 * @return DocumentTypeMeta
 	 */
 	public function getEntity()

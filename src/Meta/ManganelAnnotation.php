@@ -18,4 +18,13 @@ use Maslosoft\Addendum\Collections\MetaAnnotation;
 abstract class ManganelAnnotation extends MetaAnnotation
 {
 
+	/**
+	 * Model metadata object
+	 * @return ManganelMeta
+	 */
+	public function getMeta()
+	{
+		return parent::getMeta();
+	}
+
 }

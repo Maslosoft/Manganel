@@ -54,4 +54,14 @@ class ManganelMeta extends Meta
 		return parent::type();
 	}
 
+	/**
+	 * Get method meta data
+	 * @param type $name
+	 * @return DocumentMethodMeta
+	 */
+	public function method($name)
+	{
+		return parent::method($name);
+	}
+
 }
