@@ -1065,11 +1065,11 @@
         },
         {
             "name": "maslosoft/mangan",
-            "version": "4.2.39",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Mangan.git",
-                "reference": "7a95e61dc056f427fe49731c1acc28725d294ffb",
+                "reference": "b252dd8ba252b543e843b43876b62cbfe129919e",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -1079,8 +1079,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/7a95e61dc056f427fe49731c1acc28725d294ffb",
-                "reference": "7a95e61dc056f427fe49731c1acc28725d294ffb",
+                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/b252dd8ba252b543e843b43876b62cbfe129919e",
+                "reference": "b252dd8ba252b543e843b43876b62cbfe129919e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1167,7 +1167,7 @@
                 }
             ],
             "description": "MongoDB Object Persister",
-            "time": "2016-08-18 10:57:13"
+            "time": "2016-08-18 18:33:13"
         },
         {
             "name": "maslosoft/miniview",
