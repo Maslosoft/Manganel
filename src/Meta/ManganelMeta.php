@@ -14,7 +14,7 @@ use Maslosoft\Addendum\Options\MetaOptions;
 use Maslosoft\Manganel\Options\ManganelMetaOptions;
 
 /**
- * Mangan metadata container class
+ * Manganel metadata container class
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
 class ManganelMeta extends Meta
@@ -22,17 +22,17 @@ class ManganelMeta extends Meta
 
 	/**
 	 * Create instance of Metadata specifically designed for Manganel
-	 * @param AnnotatedInterface $component
+	 * @param string|object|AnnotatedInterface $model
 	 * @param MetaOptions $options
 	 * @return ManganelMeta
 	 */
-	public static function create(AnnotatedInterface $component, MetaOptions $options = null)
+	public static function create($model, MetaOptions $options = null)
 	{
 		if (null === $options)
 		{
 			$options = new ManganelMetaOptions();
 		}
-		return parent::create($component, $options);
+		return parent::create($model, $options);
 	}
 
 	/**
