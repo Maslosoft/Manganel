@@ -13,13 +13,26 @@
 namespace Maslosoft\Manganel\Signals;
 
 use Maslosoft\Signals\Interfaces\SignalInterface;
+use Maslosoft\Signals\Interfaces\SlotInterface;
 
 /**
- * IndexableSignal
+ * IndexableSlot
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class IndexableSignal implements SignalInterface
+class IndexableSlot implements SlotInterface
 {
-	
+
+	private $document = null;
+
+	public function result()
+	{
+		return $this->document;
+	}
+
+	public function setSignal(SignalInterface $indexable)
+	{
+		$this->document = $indexable;
+	}
+
 }

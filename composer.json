@@ -17,7 +17,8 @@
 	"require": {
 		"maslosoft/addendum": "*",
 		"elasticsearch/elasticsearch": "*",
-		"maslosoft/mangan": "*"
+		"maslosoft/mangan": "*",
+		"maslosoft/signals": "*"
 	},
 	"minimum-stability": "stable",
 	"autoload": {
