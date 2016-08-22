@@ -12,6 +12,7 @@
 
 namespace Maslosoft\Manganel\Signals;
 
+use Maslosoft\Ilmatar\Components\Managers\Model\SearchIndex;
 use Maslosoft\Signals\Interfaces\SlotInterface;
 use Maslosoft\Signals\ISignal;
 
@@ -32,7 +33,9 @@ class IndexableSlot implements SlotInterface
 
 	public function setSignal(ISignal $indexable)
 	{
-		$this->document = $indexable;
+		$document = new SearchIndex;
+		$document->model = $indexable;
+		$this->document = $document;
 	}
 
 }
