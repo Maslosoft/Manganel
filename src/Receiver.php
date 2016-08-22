@@ -12,6 +12,7 @@
 
 namespace Maslosoft\Manganel;
 
+use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Events\Event;
 use Maslosoft\Mangan\Events\ModelEvent;
 use Maslosoft\Mangan\Interfaces\TrashInterface;
@@ -26,7 +27,7 @@ use Maslosoft\Mangan\Traits\Model\TrashableTrait;
  * TODO: Should add to index on trash restore
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class Receiver
+class Receiver implements AnnotatedInterface
 {
 
 	/**
