@@ -134,6 +134,23 @@ class Manganel
 	}
 
 	/**
+	 * Drop current index
+	 * @return bool
+	 */
+	public function drop()
+	{
+		$params = [
+			'index' => strtolower($this->index)
+		];
+		$result = $this->getClient()->indices()->delete($params);
+		if (is_array($result) && array_key_exists('acknowledged', $result) && $result['acknowledged'])
+		{
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * @codeCoverageIgnore This is implicitly tested
 	 * @return Client
 	 */
