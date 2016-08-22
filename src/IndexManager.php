@@ -99,11 +99,11 @@ class IndexManager
 			}
 			return $value;
 		};
-		$body = filter_var($body, \FILTER_CALLBACK, ['options' => $func]);
+		$filtered = filter_var($body, \FILTER_CALLBACK, ['options' => $func]);
 
 		// Create proper elastic search request array
 		$params = [
-			'body' => $body
+			'body' => $filtered
 		];
 		try
 		{
