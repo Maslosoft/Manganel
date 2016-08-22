@@ -10,19 +10,16 @@
  * @link http://maslosoft.com/manganel/
  */
 
-namespace Maslosoft\Manganel\Interfaces;
+namespace Maslosoft\Manganel\Signals;
 
-use Maslosoft\Manganel\Signals\IndexableSignal;
+use Maslosoft\Signals\Interfaces\SignalInterface;
 
 /**
- * Implement this interface to make document available for
- * search engine
- * @SearchIndex
- * @SlotFor(IndexableSignal)
- * @see IndexableSignal
+ * IndexableSignal
+ *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-interface IndexableInterface
+class IndexableSignal implements SignalInterface
 {
 	
 }
