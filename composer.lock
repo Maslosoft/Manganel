@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f3ff1fac31613356fb83dfe1f772d087",
-    "content-hash": "8a845ac7b91bd881201eeebb6c5193d3",
+    "hash": "ab01f9847b33b9680e3fe4216541d1a6",
+    "content-hash": "7b633372f6b4a894ba2443addcf7e4ec",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -782,11 +782,11 @@
         },
         {
             "name": "maslosoft/addendum",
-            "version": "5.0.0",
+            "version": "5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Addendum.git",
-                "reference": "d6b8a25ce690b4df411e64e8697b41373c04faf7",
+                "reference": "32efcabfc3037d2228c6b5629df75d96c8da6d38",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -796,8 +796,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Addendum/zipball/d6b8a25ce690b4df411e64e8697b41373c04faf7",
-                "reference": "d6b8a25ce690b4df411e64e8697b41373c04faf7",
+                "url": "https://api.github.com/repos/Maslosoft/Addendum/zipball/32efcabfc3037d2228c6b5629df75d96c8da6d38",
+                "reference": "32efcabfc3037d2228c6b5629df75d96c8da6d38",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -848,7 +848,7 @@
                 "annotations",
                 "metadata"
             ],
-            "time": "2016-08-18 18:04:58"
+            "time": "2016-08-18 19:37:36"
         },
         {
             "name": "maslosoft/cache",
@@ -905,11 +905,11 @@
         },
         {
             "name": "maslosoft/cli-shared",
-            "version": "0.0.9",
+            "version": "0.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/CLIShared.git",
-                "reference": "fdad1473d28ffe7a0b87e8c4ec4fe06977a2b288",
+                "reference": "77f1e3ba83fc7cc6cdce8d9453739a78f5e3c6ea",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -919,8 +919,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/CLIShared/zipball/fdad1473d28ffe7a0b87e8c4ec4fe06977a2b288",
-                "reference": "fdad1473d28ffe7a0b87e8c4ec4fe06977a2b288",
+                "url": "https://api.github.com/repos/Maslosoft/CLIShared/zipball/77f1e3ba83fc7cc6cdce8d9453739a78f5e3c6ea",
+                "reference": "77f1e3ba83fc7cc6cdce8d9453739a78f5e3c6ea",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -954,7 +954,7 @@
                 }
             ],
             "description": "Shared CLI application components",
-            "time": "2016-07-12 18:29:59"
+            "time": "2016-08-18 20:04:06"
         },
         {
             "name": "maslosoft/embedi",
@@ -1369,11 +1369,11 @@
         },
         {
             "name": "maslosoft/signals",
-            "version": "1.1.18",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Signals.git",
-                "reference": "19d6247ba2b8b5c68740220fc82b9e71d8e01307",
+                "reference": "b413979bad43d39286424958f0e2d62409db4cf6",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -1383,8 +1383,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/19d6247ba2b8b5c68740220fc82b9e71d8e01307",
-                "reference": "19d6247ba2b8b5c68740220fc82b9e71d8e01307",
+                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/b413979bad43d39286424958f0e2d62409db4cf6",
+                "reference": "b413979bad43d39286424958f0e2d62409db4cf6",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1434,7 +1434,7 @@
                 "slot",
                 "slots"
             ],
-            "time": "2016-08-04 09:10:00"
+            "time": "2016-08-18 19:51:39"
         },
         {
             "name": "masterexploder/phpthumb",
@@ -3795,7 +3795,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/ManganelTest.git",
-                "reference": "ae2d1bb75bd82ac365d9f457e41497095da07ce5",
+                "reference": "144643e132a2df589ae798f7e7e3d74f6e01ce54",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -3805,8 +3805,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/ManganelTest/zipball/ae2d1bb75bd82ac365d9f457e41497095da07ce5",
-                "reference": "ae2d1bb75bd82ac365d9f457e41497095da07ce5",
+                "url": "https://api.github.com/repos/Maslosoft/ManganelTest/zipball/144643e132a2df589ae798f7e7e3d74f6e01ce54",
+                "reference": "144643e132a2df589ae798f7e7e3d74f6e01ce54",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3838,7 +3838,7 @@
                 }
             ],
             "description": "Tests for manganel",
-            "time": "2016-08-18 05:40:53"
+            "time": "2016-08-22 11:13:41"
         },
         {
             "name": "maslosoft/mangantest",
