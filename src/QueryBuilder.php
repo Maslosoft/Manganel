@@ -35,7 +35,7 @@ class QueryBuilder implements CriteriaAwareInterface
 
 	/**
 	 * Annotated model
-	 * @var AnnotatedInterface
+	 * @var AnnotatedInterface[]
 	 */
 	private $models = [];
 
