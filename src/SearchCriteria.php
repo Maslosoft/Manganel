@@ -23,6 +23,17 @@ class SearchCriteria extends Criteria
 {
 
 	private $query = '';
+	private $models = [];
+
+	public function add($model)
+	{
+		$this->models[] = $model;
+	}
+
+	public function getModels()
+	{
+		return $this->models;
+	}
 
 	public function search($query)
 	{

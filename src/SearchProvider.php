@@ -46,7 +46,7 @@ class SearchProvider implements DataProviderInterface
 	 */
 	private $totalItemCount = null;
 
-	public function __construct($modelClass, $config = [])
+	public function __construct($modelClass = null, $config = [])
 	{
 		$this->configure($modelClass, $config);
 	}
@@ -55,7 +55,20 @@ class SearchProvider implements DataProviderInterface
 	{
 		$criteria = $this->configureFetch();
 
-		$qb = new QueryBuilder($this->getModel());
+		$qb = new QueryBuilder();
+		if ($criteria instanceof SearchCriteria)
+		{
+			$models = $criteria->getModels();
+			if (!empty($models))
+			{
+				$qb->add($models);
+			}
+		}
+		$model = $this->getModel();
+		if (!empty($model))
+		{
+			$qb->add($model);
+		}
 		$qb->setCriteria($criteria);
 		$rawResults = $qb->search($criteria->getSearch());
 		$results = [];
