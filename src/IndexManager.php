@@ -117,7 +117,9 @@ class IndexManager
 		{
 			// Throw previous exception,
 			// as it holds more meaningfull information
-			throw $e->getPrevious();
+			$previous = $e->getPrevious();
+			$message = sprintf('Exception while indexing `%s`: %s', get_class($this->model), $previous->getMessage());
+			throw new BadRequest400Exception($message);
 		}
 	}
 
