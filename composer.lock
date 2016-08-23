@@ -782,11 +782,11 @@
         },
         {
             "name": "maslosoft/addendum",
-            "version": "5.0.2",
+            "version": "5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Addendum.git",
-                "reference": "81f1969571dd10ea4043e23a2d87a5517198efb5",
+                "reference": "76d905f744c08d616eb3057ee5063075234a6fed",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -796,8 +796,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Addendum/zipball/81f1969571dd10ea4043e23a2d87a5517198efb5",
-                "reference": "81f1969571dd10ea4043e23a2d87a5517198efb5",
+                "url": "https://api.github.com/repos/Maslosoft/Addendum/zipball/76d905f744c08d616eb3057ee5063075234a6fed",
+                "reference": "76d905f744c08d616eb3057ee5063075234a6fed",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -848,7 +848,7 @@
                 "annotations",
                 "metadata"
             ],
-            "time": "2016-08-23 08:41:14"
+            "time": "2016-08-23 14:30:42"
         },
         {
             "name": "maslosoft/cache",
@@ -1065,11 +1065,11 @@
         },
         {
             "name": "maslosoft/mangan",
-            "version": "4.3.0",
+            "version": "4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Mangan.git",
-                "reference": "b252dd8ba252b543e843b43876b62cbfe129919e",
+                "reference": "3081507066ec51089d7f9d36a01e705253491b38",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -1079,8 +1079,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/b252dd8ba252b543e843b43876b62cbfe129919e",
-                "reference": "b252dd8ba252b543e843b43876b62cbfe129919e",
+                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/3081507066ec51089d7f9d36a01e705253491b38",
+                "reference": "3081507066ec51089d7f9d36a01e705253491b38",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1167,7 +1167,7 @@
                 }
             ],
             "description": "MongoDB Object Persister",
-            "time": "2016-08-18 18:33:13"
+            "time": "2016-08-23 14:52:32"
         },
         {
             "name": "maslosoft/miniview",
@@ -1369,11 +1369,11 @@
         },
         {
             "name": "maslosoft/signals",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Signals.git",
-                "reference": "b8d9fd6f19bfbcffe0f07ff9bdbe9a14b177cc6c",
+                "reference": "4a7120c63f50be6026d0ed9bf7626c8d6e47d5a4",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -1383,8 +1383,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/b8d9fd6f19bfbcffe0f07ff9bdbe9a14b177cc6c",
-                "reference": "b8d9fd6f19bfbcffe0f07ff9bdbe9a14b177cc6c",
+                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/4a7120c63f50be6026d0ed9bf7626c8d6e47d5a4",
+                "reference": "4a7120c63f50be6026d0ed9bf7626c8d6e47d5a4",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1434,7 +1434,7 @@
                 "slot",
                 "slots"
             ],
-            "time": "2016-08-23 11:43:03"
+            "time": "2016-08-23 14:51:23"
         },
         {
             "name": "masterexploder/phpthumb",
@@ -3948,11 +3948,11 @@
         },
         {
             "name": "zordius/lightncandy",
-            "version": "v0.94",
+            "version": "v0.95",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zordius/lightncandy.git",
-                "reference": "fe90545c755e8e6f907755b186b457a8f38916c6",
+                "reference": "748cd17b2d496dbc7657b9390d918cf7dcd0101e",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -3962,8 +3962,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zordius/lightncandy/zipball/fe90545c755e8e6f907755b186b457a8f38916c6",
-                "reference": "fe90545c755e8e6f907755b186b457a8f38916c6",
+                "url": "https://api.github.com/repos/zordius/lightncandy/zipball/748cd17b2d496dbc7657b9390d918cf7dcd0101e",
+                "reference": "748cd17b2d496dbc7657b9390d918cf7dcd0101e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3979,6 +3979,11 @@
                 "phpunit/phpunit": "4.0.17"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "v0.95-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "LightnCandy\\": "src"
@@ -4003,7 +4008,7 @@
                 "php",
                 "template"
             ],
-            "time": "2016-07-05 08:39:36"
+            "time": "2016-08-23 07:07:34"
         }
     ],
     "aliases": [],
