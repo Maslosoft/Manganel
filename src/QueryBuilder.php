@@ -12,7 +12,6 @@
 
 namespace Maslosoft\Manganel;
 
-use Exception;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Helpers\CollectionNamer;
 use Maslosoft\Mangan\Interfaces\CriteriaAwareInterface;
@@ -38,12 +37,35 @@ class QueryBuilder implements CriteriaAwareInterface
 	 * Annotated model
 	 * @var AnnotatedInterface
 	 */
-	private $model;
+	private $models = [];
 
-	public function __construct($model)
+	public function __construct($model = null)
 	{
-		$this->model = $model;
-		$this->manganel = Manganel::create($this->model);
+		if (!empty($model))
+		{
+			$this->models[] = $model;
+		}
+		if (!empty($model))
+		{
+			$this->manganel = Manganel::create($model);
+		}
+		else
+		{
+			$this->manganel = Manganel::fly();
+		}
+	}
+
+	public function add($model)
+	{
+		if (is_array($model))
+		{
+			foreach ($model as $m)
+			{
+				$this->models[] = $m;
+			}
+			return;
+		}
+		$this->models[] = $model;
 	}
 
 	/**
@@ -138,9 +160,27 @@ class QueryBuilder implements CriteriaAwareInterface
 			}
 		}
 
+		if (empty($this->models))
+		{
+			$type = '_all';
+		}
+		else
+		{
+			$types = [];
+			foreach ($this->models as $model)
+			{
+				if (!$model instanceof AnnotatedInterface)
+				{
+					throw new \UnexpectedValueException(sprintf('Expected `%s` instance, got `%s`', AnnotatedInterface::class, is_object($model) ? get_class($model) : gettype($model)));
+				}
+				$types[] = CollectionNamer::nameCollection($model);
+			}
+			$type = implode(',', array_unique($types));
+		}
+
 		$params = [
 			'index' => strtolower($this->manganel->index),
-			'type' => CollectionNamer::nameCollection($this->model),
+			'type' => $type,
 			'body' => $body
 		];
 		return $params;
