@@ -782,11 +782,11 @@
         },
         {
             "name": "maslosoft/addendum",
-            "version": "5.0.1",
+            "version": "5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Addendum.git",
-                "reference": "32efcabfc3037d2228c6b5629df75d96c8da6d38",
+                "reference": "81f1969571dd10ea4043e23a2d87a5517198efb5",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -796,8 +796,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Addendum/zipball/32efcabfc3037d2228c6b5629df75d96c8da6d38",
-                "reference": "32efcabfc3037d2228c6b5629df75d96c8da6d38",
+                "url": "https://api.github.com/repos/Maslosoft/Addendum/zipball/81f1969571dd10ea4043e23a2d87a5517198efb5",
+                "reference": "81f1969571dd10ea4043e23a2d87a5517198efb5",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -848,7 +848,7 @@
                 "annotations",
                 "metadata"
             ],
-            "time": "2016-08-18 19:37:36"
+            "time": "2016-08-23 08:41:14"
         },
         {
             "name": "maslosoft/cache",
@@ -1369,11 +1369,11 @@
         },
         {
             "name": "maslosoft/signals",
-            "version": "2.0.0",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Signals.git",
-                "reference": "b413979bad43d39286424958f0e2d62409db4cf6",
+                "reference": "b8d9fd6f19bfbcffe0f07ff9bdbe9a14b177cc6c",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -1383,8 +1383,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/b413979bad43d39286424958f0e2d62409db4cf6",
-                "reference": "b413979bad43d39286424958f0e2d62409db4cf6",
+                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/b8d9fd6f19bfbcffe0f07ff9bdbe9a14b177cc6c",
+                "reference": "b8d9fd6f19bfbcffe0f07ff9bdbe9a14b177cc6c",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1434,7 +1434,7 @@
                 "slot",
                 "slots"
             ],
-            "time": "2016-08-18 19:51:39"
+            "time": "2016-08-23 11:43:03"
         },
         {
             "name": "masterexploder/phpthumb",
@@ -3733,11 +3733,11 @@
         },
         {
             "name": "maslosoft/hedron",
-            "version": "1.1.12",
+            "version": "1.1.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Hedron.git",
-                "reference": "07e4f3aeab59c68bf94d663b4d15cdf2eafd4b18",
+                "reference": "144174206d6cc1c7cf79949fb3fca6f3f0f2a696",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -3747,8 +3747,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Hedron/zipball/07e4f3aeab59c68bf94d663b4d15cdf2eafd4b18",
-                "reference": "07e4f3aeab59c68bf94d663b4d15cdf2eafd4b18",
+                "url": "https://api.github.com/repos/Maslosoft/Hedron/zipball/144174206d6cc1c7cf79949fb3fca6f3f0f2a696",
+                "reference": "144174206d6cc1c7cf79949fb3fca6f3f0f2a696",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3787,7 +3787,7 @@
             ],
             "description": "PHP source code class header applier",
             "homepage": "http://maslosoft.com/hedron/",
-            "time": "2016-06-14 13:54:23"
+            "time": "2016-08-22 18:15:39"
         },
         {
             "name": "maslosoft/manganeltest",
