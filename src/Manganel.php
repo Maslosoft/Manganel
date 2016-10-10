@@ -16,6 +16,9 @@ use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\EmbeDi\EmbeDi;
+use Maslosoft\Manganel\Decorators\QueryBuilder\ConditionsDecorator;
+use Maslosoft\Manganel\Decorators\QueryBuilder\ScrollDecorator;
+use Maslosoft\Manganel\Decorators\QueryBuilder\SearchDecorator;
 use Maslosoft\Manganel\Meta\ManganelMeta;
 
 /**
@@ -28,6 +31,13 @@ class Manganel
 
 	const DefaultIndexId = 'manganel';
 
+	public $decorators = [
+		SearchCriteria::class => [
+			ConditionsDecorator::class,
+			ScrollDecorator::class,
+			SearchDecorator::class,
+		]
+	];
 	public $hosts = [
 		'localhost:9200'
 	];
