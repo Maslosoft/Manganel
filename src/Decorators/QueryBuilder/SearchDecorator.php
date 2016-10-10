@@ -8,7 +8,7 @@
 
 namespace Maslosoft\Manganel\Decorators\QueryBuilder;
 
-use Maslosoft\Manganel\Interfaces\QueryBuilder\DecoratorInterface;
+use Maslosoft\Manganel\Interfaces\QueryBuilder\ConditionDecoratorInterface;
 use Maslosoft\Manganel\SearchCriteria;
 
 /**
@@ -16,7 +16,7 @@ use Maslosoft\Manganel\SearchCriteria;
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class SearchDecorator implements DecoratorInterface
+class SearchDecorator implements ConditionDecoratorInterface
 {
 
 	const Ns = __NAMESPACE__;
@@ -45,7 +45,7 @@ class SearchDecorator implements DecoratorInterface
 
 	public function getKind()
 	{
-		return 'must';
+		return self::KindMust;
 	}
 
 }
