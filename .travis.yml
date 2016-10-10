@@ -30,6 +30,7 @@ install:
   - mkdir /tmp/elasticsearch
   - wget -O - https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz | tar xz --directory=/tmp/elasticsearch --strip-components=1
   - /tmp/elasticsearch/bin/elasticsearch --daemonize --path.data /tmp
+  - sleep 8
   - curl -XGET 'localhost:9200'
   - composer install --prefer-dist --dev --no-interaction
   # Get fresh tests
