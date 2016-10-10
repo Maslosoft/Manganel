@@ -11,7 +11,6 @@ matrix:
     - php: nightly
 services:
   - mongodb
-  - elasticsearch
 cache:
   directories:
     - vendor
@@ -19,12 +18,12 @@ install:
   - wget https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.4.1/elasticsearch-2.4.1.deb
   - sudo dpkg -i elasticsearch-2.4.1.deb
   - sudo service elasticsearch restart
+  - curl -XGET 'localhost:9200'
   - composer install --prefer-dist --dev --no-interaction
   # Get fresh tests
   - rm -rf vendor/maslosoft/manganeltest
   - git clone https://github.com/Maslosoft/ManganelTest.git vendor/maslosoft/manganeltest
 before_script:
   - cd $TRAVIS_BUILD_DIR
-  - curl -XGET 'localhost:9200'
 script: 
   - bash run-travis
