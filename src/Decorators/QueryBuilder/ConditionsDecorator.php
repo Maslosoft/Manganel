@@ -52,7 +52,6 @@ class ConditionsDecorator implements BodyDecoratorInterface, ManganelAwareInterf
 			}
 			$bool[$kind] = array_merge($bool[$kind], $conditions);
 		}
-		codecept_debug($bool);
 		$body['query'] = [
 			'bool' => $bool
 		];
