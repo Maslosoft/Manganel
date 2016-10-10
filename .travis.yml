@@ -18,6 +18,7 @@ cache:
 install:
   - wget https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.4.1/elasticsearch-2.4.1.deb
   - sudo dpkg -i elasticsearch-2.4.1.deb
+  - sudo service elasticsearch restart
   - composer install --prefer-dist --dev --no-interaction
   # Get fresh tests
   - rm -rf vendor/maslosoft/manganeltest
