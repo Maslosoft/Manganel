@@ -9,9 +9,8 @@
 namespace Maslosoft\Manganel\Helpers;
 
 use Maslosoft\Gazebo\PluginFactory;
+use Maslosoft\Manganel\Interfaces\ManganelAwareInterface;
 use Maslosoft\Manganel\Interfaces\QueryBuilder\BodyDecoratorInterface;
-use Maslosoft\Manganel\Interfaces\QueryBuilder\ConditionsAwareInterface;
-use Maslosoft\Manganel\Interfaces\QueryBuilder\DecoratorInterface;
 use Maslosoft\Manganel\Manganel;
 use Maslosoft\Manganel\SearchCriteria;
 
@@ -36,26 +35,16 @@ class QueryBuilderDecorator
 
 	public function decorate(&$body, SearchCriteria $criteria)
 	{
-		$bodyDecorators = (new PluginFactory())->instance($this->manganel->decorators, $criteria, [
+		$decorators = (new PluginFactory())->instance($this->manganel->decorators, $criteria, [
 			BodyDecoratorInterface::class
 		]);
-		$conditionsDecorators = (new PluginFactory())->instance($this->manganel->decorators, $criteria, [
-			DecoratorInterface::class
-		]);
 
-		$conditions = [];
-		foreach ($conditionsDecorators as $decorator)
-		{
-			/* @var $decorator DecoratorInterface  */
-			$decorator->decorate($conditions, $criteria);
-		}
-
-		foreach ($bodyDecorators as $decorator)
+		foreach ($decorators as $decorator)
 		{
 			/* @var $decorator BodyDecoratorInterface  */
-			if ($decorator instanceof ConditionsAwareInterface)
+			if ($decorator instanceof ManganelAwareInterface)
 			{
-				$decorator->setConditions($conditions);
+				$decorator->setManganel($this->manganel);
 			}
 			$decorator->decorate($body, $criteria);
 		}

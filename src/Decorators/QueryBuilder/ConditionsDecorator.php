@@ -8,27 +8,49 @@
 
 namespace Maslosoft\Manganel\Decorators\QueryBuilder;
 
-use Maslosoft\Manganel\Decorators\QueryBuilder\Traits\ConditionsAware;
+use Maslosoft\Gazebo\PluginFactory;
+use Maslosoft\Manganel\Interfaces\ManganelAwareInterface;
 use Maslosoft\Manganel\Interfaces\QueryBuilder\BodyDecoratorInterface;
-use Maslosoft\Manganel\Interfaces\QueryBuilder\ConditionsAwareInterface;
+use Maslosoft\Manganel\Interfaces\QueryBuilder\DecoratorInterface;
 use Maslosoft\Manganel\SearchCriteria;
+use Maslosoft\Manganel\Traits\ManganelAwareTrait;
 
 /**
  * ConditionsDecorator
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class ConditionsDecorator implements BodyDecoratorInterface, ConditionsAwareInterface
+class ConditionsDecorator implements BodyDecoratorInterface, ManganelAwareInterface
 {
 
-	use ConditionsAware;
+	use ManganelAwareTrait;
 
 	public function decorate(&$body, SearchCriteria $criteria)
 	{
+		$decorators = (new PluginFactory())->instance($this->getManganel()->decorators, $criteria, [
+			DecoratorInterface::class
+		]);
+
+		$bool = [];
+		foreach ($decorators as $decorator)
+		{
+			/* @var $decorator DecoratorInterface  */
+			if ($decorator instanceof ManganelAwareInterface)
+			{
+				$decorator->setManganel($this->getManganel());
+			}
+			$conditions = [];
+			$decorator->decorate($conditions, $criteria);
+			$kind = $decorator->getKind();
+			if (empty($bool[$kind]))
+			{
+				$bool[$kind] = [];
+			}
+			$bool[$kind] = array_merge($bool[$kind], $conditions);
+		}
+		codecept_debug($bool);
 		$body['query'] = [
-			'bool' => [
-				'must' => $this->getConditions()
-			]
+			'bool' => $bool
 		];
 	}
 

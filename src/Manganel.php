@@ -16,6 +16,7 @@ use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\EmbeDi\EmbeDi;
+use Maslosoft\Manganel\Decorators\QueryBuilder\ConditionDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\ConditionsDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\ScrollDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\SearchDecorator;
@@ -33,6 +34,7 @@ class Manganel
 
 	public $decorators = [
 		SearchCriteria::class => [
+			ConditionDecorator::class,
 			ConditionsDecorator::class,
 			ScrollDecorator::class,
 			SearchDecorator::class,
