@@ -24,13 +24,8 @@ services:
 cache:
   directories:
     - vendor
-env:
-  global:
-    - WAIT_FOR_ES=1
-  matrix:
-    - ES_VERSION=2.4.1
-
 install:
+  - curl -XGET 'localhost:9200'
   - composer install --prefer-dist --dev --no-interaction
   # Get fresh tests
   - rm -rf vendor/maslosoft/manganeltest
