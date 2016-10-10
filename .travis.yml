@@ -22,5 +22,6 @@ install:
   - git clone https://github.com/Maslosoft/ManganelTest.git vendor/maslosoft/manganeltest
 before_script:
   - cd $TRAVIS_BUILD_DIR
+  - curl -XGET 'localhost:9200'
 script: 
   - bash run-travis
