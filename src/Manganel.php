@@ -12,6 +12,7 @@
 
 namespace Maslosoft\Manganel;
 
+use Closure;
 use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
@@ -53,6 +54,19 @@ class Manganel
 	 */
 	public $index = 'my_index';
 	public $indexId = self::DefaultIndexId;
+
+	/**
+	 * Whether to use refresh option when indexing document.
+	 * NOTE: Due to performance reasons, this should be set to `true` only when
+	 * really necessary - so it can be also callback.
+	 *
+	 * Callback function signature:
+	 * ```
+	 * function(AnnotatedInterface $model)
+	 * ```
+	 * @var string|Closure
+	 */
+	public $refresh = false;
 
 	/**
 	 *
