@@ -18,7 +18,8 @@
 		"maslosoft/addendum": "*",
 		"elasticsearch/elasticsearch": "*",
 		"maslosoft/mangan": "*",
-		"maslosoft/signals": "*"
+		"maslosoft/signals": "*",
+		"maslosoft/gazebo": "*"
 	},
 	"minimum-stability": "stable",
 	"autoload": {
