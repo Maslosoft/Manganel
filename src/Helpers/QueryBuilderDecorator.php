@@ -24,7 +24,7 @@ class QueryBuilderDecorator
 
 	/**
 	 * Manganel instance
-	 * @var Mangangel
+	 * @var Manganel
 	 */
 	private $manganel = null;
 
