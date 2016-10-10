@@ -16,6 +16,8 @@ use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Helpers\CollectionNamer;
 use Maslosoft\Mangan\Interfaces\CriteriaAwareInterface;
 use Maslosoft\Mangan\Traits\CriteriaAwareTrait;
+use Maslosoft\Manganel\Helpers\QueryBuilderDecorator;
+use UnexpectedValueException;
 
 /**
  * QueryBuilder
@@ -105,60 +107,17 @@ class QueryBuilder implements CriteriaAwareInterface
 		$body = [];
 		// Try to get query from criteria if empty
 		$criteria = $this->getCriteria();
-		if (null === $q && !empty($criteria))
+		if (empty($criteria))
 		{
-			$q = $criteria->getSearch();
+			$criteria = new SearchCriteria;
+		}
+		if (!empty($q))
+		{
+			$criteria->search($q);
 		}
 
-		if (null === $q)
-		{
-			// Match all documents if query is null
-			$query = [
-				'match_all' => []
-			];
-		}
-		else
-		{
-			// Use query string matching
-			$query = [
-				'simple_query_string' => [
-					'query' => $q
-				]
-			];
-		}
-
-//
-//		  TODO: Build somewhat similar query, if criteria has
-//		  ANY conditions. Add conditions to `filter` clause:
-//		  {
-//				"query": {
-//					"filtered": {
-//						"query": {
-//							"query_string": {
-//								"query": "jkow OR features"
-//							}
-//						},
-//						"filter": {
-//							"term": {
-//								"published.en": true
-//							}
-//						}
-//					}
-//				}
-//			}
-//
-
-
-		$body['query'] = $query;
-
-		if (!empty($criteria))
-		{
-			if ($criteria->getLimit() || $criteria->getOffset())
-			{
-				$body['from'] = $criteria->getOffset();
-				$body['size'] = $criteria->getLimit();
-			}
-		}
+		$decorator = new QueryBuilderDecorator($this->manganel);
+		$decorator->decorate($body, $criteria);
 
 		if (empty($this->models))
 		{
@@ -171,7 +130,7 @@ class QueryBuilder implements CriteriaAwareInterface
 			{
 				if (!$model instanceof AnnotatedInterface)
 				{
-					throw new \UnexpectedValueException(sprintf('Expected `%s` instance, got `%s`', AnnotatedInterface::class, is_object($model) ? get_class($model) : gettype($model)));
+					throw new UnexpectedValueException(sprintf('Expected `%s` instance, got `%s`', AnnotatedInterface::class, is_object($model) ? get_class($model) : gettype($model)));
 				}
 				$types[] = CollectionNamer::nameCollection($model);
 			}
