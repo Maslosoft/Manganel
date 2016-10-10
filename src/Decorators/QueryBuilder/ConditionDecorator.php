@@ -12,32 +12,20 @@ use Maslosoft\Manganel\Interfaces\QueryBuilder\DecoratorInterface;
 use Maslosoft\Manganel\SearchCriteria;
 
 /**
- * SearchDecorator
+ * ConditionDecorator
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class SearchDecorator implements DecoratorInterface
+class ConditionDecorator implements DecoratorInterface
 {
-
-	const Ns = __NAMESPACE__;
 
 	public function decorate(&$conditions, SearchCriteria $criteria)
 	{
-		$q = $criteria->getSearch();
-
-		if (empty($q))
+		foreach ($criteria->getConditions() as $name => $value)
 		{
-			// Match all documents if query is null
 			$conditions[] = [
-				'match_all' => []
-			];
-		}
-		else
-		{
-			// Use query string matching
-			$conditions[] = [
-				'simple_query_string' => [
-					'query' => $q
+				'term' => [
+					$name => $value
 				]
 			];
 		}
@@ -45,7 +33,7 @@ class SearchDecorator implements DecoratorInterface
 
 	public function getKind()
 	{
-		return 'must';
+		return 'filter';
 	}
 
 }
