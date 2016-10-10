@@ -12,6 +12,7 @@
 
 namespace Maslosoft\Manganel;
 
+use Closure;
 use Elasticsearch\Client;
 use Elasticsearch\Common\Exceptions\BadRequest400Exception;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
@@ -107,7 +108,7 @@ class IndexManager
 
 		// Create proper elastic search request array
 		$params = [
-			'body' => $filtered
+			'body' => $filtered,
 		];
 		try
 		{
@@ -154,10 +155,21 @@ class IndexManager
 
 	private function getParams($params = [])
 	{
+		// Check refresh option
+		if ($this->manganel->refresh instanceof Closure)
+		{
+			$func = $this->manganel->refresh;
+			$refresh = (bool) $func($this->model);
+		}
+		else
+		{
+			$refresh = $this->manganel->refresh;
+		}
 		$result = [
 			'index' => strtolower($this->manganel->index),
 			'type' => CollectionNamer::nameCollection($this->model),
-			'id' => (string) $this->model->_id
+			'id' => (string) $this->model->_id,
+			'refresh' => $refresh
 		];
 		return array_merge($result, $params);
 	}
