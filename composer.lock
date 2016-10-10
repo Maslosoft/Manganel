@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ab01f9847b33b9680e3fe4216541d1a6",
-    "content-hash": "7b633372f6b4a894ba2443addcf7e4ec",
+    "hash": "586d28f0ff64b1f6ff7837861750da7a",
+    "content-hash": "38bbad6869ca2c11b72403b8c26515fd",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -3796,7 +3796,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/ManganelTest.git",
-                "reference": "144643e132a2df589ae798f7e7e3d74f6e01ce54",
+                "reference": "9773e482f0775acf9590771bb80b60c96dea828a",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -3806,8 +3806,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/ManganelTest/zipball/144643e132a2df589ae798f7e7e3d74f6e01ce54",
-                "reference": "144643e132a2df589ae798f7e7e3d74f6e01ce54",
+                "url": "https://api.github.com/repos/Maslosoft/ManganelTest/zipball/9773e482f0775acf9590771bb80b60c96dea828a",
+                "reference": "9773e482f0775acf9590771bb80b60c96dea828a",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3839,7 +3839,7 @@
                 }
             ],
             "description": "Tests for manganel",
-            "time": "2016-08-22 11:13:41"
+            "time": "2016-09-12 14:28:51"
         },
         {
             "name": "maslosoft/mangantest",
