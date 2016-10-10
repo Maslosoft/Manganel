@@ -15,8 +15,16 @@ use Maslosoft\Manganel\SearchCriteria;
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-interface DecoratorInterface
+interface ConditionDecoratorInterface
 {
 
+	// NOTE: Do not rename this contants, as these are used directly by ES
+	const KindMust = 'must';
+	const KindFilter = 'filter';
+	const KindMustNot = 'must_not';
+	const KindShould = 'should';
+
 	public function decorate(&$conditions, SearchCriteria $criteria);
+
+	public function getKind();
 }
