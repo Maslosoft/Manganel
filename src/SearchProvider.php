@@ -12,7 +12,9 @@
 
 namespace Maslosoft\Manganel;
 
+use Maslosoft\Mangan\Events\Event;
 use Maslosoft\Mangan\Interfaces\DataProviderInterface;
+use Maslosoft\Mangan\Interfaces\FinderInterface;
 use Maslosoft\Mangan\Traits\DataProvider\ConfigureTrait;
 use Maslosoft\Mangan\Traits\DataProvider\CriteriaTrait;
 use Maslosoft\Mangan\Traits\DataProvider\DataTrait;
@@ -53,8 +55,12 @@ class SearchProvider implements DataProviderInterface
 
 	protected function fetchData()
 	{
+
 		$criteria = $this->configureFetch();
 
+		/**
+		 * TODO Refactor this into SearchFinder class
+		 */
 		$qb = new QueryBuilder();
 		if ($criteria instanceof SearchCriteria)
 		{
@@ -65,6 +71,13 @@ class SearchProvider implements DataProviderInterface
 			}
 		}
 		$model = $this->getModel();
+		if (!Event::handled($model, FinderInterface::EventBeforeFind))
+		{
+			return [];
+		}
+		$modelCriteria = $model->getDbCriteria();
+
+		$criteria->mergeWith($modelCriteria);
 		if (!empty($model))
 		{
 			$qb->add($model);
