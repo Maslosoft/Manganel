@@ -15,6 +15,7 @@ namespace Maslosoft\Manganel;
 use Maslosoft\Mangan\Events\Event;
 use Maslosoft\Mangan\Interfaces\DataProviderInterface;
 use Maslosoft\Mangan\Interfaces\FinderInterface;
+use Maslosoft\Mangan\Interfaces\WithCriteriaInterface;
 use Maslosoft\Mangan\Traits\DataProvider\ConfigureTrait;
 use Maslosoft\Mangan\Traits\DataProvider\CriteriaTrait;
 use Maslosoft\Mangan\Traits\DataProvider\DataTrait;
@@ -75,7 +76,14 @@ class SearchProvider implements DataProviderInterface
 		{
 			return [];
 		}
-		$modelCriteria = $model->getDbCriteria();
+
+		$modelCriteria = null;
+
+		// This check is required for plain php objects
+		if ($model instanceof WithCriteriaInterface)
+		{
+			$modelCriteria = $model->getDbCriteria();
+		}
 
 		$criteria->mergeWith($modelCriteria);
 		if (!empty($model))
