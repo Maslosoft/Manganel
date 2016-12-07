@@ -102,7 +102,7 @@ class QueryBuilder implements CriteriaAwareInterface
 		return $result['hits']['hits'];
 	}
 
-	private function getParams($q = null)
+	public function getParams($q = null)
 	{
 		$body = [];
 		// Try to get query from criteria if empty
