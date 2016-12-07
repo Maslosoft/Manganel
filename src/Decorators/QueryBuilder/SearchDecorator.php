@@ -10,6 +10,7 @@ namespace Maslosoft\Manganel\Decorators\QueryBuilder;
 
 use Maslosoft\Manganel\Interfaces\QueryBuilder\ConditionDecoratorInterface;
 use Maslosoft\Manganel\SearchCriteria;
+use stdClass;
 
 /**
  * SearchDecorator
@@ -28,8 +29,10 @@ class SearchDecorator implements ConditionDecoratorInterface
 		if (empty($q))
 		{
 			// Match all documents if query is null
+			// stdClass is used here to get `{}` in json, as `[]` causes bad
+			// request exception!
 			$conditions[] = [
-				'match_all' => []
+				'match_all' => new stdClass()
 			];
 		}
 		else
