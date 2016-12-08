@@ -119,6 +119,14 @@ class SearchProvider implements DataProviderInterface
 		if ($this->totalItemCount === null)
 		{
 			$qb = new QueryBuilder($this->getModel());
+			/**
+			 * TODO Must count with criteria too!
+			 * And multi model
+			 */
+			$criteria = new SearchCriteria($this->getCriteria());
+			$criteria->setLimit(false);
+			$criteria->setOffset(false);
+			$qb->setCriteria($criteria);
 			$this->totalItemCount = $qb->count($this->getCriteria()->getSearch());
 		}
 		return $this->totalItemCount;
