@@ -16,9 +16,9 @@ use Closure;
 use Elasticsearch\Client;
 use Elasticsearch\Common\Exceptions\BadRequest400Exception;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
-use Maslosoft\Mangan\Helpers\CollectionNamer;
 use Maslosoft\Mangan\Mangan;
 use Maslosoft\Manganel\Exceptions\ManganelException;
+use Maslosoft\Manganel\Helpers\TypeNamer;
 use Maslosoft\Manganel\Meta\ManganelMeta;
 use MongoId;
 use UnexpectedValueException;
@@ -167,7 +167,7 @@ class IndexManager
 		}
 		$result = [
 			'index' => strtolower($this->manganel->index),
-			'type' => CollectionNamer::nameCollection($this->model),
+			'type' => TypeNamer::nameType($this->model),
 			'id' => (string) $this->model->_id,
 			'refresh' => $refresh
 		];

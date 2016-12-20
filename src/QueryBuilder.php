@@ -13,10 +13,10 @@
 namespace Maslosoft\Manganel;
 
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
-use Maslosoft\Mangan\Helpers\CollectionNamer;
 use Maslosoft\Mangan\Interfaces\CriteriaAwareInterface;
 use Maslosoft\Mangan\Traits\CriteriaAwareTrait;
 use Maslosoft\Manganel\Helpers\QueryBuilderDecorator;
+use Maslosoft\Manganel\Helpers\TypeNamer;
 use Maslosoft\Manganel\Traits\UniqueModelsAwareTrait;
 use UnexpectedValueException;
 
@@ -130,7 +130,7 @@ class QueryBuilder implements CriteriaAwareInterface
 			foreach ($models as $model)
 			{
 				assert($model instanceof AnnotatedInterface, new UnexpectedValueException(sprintf('Expected `%s` instance, got `%s`', AnnotatedInterface::class, is_object($model) ? get_class($model) : gettype($model))));
-				$types[] = CollectionNamer::nameCollection($model);
+				$types[] = TypeNamer::nameType($model);
 			}
 			$type = implode(',', array_unique($types));
 		}
