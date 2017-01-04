@@ -33,7 +33,7 @@ class ElasticSearchAdapter implements FinderAdapterInterface
 
 	public function findMany(CriteriaInterface $criteria, $fields = array())
 	{
-		return $this->qb->search();
+		return new ElasticSearchCursor($this->qb);
 	}
 
 	public function findOne(CriteriaInterface $criteria, $fields = array())
