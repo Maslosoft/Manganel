@@ -72,7 +72,7 @@ class SearchProvider implements DataProviderInterface
 			}
 		}
 		$model = $this->getModel();
-		if (!Event::handled($model, FinderInterface::EventBeforeFind))
+		if (!empty($model) && !Event::handled($model, FinderInterface::EventBeforeFind))
 		{
 			return [];
 		}
