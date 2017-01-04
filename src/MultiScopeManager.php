@@ -57,13 +57,13 @@ class MultiScopeManager extends AbstractScopeManager implements ScopeManagerInte
 
 	private function getOneModelCriteria($model)
 	{
-		if ($this->model instanceof WithCriteriaInterface)
+		if ($model instanceof WithCriteriaInterface)
 		{
-			$criteria = $this->model->getDbCriteria();
+			$criteria = $model->getDbCriteria();
 		}
-		elseif ($this->model instanceof CriteriaAwareInterface)
+		elseif ($model instanceof CriteriaAwareInterface)
 		{
-			$criteria = $this->model->getCriteria();
+			$criteria = $model->getCriteria();
 		}
 		else
 		{
