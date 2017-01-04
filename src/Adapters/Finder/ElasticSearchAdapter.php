@@ -1,9 +1,10 @@
 <?php
 
-namespace Maslosoft\Manganel\Adapters\Fidner;
+namespace Maslosoft\Manganel\Adapters\Finder;
 
 use Maslosoft\Mangan\Interfaces\Adapters\FinderAdapterInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaInterface;
+use Maslosoft\Manganel\QueryBuilder;
 
 /**
  * ElasticSearchAdapter
@@ -13,9 +14,21 @@ use Maslosoft\Mangan\Interfaces\CriteriaInterface;
 class ElasticSearchAdapter implements FinderAdapterInterface
 {
 
+	/**
+	 *
+	 * @var QueryBuilder
+	 */
+	private $qb = null;
+
+	public function __construct($models)
+	{
+		$this->qb = new QueryBuilder();
+		$this->qb->setModels($models);
+	}
+
 	public function count(CriteriaInterface $criteria)
 	{
-
+		return $this->qb->setCriteria($criteria)->count();
 	}
 
 	public function findMany(CriteriaInterface $criteria, $fields = array())

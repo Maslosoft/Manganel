@@ -31,7 +31,7 @@ trait UniqueModelsAwareTrait
 
 	/**
 	 *
-	 * @param type $models
+	 * @param AnnotatedInterface[] $models
 	 * @return $this
 	 */
 	public function setModels($models)
@@ -73,7 +73,7 @@ trait UniqueModelsAwareTrait
 		}
 		foreach ($this->models as $index => $existing)
 		{
-			if ($existing instanceof $model)
+			if (get_class($existing) === get_class($model))
 			{
 				unset($this->models[$index]);
 				return true;
@@ -88,7 +88,7 @@ trait UniqueModelsAwareTrait
 	{
 		foreach ($this->models as $existing)
 		{
-			if ($existing instanceof $model)
+			if (get_class($existing) === get_class($model))
 			{
 				return true;
 			}
