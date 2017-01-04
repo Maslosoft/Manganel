@@ -2,7 +2,9 @@
 
 namespace Maslosoft\Manganel;
 
+use Maslosoft\Mangan\Abstracts\AbstractScopeManager;
 use Maslosoft\Mangan\Interfaces\ScopeManagerInterface;
+use Maslosoft\Manganel\Interfaces\ModelsAwareInterface;
 use Maslosoft\Manganel\Traits\UniqueModelsAwareTrait;
 
 /**
@@ -13,34 +15,60 @@ use Maslosoft\Manganel\Traits\UniqueModelsAwareTrait;
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class MultiScopeManager implements ScopeManagerInterface
+class MultiScopeManager extends AbstractScopeManager implements ScopeManagerInterface,
+		ModelsAwareInterface
 {
 
 	use UniqueModelsAwareTrait;
 
-	public function apply(&$criteria = null)
+	/**
+	 *
+	 * @param object $model Base model used for criteria
+	 * @param object[] $models Additional models used for criteria
+	 */
+	public function __construct($model, $models = [])
 	{
-		//??? Is it necessary??
+		$this->setModel($model);
+		$this->setModels($models);
 	}
 
-	public function defaultScope()
+	public function getNewCriteria($criteria = null)
 	{
-
+		$newCriteria = new SearchCriteria($criteria);
+		$newCriteria->decorateWith($this->getModel());
+		return $newCriteria;
 	}
 
-	public function reset()
+	protected function getModelCriteria()
 	{
+		$criteria = new SearchCriteria;
 
+		foreach ($this->getModels() as $model)
+		{
+			$criteria->mergeWith($this->getOneModelCriteria($model));
+		}
+
+		if (empty($criteria))
+		{
+			return $this->getNewCriteria();
+		}
+		return $criteria;
 	}
 
-	public function resetScope()
+	private function getOneModelCriteria($model)
 	{
-
-	}
-
-	public function scopes()
-	{
-
+		if ($this->model instanceof WithCriteriaInterface)
+		{
+			$criteria = $this->model->getDbCriteria();
+		}
+		elseif ($this->model instanceof CriteriaAwareInterface)
+		{
+			$criteria = $this->model->getCriteria();
+		}
+		else
+		{
+			return new SearchCriteria;
+		}
 	}
 
 }

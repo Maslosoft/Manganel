@@ -112,7 +112,11 @@ class IndexManager
 		];
 		try
 		{
-			$this->getClient()->index($this->getParams($params));
+			$result = $this->getClient()->index($this->getParams($params));
+			if ($result['result'] === 'updated')
+			{
+				return true;
+			}
 		}
 		catch (BadRequest400Exception $e)
 		{
@@ -122,6 +126,7 @@ class IndexManager
 			$message = sprintf('Exception while indexing `%s`@`%s`: %s', get_class($this->model), $this->manganel->indexId, $previous->getMessage());
 			throw new BadRequest400Exception($message);
 		}
+		return false;
 	}
 
 	public function delete()

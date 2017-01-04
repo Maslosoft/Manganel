@@ -14,6 +14,7 @@ namespace Maslosoft\Manganel;
 
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaAwareInterface;
+use Maslosoft\Mangan\Interfaces\CriteriaInterface;
 use Maslosoft\Mangan\Traits\CriteriaAwareTrait;
 use Maslosoft\Manganel\Helpers\QueryBuilderDecorator;
 use Maslosoft\Manganel\Helpers\TypeNamer;
@@ -108,6 +109,10 @@ class QueryBuilder implements CriteriaAwareInterface
 		$body = [];
 		// Try to get query from criteria if empty
 		$criteria = $this->getCriteria();
+		if (!$criteria instanceof SearchCriteria && $criteria instanceof CriteriaInterface)
+		{
+			$criteria = new SearchCriteria($criteria);
+		}
 		if (empty($criteria))
 		{
 			$criteria = new SearchCriteria;
