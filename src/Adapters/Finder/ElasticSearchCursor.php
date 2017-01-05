@@ -3,6 +3,8 @@
 namespace Maslosoft\Manganel\Adapters\Finder;
 
 use Maslosoft\Mangan\Interfaces\Adapters\FinderCursorInterface;
+use Maslosoft\Manganel\Decorators\IndexDecorator;
+use Maslosoft\Manganel\Decorators\ScoreDecorator;
 use Maslosoft\Manganel\QueryBuilder;
 use Maslosoft\Manganel\SearchCriteria;
 
@@ -119,7 +121,10 @@ class ElasticSearchCursor implements FinderCursorInterface
 			$data = $this->qb->search();
 			foreach ($data as $result)
 			{
-				$this->data[] = $result['_source'];
+				$document = $result['_source'];
+				$document[IndexDecorator::Key] = $result['_index'];
+				$document[ScoreDecorator::Key] = $result['_score'];
+				$this->data[] = $document;
 			}
 		}
 	}

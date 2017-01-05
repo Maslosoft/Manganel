@@ -7,6 +7,8 @@ use Maslosoft\Mangan\Decorators\Property\I18NDecorator;
 use Maslosoft\Mangan\Sanitizers\DateSanitizer;
 use Maslosoft\Mangan\Sanitizers\MongoObjectId;
 use Maslosoft\Mangan\Sanitizers\MongoWriteStringId;
+use Maslosoft\Manganel\Decorators\IndexDecorator;
+use Maslosoft\Manganel\Decorators\ScoreDecorator;
 use Maslosoft\Manganel\Decorators\UnderscoreIdFieldDecorator;
 use Maslosoft\Manganel\Filters\SearchFilter;
 use Maslosoft\Manganel\Sanitizers\DateWriteEsSanitizer;
@@ -19,6 +21,8 @@ return [
 		SearchArray::class => [
 			ClassNameDecorator::class,
 			UnderscoreIdFieldDecorator::class,
+			ScoreDecorator::class,
+			IndexDecorator::class,
 			EmbedRefDecorator::class,
 			EmbedRefArrayDecorator::class,
 			I18NDecorator::class,
