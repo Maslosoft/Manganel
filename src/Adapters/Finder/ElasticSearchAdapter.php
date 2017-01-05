@@ -33,12 +33,28 @@ class ElasticSearchAdapter implements FinderAdapterInterface
 
 	public function findMany(CriteriaInterface $criteria, $fields = array())
 	{
+		$this->prepare($criteria, $fields);
 		return new ElasticSearchCursor($this->qb);
 	}
 
 	public function findOne(CriteriaInterface $criteria, $fields = array())
 	{
+		$this->prepare($criteria, $fields);
+		return current(new ElasticSearchCursor(($this->qb)));
+	}
 
+	private function prepare(CriteriaInterface $criteria, $fields)
+	{
+		$this->qb->setCriteria($criteria);
+		if (!empty($fields))
+		{
+			$selected = array_flip($fields);
+			foreach ($selected as $index => $value)
+			{
+				$selected[$index] = true;
+			}
+			$this->qb->getCriteria()->select($fields);
+		}
 	}
 
 }

@@ -2,8 +2,10 @@
 
 namespace Maslosoft\Manganel\Adapters\Finder;
 
+use Maslosoft\Mangan\Criteria;
 use Maslosoft\Mangan\Interfaces\Adapters\FinderCursorInterface;
 use Maslosoft\Manganel\QueryBuilder;
+use Maslosoft\Manganel\SearchCriteria;
 
 /**
  * ElasticSearchCursor
@@ -34,6 +36,11 @@ class ElasticSearchCursor implements FinderCursorInterface
 	public function __construct(QueryBuilder $qb)
 	{
 		$this->qb = $qb;
+		$criteria = $qb->getCriteria();
+		if (empty($criteria))
+		{
+			$this->qb->setCriteria(new SearchCriteria());
+		}
 	}
 
 	public function limit($num)
