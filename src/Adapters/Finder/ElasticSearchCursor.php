@@ -36,18 +36,28 @@ class ElasticSearchCursor implements FinderCursorInterface
 		$this->qb = $qb;
 	}
 
-	public function limit($limit)
+	public function limit($num)
 	{
-		/**
-		 * TODO Implement
-		 */
+		$this->qb->getCriteria()->limit($num);
+		return $this;
 	}
 
-	public function sort($sort)
+	public function skip($num)
 	{
-		/**
-		 * TODO Implement
-		 */
+		$this->qb->getCriteria()->offset($num);
+		return $this;
+	}
+
+	public function sort(array $fields)
+	{
+		$this->qb->getCriteria()->setSort($fields);
+		return $this;
+	}
+
+	public function fields(array $fields)
+	{
+		$this->qb->getCriteria()->select($fields);
+		return $this;
 	}
 
 // <editor-fold defaultstate="collapsed" desc="Countable impl">
