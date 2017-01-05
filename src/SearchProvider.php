@@ -49,9 +49,16 @@ class SearchProvider implements DataProviderInterface
 	 */
 	private $totalItemCount = null;
 
+	/**
+	 * Finder instance
+	 * @var SearchFinder
+	 */
+	private $finder = null;
+
 	public function __construct($modelClass = null, $config = [])
 	{
 		$this->configure($modelClass, $config);
+		$this->finder = new SearchFinder($this->getModel());
 	}
 
 	protected function fetchData()
@@ -59,54 +66,13 @@ class SearchProvider implements DataProviderInterface
 
 		$criteria = $this->configureFetch();
 
-		/**
-		 * TODO Refactor this into SearchFinder class
-		 */
-		$qb = new QueryBuilder();
-		if ($criteria instanceof SearchCriteria)
-		{
-			$models = $criteria->getModels();
-			if (!empty($models))
-			{
-				$qb->add($models);
-			}
-		}
-		$model = $this->getModel();
-		if (!empty($model) && !Event::handled($model, FinderInterface::EventBeforeFind))
-		{
-			return [];
-		}
+		$models = $criteria->getModels();
 
-		$modelCriteria = null;
-
-		// This check is required for plain php objects
-		if ($model instanceof WithCriteriaInterface)
+		if (!empty($models))
 		{
-			$modelCriteria = $model->getDbCriteria();
+			$this->finder->setModels($models);
 		}
-
-		$criteria->mergeWith($modelCriteria);
-		if (!empty($model))
-		{
-			$qb->add($model);
-		}
-		$qb->setCriteria($criteria);
-		$rawResults = $qb->search($criteria->getSearch());
-		$results = [];
-		foreach ($rawResults as $data)
-		{
-			$model = SearchArray::toModel($data['_source']);
-			if ($model instanceof IndexAwareInterface)
-			{
-				$model->setIndex($data['_index']);
-			}
-			if ($model instanceof ScoreAwareInterface)
-			{
-				$model->setScore($data['_score']);
-			}
-			$results[] = $model;
-		}
-		return $results;
+		return $this->finder->findAll($criteria);
 	}
 
 	public function getItemCount($refresh = false)
