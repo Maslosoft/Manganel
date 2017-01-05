@@ -2,7 +2,6 @@
 
 namespace Maslosoft\Manganel\Adapters\Finder;
 
-use Maslosoft\Mangan\Criteria;
 use Maslosoft\Mangan\Interfaces\Adapters\FinderCursorInterface;
 use Maslosoft\Manganel\QueryBuilder;
 use Maslosoft\Manganel\SearchCriteria;

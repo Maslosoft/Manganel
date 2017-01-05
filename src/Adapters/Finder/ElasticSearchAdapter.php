@@ -40,7 +40,22 @@ class ElasticSearchAdapter implements FinderAdapterInterface
 	public function findOne(CriteriaInterface $criteria, $fields = array())
 	{
 		$this->prepare($criteria, $fields);
-		return current(new ElasticSearchCursor(($this->qb)));
+		$data = (new ElasticSearchCursor(($this->qb)))->current();
+		if (false === $data)
+		{
+			return null;
+		}
+		return $data;
+	}
+
+	/**
+	 *
+	 * @internal Used for debugging purposes, should not be used for any manipulations!
+	 * @return QueryBuilder
+	 */
+	public function getQueryBuilder()
+	{
+		return $this->qb;
 	}
 
 	private function prepare(CriteriaInterface $criteria, $fields)

@@ -1,6 +1,6 @@
 <?php
 
-namespace Maslosoft\Manganel\Decorators\QueryBuilder;
+namespace Maslosoft\Manganel\Decorators\QueryBuilder\Operators;
 
 use Maslosoft\Manganel\Interfaces\QueryBuilder\OperatorDecoratorInterface;
 
@@ -12,9 +12,22 @@ use Maslosoft\Manganel\Interfaces\QueryBuilder\OperatorDecoratorInterface;
 class InDecorator implements OperatorDecoratorInterface
 {
 
-	public function useWith($key)
+	public function useWith($key, $value)
 	{
-		return $key === '$in';
+		if (!is_array($value))
+		{
+			return false;
+		}
+		return array_key_exists('$in', $value);
+	}
+
+	public function decorate(&$condition, $name, $value)
+	{
+		$condition = [
+			'terms' => [
+				$name => $value['$in']
+			]
+		];
 	}
 
 }

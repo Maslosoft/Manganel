@@ -11,6 +11,9 @@ interface OperatorDecoratorInterface
 	/**
 	 * Whether to use this operator with current key
 	 * @param string $key
+	 * @param mixed $value
 	 */
-	public function useWith($key);
+	public function useWith($key, $value);
+
+	public function decorate(&$condition, $name, $value);
 }
