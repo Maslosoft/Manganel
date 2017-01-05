@@ -23,8 +23,14 @@ class ScrollDecorator implements BodyDecoratorInterface
 	{
 		if ($criteria->getLimit() || $criteria->getOffset())
 		{
-			$body['from'] = $criteria->getOffset();
-			$body['size'] = $criteria->getLimit();
+			if (is_int($criteria->getOffset()))
+			{
+				$body['from'] = $criteria->getOffset();
+			}
+			if (is_int($criteria->getLimit()))
+			{
+				$body['size'] = $criteria->getLimit();
+			}
 		}
 	}
 

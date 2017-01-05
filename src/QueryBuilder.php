@@ -12,11 +12,13 @@
 
 namespace Maslosoft\Manganel;
 
+use Elasticsearch\Common\Exceptions\BadRequest400Exception;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaAwareInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaInterface;
 use Maslosoft\Mangan\Traits\CriteriaAwareTrait;
 use Maslosoft\Manganel\Helpers\QueryBuilderDecorator;
+use Maslosoft\Manganel\Helpers\RecursiveFilter;
 use Maslosoft\Manganel\Helpers\TypeNamer;
 use Maslosoft\Manganel\Traits\UniqueModelsAwareTrait;
 use UnexpectedValueException;
@@ -96,10 +98,24 @@ class QueryBuilder implements CriteriaAwareInterface
 	public function search($q = null)
 	{
 		$params = $this->getParams($q);
-		$result = $this->manganel->getClient()->search($params);
+
+		try
+		{
+			$result = $this->manganel->getClient()->search($params);
+		}
+		catch (BadRequest400Exception $e)
+		{
+			// Throw previous exception,
+			// as it holds more meaningfull information
+			$json = json_encode($params, JSON_PRETTY_PRINT);
+			$previous = $e->getPrevious();
+			$message = sprintf("Exception (%s) while querying `%s`: \n%s\n", $previous->getMessage(), $this->manganel->indexId, $json);
+			throw new BadRequest400Exception($message, 400, $e);
+		}
+
 		if (empty($result) && empty($result['hits']) && empty($result['hits']['hits']))
 		{
-			return []; // @codeCoverageIgnore
+			return [];
 		}
 		return $result['hits']['hits'];
 	}
@@ -145,7 +161,8 @@ class QueryBuilder implements CriteriaAwareInterface
 			'type' => $type,
 			'body' => $body
 		];
-		return $params;
+//		return $params;
+		return RecursiveFilter::mongoIdToString($params);
 	}
 
 }

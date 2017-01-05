@@ -18,9 +18,9 @@ use Elasticsearch\Common\Exceptions\BadRequest400Exception;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Mangan;
 use Maslosoft\Manganel\Exceptions\ManganelException;
+use Maslosoft\Manganel\Helpers\RecursiveFilter;
 use Maslosoft\Manganel\Helpers\TypeNamer;
 use Maslosoft\Manganel\Meta\ManganelMeta;
-use MongoId;
 use UnexpectedValueException;
 
 /**
@@ -94,21 +94,9 @@ class IndexManager
 			}
 		}
 
-		// In some cases $value *might* still be mongoId type,
-		// see https://github.com/Maslosoft/Addendum/issues/43
-		$func = function($value)
-		{
-			if ($value instanceof MongoId)
-			{
-				return (string) $value;
-			}
-			return $value;
-		};
-		$filtered = filter_var($body, \FILTER_CALLBACK, ['options' => $func]);
-
 		// Create proper elastic search request array
 		$params = [
-			'body' => $filtered,
+			'body' => RecursiveFilter::mongoIdToString($body),
 		];
 		try
 		{
@@ -124,7 +112,7 @@ class IndexManager
 			// as it holds more meaningfull information
 			$previous = $e->getPrevious();
 			$message = sprintf('Exception while indexing `%s`@`%s`: %s', get_class($this->model), $this->manganel->indexId, $previous->getMessage());
-			throw new BadRequest400Exception($message);
+			throw new BadRequest400Exception($message, 400, $e);
 		}
 		return false;
 	}
