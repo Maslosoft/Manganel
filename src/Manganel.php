@@ -17,10 +17,15 @@ use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\EmbeDi\EmbeDi;
+use Maslosoft\Mangan\Interfaces\ProfilerInterface;
+use Maslosoft\Mangan\Profillers\NullProfiler;
 use Maslosoft\Manganel\Decorators\QueryBuilder\ConditionDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\ConditionsDecorator;
+use Maslosoft\Manganel\Decorators\QueryBuilder\Operators\InDecorator;
+use Maslosoft\Manganel\Decorators\QueryBuilder\Operators\SimpleTermDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\ScrollDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\SearchDecorator;
+use Maslosoft\Manganel\Interfaces\ManganelAwareInterface;
 use Maslosoft\Manganel\Meta\ManganelMeta;
 
 /**
@@ -39,6 +44,8 @@ class Manganel
 			ConditionsDecorator::class,
 			ScrollDecorator::class,
 			SearchDecorator::class,
+			InDecorator::class,
+			SimpleTermDecorator::class
 		]
 	];
 	public $hosts = [
@@ -91,6 +98,12 @@ class Manganel
 	 * @var string[]
 	 */
 	private static $classToId = [];
+
+	/**
+	 * Profiler instance
+	 * @var ProfilerInterface
+	 */
+	private $profiler = null;
 
 	/**
 	 * Class constructor
@@ -199,6 +212,35 @@ class Manganel
 			$this->client = $cb->build();
 		}
 		return $this->client;
+	}
+
+	/**
+	 * Get profiler instance. This is guaranted, if not configured will return NullProfiller.
+	 * @see NullProfiler
+	 * @return ProfilerInterface
+	 */
+	public function getProfiler()
+	{
+		if (null === $this->profiler)
+		{
+			$this->profiler = new NullProfiler;
+		}
+		if ($this->profiler instanceof ManganelAwareInterface)
+		{
+			$this->profiler->setManganel($this);
+		}
+		return $this->profiler;
+	}
+
+	/**
+	 * Set profiler instance
+	 * @param ProfilerInterface $profiller
+	 * @return static
+	 */
+	public function setProfiler(ProfilerInterface $profiller)
+	{
+		$this->profiler = $profiller;
+		return $this;
 	}
 
 }

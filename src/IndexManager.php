@@ -16,11 +16,11 @@ use Closure;
 use Elasticsearch\Client;
 use Elasticsearch\Common\Exceptions\BadRequest400Exception;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
-use Maslosoft\Mangan\Helpers\CollectionNamer;
 use Maslosoft\Mangan\Mangan;
 use Maslosoft\Manganel\Exceptions\ManganelException;
+use Maslosoft\Manganel\Helpers\RecursiveFilter;
+use Maslosoft\Manganel\Helpers\TypeNamer;
 use Maslosoft\Manganel\Meta\ManganelMeta;
-use MongoId;
 use UnexpectedValueException;
 
 /**
@@ -94,25 +94,23 @@ class IndexManager
 			}
 		}
 
-		// In some cases $value *might* still be mongoId type,
-		// see https://github.com/Maslosoft/Addendum/issues/43
-		$func = function($value)
-		{
-			if ($value instanceof MongoId)
-			{
-				return (string) $value;
-			}
-			return $value;
-		};
-		$filtered = filter_var($body, \FILTER_CALLBACK, ['options' => $func]);
-
 		// Create proper elastic search request array
 		$params = [
-			'body' => $filtered,
+			'body' => RecursiveFilter::mongoIdToString($body),
 		];
 		try
 		{
-			$this->getClient()->index($this->getParams($params));
+			$result = $this->getClient()->index($this->getParams($params));
+			if (array_key_exists('result', $result) && $result['result'] === 'updated')
+			{
+				// For ES 5
+				return true;
+			}
+			elseif (is_array($result))
+			{
+				// For earlier ES
+				return true;
+			}
 		}
 		catch (BadRequest400Exception $e)
 		{
@@ -120,8 +118,9 @@ class IndexManager
 			// as it holds more meaningfull information
 			$previous = $e->getPrevious();
 			$message = sprintf('Exception while indexing `%s`@`%s`: %s', get_class($this->model), $this->manganel->indexId, $previous->getMessage());
-			throw new BadRequest400Exception($message);
+			throw new BadRequest400Exception($message, 400, $e);
 		}
+		return false;
 	}
 
 	public function delete()
@@ -167,7 +166,7 @@ class IndexManager
 		}
 		$result = [
 			'index' => strtolower($this->manganel->index),
-			'type' => CollectionNamer::nameCollection($this->model),
+			'type' => TypeNamer::nameType($this->model),
 			'id' => (string) $this->model->_id,
 			'refresh' => $refresh
 		];
