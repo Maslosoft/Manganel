@@ -1069,11 +1069,11 @@
         },
         {
             "name": "maslosoft/mangan",
-            "version": "4.3.10",
+            "version": "4.3.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Mangan.git",
-                "reference": "75399ef968e04eb72e2d98b64b1970c3d35503bc",
+                "reference": "5f31dfd24c86c2892a7567969027afc9d185954f",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -1083,8 +1083,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/75399ef968e04eb72e2d98b64b1970c3d35503bc",
-                "reference": "75399ef968e04eb72e2d98b64b1970c3d35503bc",
+                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/5f31dfd24c86c2892a7567969027afc9d185954f",
+                "reference": "5f31dfd24c86c2892a7567969027afc9d185954f",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1172,7 +1172,7 @@
             ],
             "description": "MongoDB Object Persister",
             "homepage": "https://maslosoft.com/mangan/",
-            "time": "2016-12-20 18:01:11"
+            "time": "2017-01-05 10:07:48"
         },
         {
             "name": "maslosoft/miniview",
@@ -2384,11 +2384,11 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.4.1",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "8025426794f1944de806618671d4fa476dc7626f",
+                "reference": "2760f3898b7e931aa71153852dcd48a75c9b95db",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -2398,8 +2398,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/8025426794f1944de806618671d4fa476dc7626f",
-                "reference": "8025426794f1944de806618671d4fa476dc7626f",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/2760f3898b7e931aa71153852dcd48a75c9b95db",
+                "reference": "2760f3898b7e931aa71153852dcd48a75c9b95db",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2412,11 +2412,6 @@
                 "php": ">=5.4.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "React\\Promise\\": "src/"
@@ -2436,7 +2431,11 @@
                 }
             ],
             "description": "A lightweight implementation of CommonJS Promises/A for PHP",
-            "time": "2016-05-03 17:50:52"
+            "keywords": [
+                "promise",
+                "promises"
+            ],
+            "time": "2016-12-22 14:09:01"
         },
         {
             "name": "sebastian/comparator",
@@ -3640,11 +3639,11 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.29.0",
+            "version": "v1.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "74f723e542368ca2080b252740be5f1113ebb898",
+                "reference": "c6ff71094fde15d12398eaba029434b013dc5e59",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -3654,12 +3653,12 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/74f723e542368ca2080b252740be5f1113ebb898",
-                "reference": "74f723e542368ca2080b252740be5f1113ebb898",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/c6ff71094fde15d12398eaba029434b013dc5e59",
+                "reference": "c6ff71094fde15d12398eaba029434b013dc5e59",
                 "shasum": "",
                 "mirrors": [
                     {
-                        "url": "http://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
+                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
                         "preferred": true
                     }
                 ]
@@ -3674,7 +3673,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.29-dev"
+                    "dev-master": "1.30-dev"
                 }
             },
             "autoload": {
@@ -3709,7 +3708,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-12-13 17:28:18"
+            "time": "2016-12-23 11:06:22"
         },
         {
             "name": "webmozart/assert",
@@ -3888,7 +3887,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/ManganelTest.git",
-                "reference": "421a566e192e14c5f5a22aac27418ab3c35471a4",
+                "reference": "0df2c0d3dd1483dfe32f19db8e7e72eb5cf9cdd4",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -3898,12 +3897,12 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/ManganelTest/zipball/421a566e192e14c5f5a22aac27418ab3c35471a4",
-                "reference": "421a566e192e14c5f5a22aac27418ab3c35471a4",
+                "url": "https://api.github.com/repos/Maslosoft/ManganelTest/zipball/0df2c0d3dd1483dfe32f19db8e7e72eb5cf9cdd4",
+                "reference": "0df2c0d3dd1483dfe32f19db8e7e72eb5cf9cdd4",
                 "shasum": "",
                 "mirrors": [
                     {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
+                        "url": "http://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
                         "preferred": true
                     }
                 ]
@@ -3932,7 +3931,7 @@
             ],
             "description": "Tests for manganel",
             "homepage": "https://maslosoft.com/manganel/",
-            "time": "2016-12-20 08:31:39"
+            "time": "2017-01-05 10:17:45"
         },
         {
             "name": "maslosoft/mangantest",
@@ -3940,7 +3939,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/ManganTest.git",
-                "reference": "c4e0157cc420b42370971e5d2eae62ed2754b2ed",
+                "reference": "99c31b40b149023bae98d6865e2f5fb42f4990c6",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -3950,12 +3949,12 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/ManganTest/zipball/c4e0157cc420b42370971e5d2eae62ed2754b2ed",
-                "reference": "c4e0157cc420b42370971e5d2eae62ed2754b2ed",
+                "url": "https://api.github.com/repos/Maslosoft/ManganTest/zipball/99c31b40b149023bae98d6865e2f5fb42f4990c6",
+                "reference": "99c31b40b149023bae98d6865e2f5fb42f4990c6",
                 "shasum": "",
                 "mirrors": [
                     {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
+                        "url": "http://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
                         "preferred": true
                     }
                 ]
@@ -3985,7 +3984,7 @@
             ],
             "description": "Tests for mangan",
             "homepage": "https://maslosoft.com/mangan/",
-            "time": "2016-12-15 13:56:22"
+            "time": "2017-01-05 08:18:42"
         },
         {
             "name": "myclabs/deep-copy",
