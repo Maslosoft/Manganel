@@ -12,11 +12,15 @@
 
 namespace Maslosoft\Manganel;
 
+use Elasticsearch\Common\Exceptions\BadRequest400Exception;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
-use Maslosoft\Mangan\Helpers\CollectionNamer;
 use Maslosoft\Mangan\Interfaces\CriteriaAwareInterface;
+use Maslosoft\Mangan\Interfaces\CriteriaInterface;
 use Maslosoft\Mangan\Traits\CriteriaAwareTrait;
 use Maslosoft\Manganel\Helpers\QueryBuilderDecorator;
+use Maslosoft\Manganel\Helpers\RecursiveFilter;
+use Maslosoft\Manganel\Helpers\TypeNamer;
+use Maslosoft\Manganel\Traits\UniqueModelsAwareTrait;
 use UnexpectedValueException;
 
 /**
@@ -27,7 +31,8 @@ use UnexpectedValueException;
 class QueryBuilder implements CriteriaAwareInterface
 {
 
-	use CriteriaAwareTrait;
+	use CriteriaAwareTrait,
+	  UniqueModelsAwareTrait;
 
 	/**
 	 * Manganel instance
@@ -35,17 +40,11 @@ class QueryBuilder implements CriteriaAwareInterface
 	 */
 	private $manganel = null;
 
-	/**
-	 * Annotated model
-	 * @var AnnotatedInterface[]
-	 */
-	private $models = [];
-
 	public function __construct($model = null)
 	{
 		if (!empty($model))
 		{
-			$this->models[] = $model;
+			$this->addModel($model);
 		}
 		if (!empty($model))
 		{
@@ -57,17 +56,22 @@ class QueryBuilder implements CriteriaAwareInterface
 		}
 	}
 
+	/**
+	 * Add model or array of models
+	 * @param AnnotatedInterface|AnnotatedInterface $model
+	 * @return void
+	 */
 	public function add($model)
 	{
 		if (is_array($model))
 		{
 			foreach ($model as $m)
 			{
-				$this->models[] = $m;
+				$this->addModel($m);
 			}
 			return;
 		}
-		$this->models[] = $model;
+		$this->addModel($model);
 	}
 
 	/**
@@ -94,10 +98,24 @@ class QueryBuilder implements CriteriaAwareInterface
 	public function search($q = null)
 	{
 		$params = $this->getParams($q);
-		$result = $this->manganel->getClient()->search($params);
+
+		try
+		{
+			$result = $this->manganel->getClient()->search($params);
+		}
+		catch (BadRequest400Exception $e)
+		{
+			// Throw previous exception,
+			// as it holds more meaningfull information
+			$json = json_encode($params, JSON_PRETTY_PRINT);
+			$previous = $e->getPrevious();
+			$message = sprintf("Exception (%s) while querying `%s`: \n%s\n", $previous->getMessage(), $this->manganel->indexId, $json);
+			throw new BadRequest400Exception($message, 400, $e);
+		}
+
 		if (empty($result) && empty($result['hits']) && empty($result['hits']['hits']))
 		{
-			return []; // @codeCoverageIgnore
+			return [];
 		}
 		return $result['hits']['hits'];
 	}
@@ -107,6 +125,10 @@ class QueryBuilder implements CriteriaAwareInterface
 		$body = [];
 		// Try to get query from criteria if empty
 		$criteria = $this->getCriteria();
+		if (!$criteria instanceof SearchCriteria && $criteria instanceof CriteriaInterface)
+		{
+			$criteria = new SearchCriteria($criteria);
+		}
 		if (empty($criteria))
 		{
 			$criteria = new SearchCriteria;
@@ -118,21 +140,18 @@ class QueryBuilder implements CriteriaAwareInterface
 
 		$decorator = new QueryBuilderDecorator($this->manganel);
 		$decorator->decorate($body, $criteria);
-
-		if (empty($this->models))
+		$models = $this->getModels();
+		if (empty($models))
 		{
 			$type = '_all';
 		}
 		else
 		{
 			$types = [];
-			foreach ($this->models as $model)
+			foreach ($models as $model)
 			{
-				if (!$model instanceof AnnotatedInterface)
-				{
-					throw new UnexpectedValueException(sprintf('Expected `%s` instance, got `%s`', AnnotatedInterface::class, is_object($model) ? get_class($model) : gettype($model)));
-				}
-				$types[] = CollectionNamer::nameCollection($model);
+				assert($model instanceof AnnotatedInterface, new UnexpectedValueException(sprintf('Expected `%s` instance, got `%s`', AnnotatedInterface::class, is_object($model) ? get_class($model) : gettype($model))));
+				$types[] = TypeNamer::nameType($model);
 			}
 			$type = implode(',', array_unique($types));
 		}
@@ -142,7 +161,8 @@ class QueryBuilder implements CriteriaAwareInterface
 			'type' => $type,
 			'body' => $body
 		];
-		return $params;
+//		return $params;
+		return RecursiveFilter::mongoIdToString($params);
 	}
 
 }
