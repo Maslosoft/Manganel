@@ -5,7 +5,6 @@ namespace Maslosoft\Manganel;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Abstracts\AbstractFinder;
 use Maslosoft\Mangan\Interfaces\FinderInterface;
-use Maslosoft\Mangan\Profillers\NullProfiler;
 use Maslosoft\Mangan\Traits\Finder\FinderHelpers;
 use Maslosoft\Manganel\Adapters\Finder\ElasticSearchAdapter;
 use Maslosoft\Manganel\Interfaces\ModelsAwareInterface;
@@ -33,7 +32,7 @@ class SearchFinder extends AbstractFinder implements FinderInterface, ModelsAwar
 	{
 		if (is_array($models))
 		{
-			$model = current($model);
+			$model = current($models);
 		}
 		else
 		{
@@ -52,10 +51,7 @@ class SearchFinder extends AbstractFinder implements FinderInterface, ModelsAwar
 		$this->setScopeManager(new MultiScopeManager($model, $models));
 		$this->setAdapter(new ElasticSearchAdapter($models));
 
-		/**
-		 * TODO Use profiler here if any available
-		 */
-		$this->setProfiler(new NullProfiler);
+		$this->setProfiler($manganel->getProfiler());
 		$this->setFinderEvents(new Helpers\MultiFinderEvents());
 		$this->withCursor(false);
 	}
