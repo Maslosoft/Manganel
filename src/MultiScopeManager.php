@@ -3,7 +3,9 @@
 namespace Maslosoft\Manganel;
 
 use Maslosoft\Mangan\Abstracts\AbstractScopeManager;
+use Maslosoft\Mangan\Interfaces\CriteriaAwareInterface;
 use Maslosoft\Mangan\Interfaces\ScopeManagerInterface;
+use Maslosoft\Mangan\Interfaces\WithCriteriaInterface;
 use Maslosoft\Manganel\Interfaces\ModelsAwareInterface;
 use Maslosoft\Manganel\Traits\UniqueModelsAwareTrait;
 
@@ -59,11 +61,11 @@ class MultiScopeManager extends AbstractScopeManager implements ScopeManagerInte
 	{
 		if ($model instanceof WithCriteriaInterface)
 		{
-			$criteria = $model->getDbCriteria();
+			return $model->getDbCriteria();
 		}
 		elseif ($model instanceof CriteriaAwareInterface)
 		{
-			$criteria = $model->getCriteria();
+			return $model->getCriteria();
 		}
 		else
 		{
