@@ -101,8 +101,14 @@ class IndexManager
 		try
 		{
 			$result = $this->getClient()->index($this->getParams($params));
-			if ($result['result'] === 'updated')
+			if (array_key_exists('result', $result) && $result['result'] === 'updated')
 			{
+				// For ES 5
+				return true;
+			}
+			elseif (is_array($result))
+			{
+				// For earlier ES
 				return true;
 			}
 		}
