@@ -77,6 +77,7 @@ class SearchFinder extends AbstractFinder implements FinderInterface, ModelsAwar
 	{
 		// Do not use second param for multi model
 		// compatibility
+		assert(array_key_exists('_class', $data), 'Stored document must have `_class` field');
 		return SearchArray::toModel($data);
 	}
 

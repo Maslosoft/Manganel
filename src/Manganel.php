@@ -19,6 +19,8 @@ use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\EmbeDi\EmbeDi;
 use Maslosoft\Manganel\Decorators\QueryBuilder\ConditionDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\ConditionsDecorator;
+use Maslosoft\Manganel\Decorators\QueryBuilder\Operators\InDecorator;
+use Maslosoft\Manganel\Decorators\QueryBuilder\Operators\SimpleTermDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\ScrollDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\SearchDecorator;
 use Maslosoft\Manganel\Meta\ManganelMeta;
@@ -39,6 +41,8 @@ class Manganel
 			ConditionsDecorator::class,
 			ScrollDecorator::class,
 			SearchDecorator::class,
+			InDecorator::class,
+			SimpleTermDecorator::class
 		]
 	];
 	public $hosts = [
