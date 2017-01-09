@@ -14,7 +14,7 @@ class TypeNamer extends CollectionNamer
 
 	public static function nameType($model)
 	{
-		$collectionName = parent::nameCollection($model);
+		$collectionName = $this->nameCollection($model);
 		return str_replace('.', '_', $collectionName);
 	}
 
