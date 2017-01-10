@@ -54,6 +54,7 @@ class SearchProvider implements DataProviderInterface
 	 * @var SearchFinder
 	 */
 	private $finder = null;
+	private $isStopped = false;
 
 	public function __construct($modelClass = null, $config = [])
 	{
@@ -61,9 +62,17 @@ class SearchProvider implements DataProviderInterface
 		$this->finder = new SearchFinder($this->getModel());
 	}
 
+	public function stop($doStop = true)
+	{
+		$this->isStopped = $doStop;
+	}
+
 	protected function fetchData()
 	{
-
+		if ($this->isStopped)
+		{
+			return [];
+		}
 		$criteria = $this->configureFetch();
 
 		$models = $criteria->getModels();
@@ -82,6 +91,10 @@ class SearchProvider implements DataProviderInterface
 
 	public function getTotalItemCount()
 	{
+		if ($this->isStopped)
+		{
+			$this->totalItemCount = 0;
+		}
 		if ($this->totalItemCount === null)
 		{
 			$qb = new QueryBuilder($this->getModel());
