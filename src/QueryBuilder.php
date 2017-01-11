@@ -58,7 +58,7 @@ class QueryBuilder implements CriteriaAwareInterface
 
 	/**
 	 * Add model or array of models
-	 * @param AnnotatedInterface|AnnotatedInterface $model
+	 * @param AnnotatedInterface|AnnotatedInterface[] $model
 	 * @return void
 	 */
 	public function add($model)
