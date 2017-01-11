@@ -28,11 +28,18 @@ class SearchCriteria extends Criteria
 	public function add($model)
 	{
 		$this->models[] = $model;
+		return $this;
 	}
 
 	public function getModels()
 	{
 		return $this->models;
+	}
+
+	public function setModels($models)
+	{
+		$this->models = $models;
+		return $this;
 	}
 
 	public function search($query)
