@@ -40,6 +40,17 @@ class SearchFinder extends AbstractFinder implements FinderInterface, ModelsAwar
 			$model = $models;
 			$models = [$models];
 		}
+		foreach ($models as $modelIndex => $modelSignature)
+		{
+			if (is_string($modelSignature))
+			{
+				$models[$modelIndex] = new $modelSignature;
+			}
+		}
+		if (is_string($model))
+		{
+			$model = new $model;
+		}
 		if (null === $manganel)
 		{
 			$manganel = Manganel::create($model);

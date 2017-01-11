@@ -12,18 +12,13 @@
 
 namespace Maslosoft\Manganel;
 
-use Maslosoft\Mangan\Events\Event;
 use Maslosoft\Mangan\Interfaces\DataProviderInterface;
-use Maslosoft\Mangan\Interfaces\FinderInterface;
-use Maslosoft\Mangan\Interfaces\WithCriteriaInterface;
 use Maslosoft\Mangan\Traits\DataProvider\ConfigureTrait;
 use Maslosoft\Mangan\Traits\DataProvider\CriteriaTrait;
 use Maslosoft\Mangan\Traits\DataProvider\DataTrait;
 use Maslosoft\Mangan\Traits\DataProvider\PaginationTrait;
 use Maslosoft\Mangan\Traits\ModelAwareTrait;
 use Maslosoft\Mangan\Traits\SortAwareTrait;
-use Maslosoft\Manganel\Interfaces\IndexAwareInterface;
-use Maslosoft\Manganel\Interfaces\ScoreAwareInterface;
 
 /**
  * SearchProvider
@@ -35,11 +30,14 @@ class SearchProvider implements DataProviderInterface
 {
 
 	use ConfigureTrait,
-	  CriteriaTrait,
 	  DataTrait,
 	  ModelAwareTrait,
 	  PaginationTrait,
-	  SortAwareTrait;
+	  SortAwareTrait,
+	  CriteriaTrait
+	{
+		CriteriaTrait::setCriteria as traitSetCriteria;
+	}
 
 	const CriteriaClass = SearchCriteria::class;
 
@@ -58,8 +56,22 @@ class SearchProvider implements DataProviderInterface
 
 	public function __construct($modelClass = null, $config = [])
 	{
-		$this->configure($modelClass, $config);
-		$this->finder = new SearchFinder($this->getModel());
+		if (is_array($modelClass))
+		{
+			$models = $modelClass;
+		}
+		else
+		{
+			$models = [$modelClass];
+		}
+		foreach ($models as $modelClass)
+		{
+			$this->configure($modelClass, $config);
+		}
+		$this->finder = new SearchFinder($models);
+		$criteria = $this->getCriteria();
+		assert($criteria instanceof SearchCriteria);
+		$criteria->setModels($models);
 	}
 
 	public function stop($doStop = true)
@@ -84,6 +96,13 @@ class SearchProvider implements DataProviderInterface
 		return $this->finder->findAll($criteria);
 	}
 
+	public function setCriteria($criteria)
+	{
+		assert($criteria instanceof SearchCriteria);
+		$criteria->setModels($this->finder->getModels());
+		return $this->traitSetCriteria($criteria);
+	}
+
 	public function getItemCount($refresh = false)
 	{
 		return count($this->getData($refresh));
@@ -98,11 +117,13 @@ class SearchProvider implements DataProviderInterface
 		if ($this->totalItemCount === null)
 		{
 			$qb = new QueryBuilder($this->getModel());
+
 			/**
 			 * TODO Must count with criteria too!
 			 * And multi model
 			 */
 			$criteria = new SearchCriteria($this->getCriteria());
+			$criteria->setModels($this->finder->getModels());
 			$criteria->setLimit(false);
 			$criteria->setOffset(false);
 			$qb->setCriteria($criteria);

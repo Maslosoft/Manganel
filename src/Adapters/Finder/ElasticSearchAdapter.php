@@ -4,7 +4,9 @@ namespace Maslosoft\Manganel\Adapters\Finder;
 
 use Maslosoft\Mangan\Interfaces\Adapters\FinderAdapterInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaInterface;
+use Maslosoft\Mangan\Interfaces\ModelAwareInterface;
 use Maslosoft\Manganel\QueryBuilder;
+use Maslosoft\Manganel\SearchCriteria;
 
 /**
  * ElasticSearchAdapter
@@ -19,15 +21,18 @@ class ElasticSearchAdapter implements FinderAdapterInterface
 	 * @var QueryBuilder
 	 */
 	private $qb = null;
+	private $models = [];
 
 	public function __construct($models)
 	{
 		$this->qb = new QueryBuilder();
 		$this->qb->setModels($models);
+		$this->models = $models;
 	}
 
 	public function count(CriteriaInterface $criteria)
 	{
+		$this->ensure($criteria);
 		return $this->qb->setCriteria($criteria)->count();
 	}
 
@@ -40,7 +45,7 @@ class ElasticSearchAdapter implements FinderAdapterInterface
 	public function findOne(CriteriaInterface $criteria, $fields = array())
 	{
 		$this->prepare($criteria, $fields);
-		$data = (new ElasticSearchCursor(($this->qb)))->current();
+		$data = (new ElasticSearchCursor($this->qb))->current();
 		if (false === $data)
 		{
 			return null;
@@ -60,6 +65,9 @@ class ElasticSearchAdapter implements FinderAdapterInterface
 
 	private function prepare(CriteriaInterface $criteria, $fields)
 	{
+		$this->ensure($criteria);
+		assert($criteria instanceof SearchCriteria);
+
 		$this->qb->setCriteria($criteria);
 		if (!empty($fields))
 		{
@@ -70,6 +78,15 @@ class ElasticSearchAdapter implements FinderAdapterInterface
 			}
 			$this->qb->getCriteria()->select($fields);
 		}
+	}
+
+	private function ensure(&$criteria)
+	{
+		if (!$criteria instanceof SearchCriteria)
+		{
+			$criteria = new SearchCriteria($criteria);
+		}
+		$criteria->setModels($this->models);
 	}
 
 }

@@ -75,6 +75,19 @@ class QueryBuilder implements CriteriaAwareInterface
 	}
 
 	/**
+	 * Set criteria
+	 * @param CriteriaInterface|array $criteria
+	 * @return static
+	 */
+	public function setCriteria($criteria)
+	{
+		$this->criteria = $criteria;
+		assert($criteria instanceof SearchCriteria);
+		$this->add($criteria->getModels());
+		return $this;
+	}
+
+	/**
 	 *
 	 * @param string $q
 	 * @return int

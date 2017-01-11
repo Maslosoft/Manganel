@@ -12,9 +12,6 @@ use Maslosoft\Manganel\Traits\UniqueModelsAwareTrait;
 /**
  * Scope Manager with support for many models
  *
- * TODO, maybe it's not even necessary? Will be known when SearchFinder will be
- * implemented...
- *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
 class MultiScopeManager extends AbstractScopeManager implements ScopeManagerInterface,
@@ -38,6 +35,7 @@ class MultiScopeManager extends AbstractScopeManager implements ScopeManagerInte
 	{
 		$newCriteria = new SearchCriteria($criteria);
 		$newCriteria->decorateWith($this->getModel());
+		$newCriteria->setModels($this->getModels());
 		return $newCriteria;
 	}
 
@@ -49,6 +47,7 @@ class MultiScopeManager extends AbstractScopeManager implements ScopeManagerInte
 		{
 			$criteria->mergeWith($this->getOneModelCriteria($model));
 		}
+		$criteria->setModels($this->getModels());
 
 		if (empty($criteria))
 		{
