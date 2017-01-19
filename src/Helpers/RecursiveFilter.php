@@ -25,10 +25,6 @@ class RecursiveFilter
 		// In some cases $value *might* still be mongoId type,
 		$callback = function(&$item, $key)
 		{
-			if ($key === 'primaryOne')
-			{
-				codecept_debug($item);
-			}
 			if ($item instanceof MongoId)
 			{
 				$item = (string) $item;
