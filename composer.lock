@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "18eeef8df5d78117e4a509a3eb1a9e99",
-    "content-hash": "38bbad6869ca2c11b72403b8c26515fd",
+    "hash": "0755b2ff71b5dac37d22e280d4c46e11",
+    "content-hash": "f867336ce25fc6e243ae1d62ca8075b0",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -80,11 +80,11 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "2.2.7",
+            "version": "2.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "86770e89d266557c20dd0b1de5390e706f4770c1",
+                "reference": "0a87d4b19070a24636125993450a9d3f698a6663",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -94,12 +94,12 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/86770e89d266557c20dd0b1de5390e706f4770c1",
-                "reference": "86770e89d266557c20dd0b1de5390e706f4770c1",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/0a87d4b19070a24636125993450a9d3f698a6663",
+                "reference": "0a87d4b19070a24636125993450a9d3f698a6663",
                 "shasum": "",
                 "mirrors": [
                     {
-                        "url": "http://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
+                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
                         "preferred": true
                     }
                 ]
@@ -180,7 +180,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2016-12-05 04:12:24"
+            "time": "2017-01-20 00:54:15"
         },
         {
             "name": "doctrine/instantiator",
@@ -250,11 +250,11 @@
         },
         {
             "name": "elasticsearch/elasticsearch",
-            "version": "v5.1.0",
+            "version": "v5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elastic/elasticsearch-php.git",
-                "reference": "a05b8bbe91353a453685cee91a23a5fe7624cd3f",
+                "reference": "30be1c0367c865eec5ca0a9c09ce293869da7665",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -264,8 +264,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/a05b8bbe91353a453685cee91a23a5fe7624cd3f",
-                "reference": "a05b8bbe91353a453685cee91a23a5fe7624cd3f",
+                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/30be1c0367c865eec5ca0a9c09ce293869da7665",
+                "reference": "30be1c0367c865eec5ca0a9c09ce293869da7665",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -275,7 +275,6 @@
                 ]
             },
             "require": {
-                "ext-json": ">=1.3.7",
                 "guzzlehttp/ringphp": "~1.0",
                 "php": "^5.6.6|^7.0",
                 "psr/log": "~1.0"
@@ -314,7 +313,7 @@
                 "elasticsearch",
                 "search"
             ],
-            "time": "2017-01-06 22:32:21"
+            "time": "2016-10-26 14:35:32"
         },
         {
             "name": "facebook/webdriver",
@@ -1989,11 +1988,11 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.31",
+            "version": "4.8.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "98b2b39a520766bec663ff5b7ff1b729db9dbfe3",
+                "reference": "f5e1941a8dacf0d904753ff2895c6f68e54bcee1",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -2003,12 +2002,12 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/98b2b39a520766bec663ff5b7ff1b729db9dbfe3",
-                "reference": "98b2b39a520766bec663ff5b7ff1b729db9dbfe3",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f5e1941a8dacf0d904753ff2895c6f68e54bcee1",
+                "reference": "f5e1941a8dacf0d904753ff2895c6f68e54bcee1",
                 "shasum": "",
                 "mirrors": [
                     {
-                        "url": "http://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
+                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
                         "preferred": true
                     }
                 ]
@@ -2069,7 +2068,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-12-09 02:45:31"
+            "time": "2017-01-22 08:37:05"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3741,7 +3740,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/ManganelTest.git",
-                "reference": "c9883e055697cac7527c8cd4f931b49b8db3d9ca",
+                "reference": "e8d9879d01d42c1e38d0575f3f5f0bcd03c0835a",
                 "mirrors": [
                     {
                         "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
@@ -3751,8 +3750,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/ManganelTest/zipball/c9883e055697cac7527c8cd4f931b49b8db3d9ca",
-                "reference": "c9883e055697cac7527c8cd4f931b49b8db3d9ca",
+                "url": "https://api.github.com/repos/Maslosoft/ManganelTest/zipball/e8d9879d01d42c1e38d0575f3f5f0bcd03c0835a",
+                "reference": "e8d9879d01d42c1e38d0575f3f5f0bcd03c0835a",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3785,7 +3784,7 @@
             ],
             "description": "Tests for manganel",
             "homepage": "https://maslosoft.com/manganel/",
-            "time": "2017-01-11 11:37:41"
+            "time": "2017-01-23 11:00:30"
         },
         {
             "name": "maslosoft/mangantest",
