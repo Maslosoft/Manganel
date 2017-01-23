@@ -12,7 +12,9 @@
 
 namespace Maslosoft\Manganel;
 
+use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Criteria;
+use Maslosoft\Manganel\Traits\UniqueModelsAwareTrait;
 
 /**
  * SearchCriteria
@@ -22,23 +24,22 @@ use Maslosoft\Mangan\Criteria;
 class SearchCriteria extends Criteria
 {
 
+	use UniqueModelsAwareTrait;
+
 	private $query = '';
-	private $models = [];
+
+	public function __construct($criteria = null, AnnotatedInterface $model = null)
+	{
+		parent::__construct($criteria, $model);
+		if (!empty($model))
+		{
+			$this->add($model);
+		}
+	}
 
 	public function add($model)
 	{
-		$this->models[] = $model;
-		return $this;
-	}
-
-	public function getModels()
-	{
-		return $this->models;
-	}
-
-	public function setModels($models)
-	{
-		$this->models = $models;
+		$this->addModel($model);
 		return $this;
 	}
 
