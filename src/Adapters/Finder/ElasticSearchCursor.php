@@ -4,6 +4,7 @@ namespace Maslosoft\Manganel\Adapters\Finder;
 
 use Maslosoft\Mangan\Interfaces\Adapters\FinderCursorInterface;
 use Maslosoft\Manganel\Decorators\IndexDecorator;
+use Maslosoft\Manganel\Decorators\MaxScoreDecorator;
 use Maslosoft\Manganel\Decorators\ScoreDecorator;
 use Maslosoft\Manganel\QueryBuilder;
 use Maslosoft\Manganel\SearchCriteria;
@@ -118,12 +119,22 @@ class ElasticSearchCursor implements FinderCursorInterface
 		if (!$this->isExecuted)
 		{
 			$this->isExecuted = true;
-			$data = $this->qb->search();
+			$results = [];
+			$data = $this->qb->search(null, $results);
+			$maxScore = $results['hits']['max_score'];
 			foreach ($data as $result)
 			{
 				$document = $result['_source'];
+				/**
+				 * TODO Refactor it into plugable interface, with params:
+				 * $document,
+				 * $result,
+				 * $results
+				 */
 				$document[IndexDecorator::Key] = $result['_index'];
 				$document[ScoreDecorator::Key] = $result['_score'];
+				$document[MaxScoreDecorator::Key] = $maxScore;
+
 				$this->data[] = $document;
 			}
 		}

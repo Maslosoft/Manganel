@@ -116,11 +116,14 @@ class QueryBuilder implements CriteriaAwareInterface
 	}
 
 	/**
-	 * Get search results
+	 * Get search results - hits from elasticsearch response.
+	 * Optionally raw results might be obtained by reference via second param.
+	 *
 	 * @param string $q
+	 * @param array $result
 	 * @return array
 	 */
-	public function search($q = null)
+	public function search($q = null, &$result = [])
 	{
 		$params = $this->getParams($q);
 
