@@ -16,7 +16,7 @@
 	],
 	"require": {
 		"maslosoft/addendum": "*",
-		"elasticsearch/elasticsearch": "*",
+		"elasticsearch/elasticsearch": "5.0.*",
 		"maslosoft/mangan": "*",
 		"maslosoft/signals": "*",
 		"maslosoft/gazebo": "*"
