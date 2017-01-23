@@ -25,7 +25,7 @@ class ScoreDecorator implements ModelDecoratorInterface
 		{
 			if (array_key_exists(self::Key, $dbValues))
 			{
-				$model->setScore($dbValues[self::Key]);
+				$model->setScore(floatval($dbValues[self::Key]));
 			}
 		}
 	}
