@@ -8,8 +8,12 @@
 
 namespace Maslosoft\Manganel\Decorators\QueryBuilder;
 
+use Maslosoft\Gazebo\PluginFactory;
+use Maslosoft\Manganel\Interfaces\ManganelAwareInterface;
 use Maslosoft\Manganel\Interfaces\QueryBuilder\ConditionDecoratorInterface;
+use Maslosoft\Manganel\Interfaces\QueryBuilder\QueryStringDecoratorInterface;
 use Maslosoft\Manganel\SearchCriteria;
+use Maslosoft\Manganel\Traits\ManganelAwareTrait;
 use stdClass;
 
 /**
@@ -17,8 +21,10 @@ use stdClass;
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class SearchDecorator implements ConditionDecoratorInterface
+class SearchDecorator implements ConditionDecoratorInterface, ManganelAwareInterface
 {
+
+	use ManganelAwareTrait;
 
 	const Ns = __NAMESPACE__;
 
@@ -38,10 +44,19 @@ class SearchDecorator implements ConditionDecoratorInterface
 		else
 		{
 			// Use query string matching
+			// TODO Boost fields #8 https://github.com/Maslosoft/Manganel/issues/8
+			// TODO Add `*` only if ends with any alphabet letter (phrase_prefix)
+			$decorators = (new PluginFactory())->instance($this->manganel->decorators, $criteria, [
+				QueryStringDecoratorInterface::class
+			]);
+			$queryStringParams = [];
+			foreach ($decorators as $decorator)
+			{
+				/* @var $decorator QueryStringDecoratorInterface */
+				$decorator->decorate($queryStringParams, $criteria);
+			}
 			$conditions[] = [
-				'simple_query_string' => [
-					'query' => $q
-				]
+				'simple_query_string' => $queryStringParams
 			];
 		}
 	}

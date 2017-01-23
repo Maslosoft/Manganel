@@ -13,6 +13,7 @@
 namespace Maslosoft\Manganel\Meta;
 
 use Maslosoft\Mangan\Meta\DocumentPropertyMeta as ManganPropertyMeta;
+use Maslosoft\Manganel\Annotations\SearchBoostAnnotation;
 
 /**
  * DocumentPropertyMeta
@@ -29,5 +30,13 @@ class DocumentPropertyMeta extends ManganPropertyMeta
 	 * @var bool
 	 */
 	public $searchable = true;
+
+	/**
+	 * Searching boost of property.
+	 * 
+	 * @see SearchBoostAnnotation
+	 * @var float
+	 */
+	public $searchBoost = 1.0;
 
 }
