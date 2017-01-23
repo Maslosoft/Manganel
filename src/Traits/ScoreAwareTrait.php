@@ -18,6 +18,7 @@ use UnexpectedValueException;
 /**
  * ScoreAwareTrait
  *
+ * @see ScoreAwareInterface
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
 trait ScoreAwareTrait
@@ -40,7 +41,7 @@ trait ScoreAwareTrait
 		{
 			throw new UnexpectedValueException(sprintf('Class `%s` using `%s` must implement `%s`', get_class($this), __CLASS__, ScoreAwareInterface::class)); // @codeCoverageIgnore
 		}
-		$this->score = $score;
+		$this->score = floatval($score);
 		return $this;
 	}
 
