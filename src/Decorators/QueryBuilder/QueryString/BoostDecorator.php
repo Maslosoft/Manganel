@@ -2,8 +2,8 @@
 
 namespace Maslosoft\Manganel\Decorators\QueryBuilder\QueryString;
 
+use Maslosoft\Mangan\Criteria\ConditionDecorator;
 use Maslosoft\Manganel\Interfaces\QueryBuilder\QueryStringDecoratorInterface;
-use Maslosoft\Manganel\Meta\DocumentPropertyMeta;
 use Maslosoft\Manganel\Meta\ManganelMeta;
 use Maslosoft\Manganel\SearchCriteria;
 
@@ -24,10 +24,14 @@ class BoostDecorator implements QueryStringDecoratorInterface
 			$meta = ManganelMeta::create($model);
 			$boosted = $meta->properties('searchBoost');
 			/* @var $boosted float[] */
-			foreach ($boosted as $name => $boost)
+			foreach ($boosted as $fieldName => $boost)
 			{
 				if ($boost !== 1.0)
 				{
+					// Decorate fields, so for instance i18n fields
+					// will map boosting to `title.en` etc.
+					$cd = new ConditionDecorator($model);
+					$name = key($cd->decorate($fieldName));
 					$fields[$name] = $this->unify($name, $boost, $fields);
 				}
 			}
