@@ -38,7 +38,15 @@ trait UniqueModelsAwareTrait
 	{
 		// Unique based on class name
 		// See: http://stackoverflow.com/a/2561283/5444623
-		$unique = array_intersect_key($models, array_unique(array_map('get_class', $models)));
+		$map = function($value)
+		{
+			if (is_object($value))
+			{
+				return get_class($value);
+			}
+			return $value;
+		};
+		$unique = array_intersect_key($models, array_unique(array_map($map, $models)));
 		$this->models = array_values($unique);
 		return $this;
 	}
