@@ -13,6 +13,7 @@
 namespace Maslosoft\Manganel;
 
 use Elasticsearch\Common\Exceptions\BadRequest400Exception;
+use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaAwareInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaInterface;
@@ -99,6 +100,11 @@ class QueryBuilder implements CriteriaAwareInterface
 		{
 			$result = $this->manganel->getClient()->count($params);
 		}
+		catch (Missing404Exception $e)
+		{
+			$params = ['index' => strtolower($this->manganel->index)];
+			$this->manganel->getClient()->indices()->create($params);
+		}
 		catch (BadRequest400Exception $e)
 		{
 			// Throw previous exception,
@@ -130,6 +136,11 @@ class QueryBuilder implements CriteriaAwareInterface
 		try
 		{
 			$result = $this->manganel->getClient()->search($params);
+		}
+		catch (Missing404Exception $e)
+		{
+			$params = ['index' => strtolower($this->manganel->index)];
+			$this->manganel->getClient()->indices()->create($params);
 		}
 		catch (BadRequest400Exception $e)
 		{
