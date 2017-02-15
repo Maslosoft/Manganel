@@ -51,6 +51,7 @@ class MultiModelDecorator implements ManganelAwareInterface,
 				$criteria = clone $initialCriteria;
 				$criteria->mergeWith($modelCriteria);
 			}
+			$criteria->setModel($model);
 			$partial = [];
 			(new SingleModelDecorator())
 					->setManganel($this->manganel)
