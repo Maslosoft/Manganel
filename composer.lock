@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0755b2ff71b5dac37d22e280d4c46e11",
+    "hash": "225bf4e95baafb1755d5dd436efe0763",
     "content-hash": "f867336ce25fc6e243ae1d62ca8075b0",
     "packages": [
         {
@@ -80,29 +80,17 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "2.2.8",
+            "version": "2.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "0a87d4b19070a24636125993450a9d3f698a6663",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "0204f1362040d3e408404af2545e5fa27e8964e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/0a87d4b19070a24636125993450a9d3f698a6663",
-                "reference": "0a87d4b19070a24636125993450a9d3f698a6663",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/0204f1362040d3e408404af2545e5fa27e8964e2",
+                "reference": "0204f1362040d3e408404af2545e5fa27e8964e2",
+                "shasum": ""
             },
             "require": {
                 "behat/gherkin": "~4.4.0",
@@ -112,7 +100,7 @@
                 "guzzlehttp/guzzle": ">=4.1.4 <7.0",
                 "guzzlehttp/psr7": "~1.0",
                 "php": ">=5.4.0 <8.0",
-                "phpunit/php-code-coverage": ">=2.1.3 <5.0",
+                "phpunit/php-code-coverage": ">=2.2.4 <5.0",
                 "phpunit/phpunit": ">4.8.20 <6.0",
                 "sebastian/comparator": "~1.1",
                 "sebastian/diff": "^1.4",
@@ -180,7 +168,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2017-01-20 00:54:15"
+            "time": "2017-02-04 02:04:21"
         },
         {
             "name": "doctrine/instantiator",
@@ -710,29 +698,17 @@
         },
         {
             "name": "maslosoft/addendum",
-            "version": "5.0.4",
+            "version": "5.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Addendum.git",
-                "reference": "7fdc7d5cacd10950633ecff3a0b5eb675f19b243",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "4835029d6b62aef0296c5d3b4e44c9181e706397"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Addendum/zipball/7fdc7d5cacd10950633ecff3a0b5eb675f19b243",
-                "reference": "7fdc7d5cacd10950633ecff3a0b5eb675f19b243",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/Maslosoft/Addendum/zipball/4835029d6b62aef0296c5d3b4e44c9181e706397",
+                "reference": "4835029d6b62aef0296c5d3b4e44c9181e706397",
+                "shasum": ""
             },
             "require": {
                 "maslosoft/cache": "*",
@@ -770,13 +746,14 @@
                 }
             ],
             "description": "Easy to use php annotations",
+            "homepage": "https://maslosoft.com/addendum/",
             "keywords": [
                 "addendum",
                 "annotation",
                 "annotations",
                 "metadata"
             ],
-            "time": "2016-09-15 13:59:03"
+            "time": "2017-01-24 16:24:25"
         },
         {
             "name": "maslosoft/cache",
@@ -784,25 +761,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Cache.git",
-                "reference": "1de92324ebb409e86845952bb993fcf24940cc32",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "1de92324ebb409e86845952bb993fcf24940cc32"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/Maslosoft/Cache/zipball/1de92324ebb409e86845952bb993fcf24940cc32",
                 "reference": "1de92324ebb409e86845952bb993fcf24940cc32",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "maslosoft/embedi": "*"
@@ -833,31 +798,20 @@
         },
         {
             "name": "maslosoft/cli-shared",
-            "version": "0.0.10",
+            "version": "0.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/CLIShared.git",
-                "reference": "77f1e3ba83fc7cc6cdce8d9453739a78f5e3c6ea",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "cc70ac32193c3565162243b2c24dd8f707564c59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/CLIShared/zipball/77f1e3ba83fc7cc6cdce8d9453739a78f5e3c6ea",
-                "reference": "77f1e3ba83fc7cc6cdce8d9453739a78f5e3c6ea",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/Maslosoft/CLIShared/zipball/cc70ac32193c3565162243b2c24dd8f707564c59",
+                "reference": "cc70ac32193c3565162243b2c24dd8f707564c59",
+                "shasum": ""
             },
             "require": {
+                "psr/log": "^1",
                 "symfony/finder": "~3",
                 "symfony/yaml": "~3"
             },
@@ -882,7 +836,7 @@
                 }
             ],
             "description": "Shared CLI application components",
-            "time": "2016-08-18 20:04:06"
+            "time": "2017-02-02 11:08:18"
         },
         {
             "name": "maslosoft/embedi",
@@ -890,25 +844,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/EmbeDi.git",
-                "reference": "51c476876bd1cad2e4c0fd11c7d6bb9a216ceb5b",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "51c476876bd1cad2e4c0fd11c7d6bb9a216ceb5b"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/Maslosoft/EmbeDi/zipball/51c476876bd1cad2e4c0fd11c7d6bb9a216ceb5b",
                 "reference": "51c476876bd1cad2e4c0fd11c7d6bb9a216ceb5b",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require-dev": {
                 "maslosoft/embeditest": "dev-master",
@@ -943,25 +885,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Gazebo.git",
-                "reference": "036cc0b517410073d9aca07d0196d18aa2add7c0",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "036cc0b517410073d9aca07d0196d18aa2add7c0"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/Maslosoft/Gazebo/zipball/036cc0b517410073d9aca07d0196d18aa2add7c0",
                 "reference": "036cc0b517410073d9aca07d0196d18aa2add7c0",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "maslosoft/addendum": "*",
@@ -993,29 +923,17 @@
         },
         {
             "name": "maslosoft/mangan",
-            "version": "4.4.3",
+            "version": "4.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Mangan.git",
-                "reference": "b4b35b693953571b54a787028ee22d2ec84f2a34",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "ff889f3477d8ebde9ce4f38195e9904473d01905"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/b4b35b693953571b54a787028ee22d2ec84f2a34",
-                "reference": "b4b35b693953571b54a787028ee22d2ec84f2a34",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/ff889f3477d8ebde9ce4f38195e9904473d01905",
+                "reference": "ff889f3477d8ebde9ce4f38195e9904473d01905",
+                "shasum": ""
             },
             "require": {
                 "ext-gd": "*",
@@ -1096,7 +1014,7 @@
             ],
             "description": "MongoDB Object Persister",
             "homepage": "https://maslosoft.com/mangan/",
-            "time": "2017-01-19 11:44:37"
+            "time": "2017-02-15 14:08:33"
         },
         {
             "name": "maslosoft/miniview",
@@ -1104,25 +1022,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/MiniView.git",
-                "reference": "73ee7696b32db8afe6eb79f040b0f712a2827e52",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "73ee7696b32db8afe6eb79f040b0f712a2827e52"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/Maslosoft/MiniView/zipball/73ee7696b32db8afe6eb79f040b0f712a2827e52",
                 "reference": "73ee7696b32db8afe6eb79f040b0f712a2827e52",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "codeception/codeception": "*"
@@ -1161,25 +1067,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/mongofill.git",
-                "reference": "0020b1c3ef54fbbc84f077063b4556b2eaafb2f4",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "0020b1c3ef54fbbc84f077063b4556b2eaafb2f4"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/Maslosoft/mongofill/zipball/0020b1c3ef54fbbc84f077063b4556b2eaafb2f4",
                 "reference": "0020b1c3ef54fbbc84f077063b4556b2eaafb2f4",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "provide": {
                 "ext-mongo": "*"
@@ -1300,29 +1194,17 @@
         },
         {
             "name": "maslosoft/signals",
-            "version": "2.0.6",
+            "version": "2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Signals.git",
-                "reference": "358bfdf89d65a944ae593e6f705b6a0ca32b099a",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "4d623aecbe2b19f04d56eb93a0a5762ea426efeb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/358bfdf89d65a944ae593e6f705b6a0ca32b099a",
-                "reference": "358bfdf89d65a944ae593e6f705b6a0ca32b099a",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/4d623aecbe2b19f04d56eb93a0a5762ea426efeb",
+                "reference": "4d623aecbe2b19f04d56eb93a0a5762ea426efeb",
+                "shasum": ""
             },
             "require": {
                 "maslosoft/addendum": "*",
@@ -1357,6 +1239,7 @@
                 }
             ],
             "description": "Wireless Cross-Component Communication",
+            "homepage": "https://maslosoft.com/signals/",
             "keywords": [
                 "event",
                 "events",
@@ -1365,7 +1248,7 @@
                 "slot",
                 "slots"
             ],
-            "time": "2016-11-04 11:15:09"
+            "time": "2017-02-02 11:54:22"
         },
         {
             "name": "masterexploder/phpthumb",
@@ -1988,29 +1871,17 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.32",
+            "version": "4.8.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "f5e1941a8dacf0d904753ff2895c6f68e54bcee1",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "791b1a67c25af50e230f841ee7a9c6eba507dc87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f5e1941a8dacf0d904753ff2895c6f68e54bcee1",
-                "reference": "f5e1941a8dacf0d904753ff2895c6f68e54bcee1",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/791b1a67c25af50e230f841ee7a9c6eba507dc87",
+                "reference": "791b1a67c25af50e230f841ee7a9c6eba507dc87",
+                "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
@@ -2068,7 +1939,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-01-22 08:37:05"
+            "time": "2017-02-06 05:18:07"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2365,29 +2236,17 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "1.2.2",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "6a1ed12e8b2409076ab22e3897126211ff8b1f7f",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "2b7424b55f5047b47ac6e5ccb20b2aea4011d9be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/6a1ed12e8b2409076ab22e3897126211ff8b1f7f",
-                "reference": "6a1ed12e8b2409076ab22e3897126211ff8b1f7f",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/2b7424b55f5047b47ac6e5ccb20b2aea4011d9be",
+                "reference": "2b7424b55f5047b47ac6e5ccb20b2aea4011d9be",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
@@ -2437,7 +2296,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2016-11-19 09:18:40"
+            "time": "2017-01-29 09:50:25"
         },
         {
             "name": "sebastian/diff",
@@ -2821,29 +2680,17 @@
         },
         {
             "name": "symfony/browser-kit",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/browser-kit.git",
-                "reference": "548f8230bad9f77463b20b15993a008f03e96db5",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "394a2475a3a89089353fde5714a7f402fbb83880"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/548f8230bad9f77463b20b15993a008f03e96db5",
-                "reference": "548f8230bad9f77463b20b15993a008f03e96db5",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/394a2475a3a89089353fde5714a7f402fbb83880",
+                "reference": "394a2475a3a89089353fde5714a7f402fbb83880",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.5.9",
@@ -2886,33 +2733,21 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-02 20:32:22"
+            "time": "2017-01-31 21:49:23"
         },
         {
             "name": "symfony/console",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "4f9e449e76996adf310498a8ca955c6deebe29dd",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "7a8405a9fc175f87fed8a3c40856b0d866d61936"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/4f9e449e76996adf310498a8ca955c6deebe29dd",
-                "reference": "4f9e449e76996adf310498a8ca955c6deebe29dd",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/symfony/console/zipball/7a8405a9fc175f87fed8a3c40856b0d866d61936",
+                "reference": "7a8405a9fc175f87fed8a3c40856b0d866d61936",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.5.9",
@@ -2961,33 +2796,21 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-08 20:47:33"
+            "time": "2017-02-06 12:04:21"
         },
         {
             "name": "symfony/css-selector",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "f0e628f04fc055c934b3211cfabdb1c59eefbfaa",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "f0e628f04fc055c934b3211cfabdb1c59eefbfaa"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/css-selector/zipball/f0e628f04fc055c934b3211cfabdb1c59eefbfaa",
                 "reference": "f0e628f04fc055c934b3211cfabdb1c59eefbfaa",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.5.9"
@@ -3030,29 +2853,17 @@
         },
         {
             "name": "symfony/debug",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "810ba5c1c5352a4ddb15d4719e8936751dff0b05",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "b4d9818f127c60ce21ed62c395da7df868dc8477"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/810ba5c1c5352a4ddb15d4719e8936751dff0b05",
-                "reference": "810ba5c1c5352a4ddb15d4719e8936751dff0b05",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/symfony/debug/zipball/b4d9818f127c60ce21ed62c395da7df868dc8477",
+                "reference": "b4d9818f127c60ce21ed62c395da7df868dc8477",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.5.9",
@@ -3095,33 +2906,21 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-02 20:32:22"
+            "time": "2017-01-28 02:37:08"
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "27d9790840a4efd3b7bb8f5f4f9efc27b36b7024",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "b814b41373fc4e535aff8c765abe39545216f391"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/27d9790840a4efd3b7bb8f5f4f9efc27b36b7024",
-                "reference": "27d9790840a4efd3b7bb8f5f4f9efc27b36b7024",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/b814b41373fc4e535aff8c765abe39545216f391",
+                "reference": "b814b41373fc4e535aff8c765abe39545216f391",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.5.9",
@@ -3163,33 +2962,21 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-02 20:32:22"
+            "time": "2017-01-21 17:14:11"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "9137eb3a3328e413212826d63eeeb0217836e2b6",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "9137eb3a3328e413212826d63eeeb0217836e2b6"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/9137eb3a3328e413212826d63eeeb0217836e2b6",
                 "reference": "9137eb3a3328e413212826d63eeeb0217836e2b6",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.5.9"
@@ -3239,29 +3026,17 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "8c71141cae8e2957946b403cc71a67213c0380d6",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "8c71141cae8e2957946b403cc71a67213c0380d6"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/finder/zipball/8c71141cae8e2957946b403cc71a67213c0380d6",
                 "reference": "8c71141cae8e2957946b403cc71a67213c0380d6",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.5.9"
@@ -3300,29 +3075,17 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v2.8.16",
+            "version": "v2.8.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "cc343e8e30e0e9785a0871196af722665d8b970e",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "cc343e8e30e0e9785a0871196af722665d8b970e"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/options-resolver/zipball/cc343e8e30e0e9785a0871196af722665d8b970e",
                 "reference": "cc343e8e30e0e9785a0871196af722665d8b970e",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.3.9"
@@ -3437,29 +3200,17 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.8.16",
+            "version": "v2.8.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "ebb3c2abe0940a703f08e0cbe373f62d97d40231",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "0110ac49348d14eced7d3278ea7485f22196932e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/ebb3c2abe0940a703f08e0cbe373f62d97d40231",
-                "reference": "ebb3c2abe0940a703f08e0cbe373f62d97d40231",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/symfony/process/zipball/0110ac49348d14eced7d3278ea7485f22196932e",
+                "reference": "0110ac49348d14eced7d3278ea7485f22196932e",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.3.9"
@@ -3494,33 +3245,21 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-02 20:30:24"
+            "time": "2017-02-03 12:08:06"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "50eadbd7926e31842893c957eca362b21592a97d",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "e1718c6bf57e1efbb8793ada951584b2ab27775b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/50eadbd7926e31842893c957eca362b21592a97d",
-                "reference": "50eadbd7926e31842893c957eca362b21592a97d",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/e1718c6bf57e1efbb8793ada951584b2ab27775b",
+                "reference": "e1718c6bf57e1efbb8793ada951584b2ab27775b",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.5.9"
@@ -3561,7 +3300,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-03 13:51:32"
+            "time": "2017-01-21 17:06:35"
         },
         {
             "name": "webmozart/assert",
@@ -3629,29 +3368,17 @@
     "packages-dev": [
         {
             "name": "codeception/specify",
-            "version": "0.4.5",
+            "version": "0.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Specify.git",
-                "reference": "5fb1d68a737f31155a0f7410cf47dea479b33415",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "21b586f503ca444aa519dd9cafb32f113a05f286"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Specify/zipball/5fb1d68a737f31155a0f7410cf47dea479b33415",
-                "reference": "5fb1d68a737f31155a0f7410cf47dea479b33415",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "http://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/Codeception/Specify/zipball/21b586f503ca444aa519dd9cafb32f113a05f286",
+                "reference": "21b586f503ca444aa519dd9cafb32f113a05f286",
+                "shasum": ""
             },
             "require": {
                 "myclabs/deep-copy": "~1.1",
@@ -3667,6 +3394,9 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
                     "name": "Michael Bodnarchuk",
@@ -3674,33 +3404,21 @@
                 }
             ],
             "description": "BDD code blocks for PHPUnit and Codeception",
-            "time": "2016-10-17 22:28:20"
+            "time": "2016-10-21 09:42:00"
         },
         {
             "name": "maslosoft/hedron",
-            "version": "1.1.14",
+            "version": "1.1.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Hedron.git",
-                "reference": "144174206d6cc1c7cf79949fb3fca6f3f0f2a696",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "e6df06a58570569423c05305c838a0445e583143"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Hedron/zipball/144174206d6cc1c7cf79949fb3fca6f3f0f2a696",
-                "reference": "144174206d6cc1c7cf79949fb3fca6f3f0f2a696",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/Maslosoft/Hedron/zipball/e6df06a58570569423c05305c838a0445e583143",
+                "reference": "e6df06a58570569423c05305c838a0445e583143",
+                "shasum": ""
             },
             "require": {
                 "maslosoft/cli-shared": "*",
@@ -3709,6 +3427,9 @@
                 "symfony/finder": "~3",
                 "symfony/yaml": "~3",
                 "zordius/lightncandy": "~0"
+            },
+            "require-dev": {
+                "maslosoft/addendum": "*"
             },
             "bin": [
                 "hedron"
@@ -3731,8 +3452,8 @@
                 }
             ],
             "description": "PHP source code class header applier",
-            "homepage": "http://maslosoft.com/hedron/",
-            "time": "2016-08-22 18:15:39"
+            "homepage": "https://maslosoft.com/hedron/",
+            "time": "2017-01-31 13:12:29"
         },
         {
             "name": "maslosoft/manganeltest",
@@ -3740,25 +3461,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/ManganelTest.git",
-                "reference": "e8d9879d01d42c1e38d0575f3f5f0bcd03c0835a",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "87b566ff3363fb571e136fb261649ea15f31abe7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/ManganelTest/zipball/e8d9879d01d42c1e38d0575f3f5f0bcd03c0835a",
-                "reference": "e8d9879d01d42c1e38d0575f3f5f0bcd03c0835a",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/Maslosoft/ManganelTest/zipball/87b566ff3363fb571e136fb261649ea15f31abe7",
+                "reference": "87b566ff3363fb571e136fb261649ea15f31abe7",
+                "shasum": ""
             },
             "require": {
                 "codeception/codeception": "*"
@@ -3784,7 +3493,7 @@
             ],
             "description": "Tests for manganel",
             "homepage": "https://maslosoft.com/manganel/",
-            "time": "2017-01-23 11:00:30"
+            "time": "2017-02-15 14:00:34"
         },
         {
             "name": "maslosoft/mangantest",
@@ -3792,25 +3501,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/ManganTest.git",
-                "reference": "09a6a3ec062e6b458cc69c6720168cabe6ea60f2",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "2d0636d547c177bae3ea8f1be36b0ba780b19153"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/ManganTest/zipball/09a6a3ec062e6b458cc69c6720168cabe6ea60f2",
-                "reference": "09a6a3ec062e6b458cc69c6720168cabe6ea60f2",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/Maslosoft/ManganTest/zipball/2d0636d547c177bae3ea8f1be36b0ba780b19153",
+                "reference": "2d0636d547c177bae3ea8f1be36b0ba780b19153",
+                "shasum": ""
             },
             "require": {
                 "codeception/codeception": "*",
@@ -3837,33 +3534,21 @@
             ],
             "description": "Tests for mangan",
             "homepage": "https://maslosoft.com/mangan/",
-            "time": "2017-01-19 09:39:49"
+            "time": "2017-02-15 13:44:25"
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.5.5",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "399c1f9781e222f6eb6cc238796f5200d1b7f108",
-                "mirrors": [
-                    {
-                        "url": "peter@pkg.maslosoft.com/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/399c1f9781e222f6eb6cc238796f5200d1b7f108",
-                "reference": "399c1f9781e222f6eb6cc238796f5200d1b7f108",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "http://pkg.maslosoft.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/5a5a9fc8025a08d8919be87d6884d5a92520cefe",
+                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0"
@@ -3891,7 +3576,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2016-10-31 17:19:45"
+            "time": "2017-01-26 22:05:40"
         },
         {
             "name": "zordius/lightncandy",
