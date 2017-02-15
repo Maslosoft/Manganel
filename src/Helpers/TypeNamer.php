@@ -3,6 +3,7 @@
 namespace Maslosoft\Manganel\Helpers;
 
 use Maslosoft\Mangan\Helpers\CollectionNamer;
+use Maslosoft\Manganel\Meta\ManganelMeta;
 
 /**
  * TypeNamer
@@ -14,6 +15,11 @@ class TypeNamer extends CollectionNamer
 
 	public static function nameType($model)
 	{
+		$enforcedType = ManganelMeta::create($model)->type()->type;
+		if (!empty($enforcedType))
+		{
+			$model = new $enforcedType;
+		}
 		$collectionName = parent::nameCollection($model);
 		return str_replace('.', '_', $collectionName);
 	}

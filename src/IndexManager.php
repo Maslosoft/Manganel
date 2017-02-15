@@ -100,7 +100,27 @@ class IndexManager
 		];
 		try
 		{
-			$result = $this->getClient()->index($this->getParams($params));
+			$fullParams = $this->getParams($params);
+			// Need to check if exists, or update will fail
+			$existsParams = [
+				'index' => $fullParams['index'],
+				'type' => $fullParams['type'],
+				'id' => $fullParams['id']
+			];
+			$exists = $this->getClient()->exists($existsParams);
+
+			if (!$exists)
+			{
+				$result = $this->getClient()->index($fullParams);
+			}
+			else
+			{
+				$updateParams = $fullParams;
+				$updateParams['body'] = [
+					'doc' => $fullParams['body']
+				];
+				$result = $this->getClient()->update($updateParams);
+			}
 			if (array_key_exists('result', $result) && $result['result'] === 'updated')
 			{
 				// For ES 5
