@@ -15,17 +15,10 @@ use Maslosoft\Manganel\Traits\ManganelAwareTrait;
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class SingleModelDecorator implements ManganelAwareInterface,
-		ModelAwareInterface
+class SingleModelDecorator implements ManganelAwareInterface
 {
 
-	use ManganelAwareTrait,
-	  ModelAwareTrait;
-
-	public function __construct($model)
-	{
-		$this->model = $model;
-	}
+	use ManganelAwareTrait;
 
 	public function decorate(&$body, SearchCriteria $criteria)
 	{
