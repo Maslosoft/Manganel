@@ -8,19 +8,22 @@
 
 namespace Maslosoft\Manganel\Helpers;
 
-use Maslosoft\Gazebo\PluginFactory;
-use Maslosoft\Manganel\Interfaces\ManganelAwareInterface;
-use Maslosoft\Manganel\Interfaces\QueryBuilder\BodyDecoratorInterface;
+use Maslosoft\Manganel\Decorators\QueryBuilder\MultiModelDecorator;
+use Maslosoft\Manganel\Decorators\QueryBuilder\SingleModelDecorator;
+use Maslosoft\Manganel\Interfaces\ModelsAwareInterface;
 use Maslosoft\Manganel\Manganel;
 use Maslosoft\Manganel\SearchCriteria;
+use Maslosoft\Manganel\Traits\UniqueModelsAwareTrait;
 
 /**
  * QueryBuilderDecorator
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class QueryBuilderDecorator
+class QueryBuilderDecorator implements ModelsAwareInterface
 {
+
+	use UniqueModelsAwareTrait;
 
 	/**
 	 * Manganel instance
@@ -35,18 +38,21 @@ class QueryBuilderDecorator
 
 	public function decorate(&$body, SearchCriteria $criteria)
 	{
-		$decorators = (new PluginFactory())->instance($this->manganel->decorators, $criteria, [
-			BodyDecoratorInterface::class
-		]);
 
-		foreach ($decorators as $decorator)
+		$models = $this->getModels();
+		$numModels = count($models);
+		assert($numModels > 0);
+		if ($numModels === 1)
 		{
-			/* @var $decorator BodyDecoratorInterface  */
-			if ($decorator instanceof ManganelAwareInterface)
-			{
-				$decorator->setManganel($this->manganel);
-			}
-			$decorator->decorate($body, $criteria);
+			(new SingleModelDecorator($models[0]))
+					->setManganel($this->manganel)
+					->decorate($body, $criteria);
+		}
+		else
+		{
+			(new MultiModelDecorator($models))
+					->setManganel($this->manganel)
+					->decorate($body, $criteria);
 		}
 	}
 

@@ -16,11 +16,12 @@ use Maslosoft\Manganel\SearchCriteria;
 use Maslosoft\Manganel\Traits\ManganelAwareTrait;
 
 /**
- * ConditionsDecorator
+ * This decorator provides filtering capabilities for query builder
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class ConditionsDecorator implements BodyDecoratorInterface, ManganelAwareInterface
+class ConditionsDecorator implements BodyDecoratorInterface,
+		ManganelAwareInterface
 {
 
 	use ManganelAwareTrait;

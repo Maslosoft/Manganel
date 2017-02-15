@@ -21,7 +21,8 @@ use stdClass;
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class SearchDecorator implements ConditionDecoratorInterface, ManganelAwareInterface
+class SearchDecorator implements ConditionDecoratorInterface,
+		ManganelAwareInterface
 {
 
 	use ManganelAwareTrait;
