@@ -44,7 +44,7 @@ class QueryBuilderDecorator implements ModelsAwareInterface
 		assert($numModels > 0);
 		if ($numModels === 1)
 		{
-			(new SingleModelDecorator($models[0]))
+			(new SingleModelDecorator())
 					->setManganel($this->manganel)
 					->decorate($body, $criteria);
 		}
