@@ -2,7 +2,6 @@
 
 use Maslosoft\Mangan\Decorators\EmbedRefArrayDecorator;
 use Maslosoft\Mangan\Decorators\EmbedRefDecorator;
-use Maslosoft\Mangan\Decorators\Model\ClassNameDecorator;
 use Maslosoft\Mangan\Decorators\Property\I18NDecorator;
 use Maslosoft\Mangan\Sanitizers\DateSanitizer;
 use Maslosoft\Mangan\Sanitizers\MongoObjectId;
@@ -11,6 +10,7 @@ use Maslosoft\Manganel\Adapters\Finder\ElasticSearchCursor;
 use Maslosoft\Manganel\Decorators\IndexDecorator;
 use Maslosoft\Manganel\Decorators\MaxScoreDecorator;
 use Maslosoft\Manganel\Decorators\ScoreDecorator;
+use Maslosoft\Manganel\Decorators\SearchClassNameDecorator;
 use Maslosoft\Manganel\Decorators\UnderscoreIdFieldDecorator;
 use Maslosoft\Manganel\Filters\SearchFilter;
 use Maslosoft\Manganel\Sanitizers\DateWriteEsSanitizer;
@@ -24,7 +24,7 @@ return [
 		// See notes in ElasticSearchCursor::execute()
 		],
 		SearchArray::class => [
-			ClassNameDecorator::class,
+			SearchClassNameDecorator::class,
 			UnderscoreIdFieldDecorator::class,
 			ScoreDecorator::class,
 			MaxScoreDecorator::class,

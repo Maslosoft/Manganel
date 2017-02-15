@@ -12,6 +12,7 @@
 
 namespace Maslosoft\Manganel\Annotations;
 
+use Maslosoft\Addendum\Utilities\ClassChecker;
 use Maslosoft\Manganel\Meta\ManganelTypeAnnotation;
 use UnexpectedValueException;
 
@@ -49,6 +50,10 @@ class SearchTypeAnnotation extends ManganelTypeAnnotation
 		if (empty($this->value))
 		{
 			throw new UnexpectedValueException(sprintf('@SearchType annotation requires type name as param, used on model `%s`', $this->getMeta()->type()->name));
+		}
+		if (!ClassChecker::exists($this->value))
+		{
+			throw new UnexpectedValueException(sprintf('Could not resolve class name for @SearchType annotation used on model `%s`', $this->getMeta()->type()->name));
 		}
 		$this->getEntity()->type = $this->value;
 	}
