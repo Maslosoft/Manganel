@@ -52,9 +52,10 @@ class MultiModelDecorator implements ManganelAwareInterface,
 				$criteria->mergeWith($modelCriteria);
 			}
 			$partial = [];
-			(new SingleModelDecorator($model))
+			(new SingleModelDecorator())
 					->setManganel($this->manganel)
 					->decorate($partial, $criteria);
+
 			$query = [
 				'bool' => [
 					'filter' => [
@@ -68,6 +69,16 @@ class MultiModelDecorator implements ManganelAwareInterface,
 			$queries[] = $query;
 		}
 		$body['query']['dis_max']['queries'] = $queries;
+
+		$common = [];
+		(new SingleModelDecorator)->setManganel($this->getManganel())->decorate($common, $initialCriteria);
+		unset($common['query']);
+
+		// Use foreach here, as $body is passed by ref
+		foreach ($common as $key => $value)
+		{
+			$body[$key] = $value;
+		}
 	}
 
 }
