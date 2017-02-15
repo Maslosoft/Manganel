@@ -180,6 +180,7 @@ class QueryBuilder implements CriteriaAwareInterface
 		$criteria->setModels($this->getModels());
 
 		$decorator = new QueryBuilderDecorator($this->manganel);
+		$decorator->setModels($this->getModels());
 		$decorator->decorate($body, $criteria);
 		$models = $this->getModels();
 		if (empty($models))
