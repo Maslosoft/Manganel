@@ -92,6 +92,12 @@ class Manganel
 	private $di = null;
 
 	/**
+	 * Version number holder
+	 * @var string
+	 */
+	private static $_version = null;
+
+	/**
 	 * Instances of manganel
 	 * @var Manganel[]
 	 */
@@ -178,6 +184,19 @@ class Manganel
 	public function init()
 	{
 		$this->di->store($this);
+	}
+
+	/**
+	 * Get mangan version
+	 * @return string
+	 */
+	public function getVersion()
+	{
+		if (null === self::$_version)
+		{
+			self::$_version = require __DIR__ . '/version.php';
+		}
+		return self::$_version;
 	}
 
 	/**
