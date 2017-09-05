@@ -47,15 +47,22 @@ class ConditionsDecorator implements BodyDecoratorInterface,
 				continue;
 			}
 			$kind = $decorator->getKind();
+			if(false === $kind)
+			{
+				continue;
+			}
 			if (empty($bool[$kind]))
 			{
 				$bool[$kind] = [];
 			}
 			$bool[$kind] = array_merge($bool[$kind], $conditions);
 		}
-		$body['query'] = [
-			'bool' => $bool
-		];
+		if (!empty($bool))
+		{
+			$body['query'] = [
+				'bool' => $bool
+			];
+		}
 	}
 
 }
