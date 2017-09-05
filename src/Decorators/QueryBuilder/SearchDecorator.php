@@ -45,8 +45,6 @@ class SearchDecorator implements ConditionDecoratorInterface,
 		else
 		{
 			// Use query string matching
-			// TODO Boost fields #8 https://github.com/Maslosoft/Manganel/issues/8
-			// TODO Add `*` only if ends with any alphabet letter (phrase_prefix)
 			$decorators = (new PluginFactory())->instance($this->manganel->decorators, $criteria, [
 				QueryStringDecoratorInterface::class
 			]);
