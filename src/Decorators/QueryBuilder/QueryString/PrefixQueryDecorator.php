@@ -19,11 +19,19 @@ class PrefixQueryDecorator implements QueryStringDecoratorInterface
 	{
 		$q = $criteria->getSearch();
 
-		// Add `*` only if it does not alredy contain wildcard on end
-		// or will find nothing
+		// Add `*` only if :
+		// - not contain wildcard on end
+		// - not have space on end
+		// - ends with letter
+		// NOTE: Passing two wildcards to query will yield nothing,
+		// thats why it is checked too.
 		if (!preg_match('~\*$~', $q))
 		{
-			$q = $q . '*';
+			// Add `*` only if ends with any alphabet letter (phrase_prefix)
+			if (preg_match('~\p{L}$~', $q))
+			{
+				$q = $q . '*';
+			}
 		}
 		$queryStringParams['query'] = $q;
 	}
