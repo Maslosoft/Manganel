@@ -8,10 +8,8 @@
 
 namespace Maslosoft\Manganel\Decorators\QueryBuilder;
 
-use Maslosoft\Gazebo\PluginFactory;
 use Maslosoft\Manganel\Interfaces\ManganelAwareInterface;
 use Maslosoft\Manganel\Interfaces\QueryBuilder\ConditionDecoratorInterface;
-use Maslosoft\Manganel\Interfaces\QueryBuilder\OperatorDecoratorInterface;
 use Maslosoft\Manganel\SearchCriteria;
 use Maslosoft\Manganel\Traits\ManganelAwareTrait;
 
@@ -50,11 +48,6 @@ class TagDecorator implements ConditionDecoratorInterface, ManganelAwareInterfac
 			$criteria->addCond($this->field, '==', trim($match, '[]'));
 		}
 		
-		// Search all documents if only tag is searched
-		if(!empty($query))
-		{
-			$query = '*';
-		}
 		$criteria->search($query);
 	}
 
