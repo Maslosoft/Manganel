@@ -41,11 +41,18 @@ class TagDecorator implements ConditionDecoratorInterface, ManganelAwareInterfac
 		{
 			return;
 		}
-		foreach($matches as $group)
+		if(count($matches[0]) > 1)
 		{
-			$match = $group[0];
+			echo '';
+		}
+		foreach($matches[0] as $match)
+		{
 			$query = str_replace($match, '', $query);
-			$criteria->addCond($this->field, '==', trim($match, '[]'));
+			$conditions[] = [
+				'term' => [
+					$this->field => trim($match, '[]')
+				]
+			];
 		}
 		
 		$criteria->search($query);
@@ -53,7 +60,7 @@ class TagDecorator implements ConditionDecoratorInterface, ManganelAwareInterfac
 
 	public function getKind()
 	{
-		return false;
+		return self::KindFilter;
 	}
 
 }
