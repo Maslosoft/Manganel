@@ -19,6 +19,7 @@ use Maslosoft\Mangan\Traits\DataProvider\DataTrait;
 use Maslosoft\Mangan\Traits\DataProvider\PaginationTrait;
 use Maslosoft\Mangan\Traits\ModelAwareTrait;
 use Maslosoft\Mangan\Traits\SortAwareTrait;
+use Maslosoft\Manganel\Helpers\Debug\DebugSearchProvider;
 
 /**
  * SearchProvider
@@ -42,16 +43,24 @@ class SearchProvider implements DataProviderInterface
 	const CriteriaClass = SearchCriteria::class;
 
 	/**
+	 * Finder instance
+	 *
+	 * This is protected, not private so it can be debugged
+	 * @see DebugSearchProvider
+	 * @var SearchFinder
+	 */
+	protected $finder = null;
+
+	/**
 	 * Total items count cache
 	 * @var int
 	 */
 	private $totalItemCount = null;
 
 	/**
-	 * Finder instance
-	 * @var SearchFinder
+	 * When stopped no data will be retrieved. Used by external libraries.
+	 * @var boolean
 	 */
-	private $finder = null;
 	private $isStopped = false;
 
 	public function __construct($modelClass = null, $config = [])
