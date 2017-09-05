@@ -26,5 +26,17 @@ interface ConditionDecoratorInterface
 
 	public function decorate(&$conditions, SearchCriteria $criteria);
 
+	/**
+	 * Get kind of query, should return one of interface constants:
+	 *
+	 * * KindMust
+	 * * KindMustNot
+	 * * KindFilter
+	 * * KindShould
+	 *
+	 * Or false to skip condition.
+	 *
+	 * @return string|boolean
+	 */
 	public function getKind();
 }
