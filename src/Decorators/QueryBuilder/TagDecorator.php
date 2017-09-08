@@ -8,7 +8,7 @@
 
 namespace Maslosoft\Manganel\Decorators\QueryBuilder;
 
-use Maslosoft\Mangan\Criteria\ConditionDecorator;
+use Maslosoft\Mangan\Criteria\ConditionDecorator as ManganCD;
 use Maslosoft\Mangan\Meta\ManganMeta;
 use Maslosoft\Manganel\Interfaces\ManganelAwareInterface;
 use Maslosoft\Manganel\Interfaces\QueryBuilder\ConditionDecoratorInterface;
@@ -55,7 +55,7 @@ class TagDecorator implements ConditionDecoratorInterface, ManganelAwareInterfac
 			{
 				continue;
 			}
-			$cd = new ConditionDecorator($model);
+			$cd = new ManganCD($model);
 			$data = $cd->decorate($this->field);
 			$field = key($data);
 		}
