@@ -43,10 +43,6 @@ class Manganel
 
 	public $decorators = [
 		SearchCriteria::class => [
-			[
-				'class' => TagDecorator::class,
-				'field' => 'tag'
-			],
 			ConditionDecorator::class,
 			ConditionsDecorator::class,
 			ScrollDecorator::class,
@@ -131,9 +127,13 @@ class Manganel
 		{
 			$indexId = self::DefaultIndexId;
 		}
+		$decorators = $this->decorators;
+
 		$this->indexId = $indexId;
 		$this->di = new EmbeDi($this->indexId);
 		$this->di->configure($this);
+
+		$this->decorators = array_merge_recursive($this->decorators, $decorators);
 
 		if (empty(self::$mnl[$indexId]))
 		{

@@ -66,7 +66,30 @@ store comma or space separated values.
 ];
 ```
 
+#### Example of configuring with [EmbeDi][embedi] (recommended)
 
+```
+$config = [
+	'manganel' => [
+		'class' => Manganel::class,
+		'decorators' => [
+			SearchCriteria::class => [
+				[
+					'class' => TagDecorator::class,
+					'field' => 'tag'
+				]
+			]
+		]
+	]
+];
+
+EmbeDi::fly()->addAdapter(new ArrayAdapter($config));
+```
+
+Then configured with [EmbeDi][embedi], the newly created [Manganel][manganel]
+instances will have <?= $t; ?> added with field `tag`.
+
+[embedi]: /embedi/
 [mangan]: /mangan/
 [manganel]: /manganel/
 [hempshire]: https://en.wikipedia.org/wiki/New_Hampshire,_Ohio
