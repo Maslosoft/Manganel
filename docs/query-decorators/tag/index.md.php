@@ -18,7 +18,7 @@ $t = new ShortNamer(TagDecorator::class);
 <template>docs</template>
 <title>Tag</title>
 
-# Tag
+# Tag Filter Decorator
 
 <p class="alert alert-warning">
 This is advanced topic, for basic usage it is not required. Misused will yield
@@ -35,7 +35,13 @@ cities starting with word *New*, following query could be used:
 
 > New [famous]
 
+This query could return for example famous *New York*, but not *New Hampshire*
+which is [not famous at all][hempshire].
+
 ### Configuring
+
+Tag decorator is optional, so it needs to be added to configuration of [Manganel][manganel].
+
 <?php ShortNamer::defaults()->html();?>
 <p class="alert alert-warning">
 Configuration for <?= $t; ?> should be placed at beginning of <?= $ml->decorators; ?> property.
@@ -62,6 +68,8 @@ store comma or space separated values.
 
 
 [mangan]: /mangan/
+[manganel]: /manganel/
+[hempshire]: https://en.wikipedia.org/wiki/New_Hampshire,_Ohio
 [embedi]: /embedi/
 [ml]: /manganel/
 [es]: https://elastic.co/

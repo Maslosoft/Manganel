@@ -8,6 +8,8 @@
 
 namespace Maslosoft\Manganel\Decorators\QueryBuilder;
 
+use Maslosoft\Mangan\Criteria\ConditionDecorator;
+use Maslosoft\Mangan\Meta\ManganMeta;
 use Maslosoft\Manganel\Interfaces\ManganelAwareInterface;
 use Maslosoft\Manganel\Interfaces\QueryBuilder\ConditionDecoratorInterface;
 use Maslosoft\Manganel\SearchCriteria;
@@ -45,12 +47,24 @@ class TagDecorator implements ConditionDecoratorInterface, ManganelAwareInterfac
 		{
 			echo '';
 		}
+		$field = $this->field;
+		foreach($criteria->getModels() as $model)
+		{
+			// Skip field if not exists on model
+			if(ManganMeta::create($model)->field($this->field) === false)
+			{
+				continue;
+			}
+			$cd = new ConditionDecorator($model);
+			$data = $cd->decorate($this->field);
+			$field = key($data);
+		}
 		foreach($matches[0] as $match)
 		{
 			$query = str_replace($match, '', $query);
 			$conditions[] = [
 				'term' => [
-					$this->field => trim($match, '[]')
+					$field => trim($match, '[]')
 				]
 			];
 		}
