@@ -51,7 +51,7 @@ class TagDecorator implements ConditionDecoratorInterface, ManganelAwareInterfac
 		foreach($criteria->getModels() as $model)
 		{
 			// Skip field if not exists on model
-			if(ManganMeta::create($model)->field($this->field) === false)
+			if(ManganMeta::create($model)->{$this->field} === false)
 			{
 				continue;
 			}
