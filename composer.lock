@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fd7a1a36e3dc22479d4599b1b691e67",
+    "content-hash": "0fff022838f586e9ca549abf2e56e716",
     "packages": [
         {
             "name": "elasticsearch/elasticsearch",
@@ -392,16 +392,16 @@
         },
         {
             "name": "maslosoft/mangan",
-            "version": "4.4.16",
+            "version": "4.4.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Mangan.git",
-                "reference": "e1638c10eafa0bf5ac0a95c86219813184e61fe4"
+                "reference": "d62476344b5096a35e6e986c3e8a06e6145cce8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/e1638c10eafa0bf5ac0a95c86219813184e61fe4",
-                "reference": "e1638c10eafa0bf5ac0a95c86219813184e61fe4",
+                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/d62476344b5096a35e6e986c3e8a06e6145cce8a",
+                "reference": "d62476344b5096a35e6e986c3e8a06e6145cce8a",
                 "shasum": ""
             },
             "require": {
@@ -485,7 +485,7 @@
             ],
             "description": "MongoDB Object Persister/Document Mapper",
             "homepage": "https://maslosoft.com/mangan/",
-            "time": "2017-07-11T11:27:53+00:00"
+            "time": "2017-09-08T13:43:08+00:00"
         },
         {
             "name": "maslosoft/miniview",
@@ -1868,12 +1868,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/ManganelTest.git",
-                "reference": "5a635dfe1108947d3367013509c15f3f7720b9ef"
+                "reference": "f690aa74be2cbe4e54bf9df29805842e4b3237b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/ManganelTest/zipball/5a635dfe1108947d3367013509c15f3f7720b9ef",
-                "reference": "5a635dfe1108947d3367013509c15f3f7720b9ef",
+                "url": "https://api.github.com/repos/Maslosoft/ManganelTest/zipball/f690aa74be2cbe4e54bf9df29805842e4b3237b1",
+                "reference": "f690aa74be2cbe4e54bf9df29805842e4b3237b1",
                 "shasum": ""
             },
             "require": {
@@ -1900,7 +1900,7 @@
             ],
             "description": "Tests for manganel",
             "homepage": "https://maslosoft.com/manganel/",
-            "time": "2017-09-05T09:28:25+00:00"
+            "time": "2017-09-08T12:37:45+00:00"
         },
         {
             "name": "maslosoft/mangantest",
@@ -1908,12 +1908,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/ManganTest.git",
-                "reference": "099aa25ba977abc38e5134615d29712c63ebc981"
+                "reference": "1f84394c181d67a91f9a273f212b2a9fcc66e306"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/ManganTest/zipball/099aa25ba977abc38e5134615d29712c63ebc981",
-                "reference": "099aa25ba977abc38e5134615d29712c63ebc981",
+                "url": "https://api.github.com/repos/Maslosoft/ManganTest/zipball/1f84394c181d67a91f9a273f212b2a9fcc66e306",
+                "reference": "1f84394c181d67a91f9a273f212b2a9fcc66e306",
                 "shasum": ""
             },
             "require": {
@@ -1941,7 +1941,7 @@
             ],
             "description": "Tests for mangan",
             "homepage": "https://maslosoft.com/mangan/",
-            "time": "2017-07-11T11:26:59+00:00"
+            "time": "2017-09-08T13:32:42+00:00"
         },
         {
             "name": "maslosoft/staple",
