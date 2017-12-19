@@ -3,6 +3,7 @@
 namespace Maslosoft\Manganel\Helpers;
 
 use Maslosoft\Mangan\Events\Event;
+use Maslosoft\Mangan\Events\ModelEvent;
 use Maslosoft\Mangan\Helpers\FinderEvents;
 use Maslosoft\Manganel\Interfaces\ModelsAwareInterface;
 
@@ -38,13 +39,15 @@ class MultiFinderEvents extends FinderEvents
 		return true;
 	}
 
-	protected function handleOne($model, $event)
+	protected function handleOne($model, $eventName)
 	{
-		if (!Event::hasHandler($model, $event))
+		if (!Event::hasHandler($model, $eventName))
 		{
 			return true;
 		}
-		return Event::handled($model, $event);
+		$event = new ModelEvent();
+		Event::trigger($model, $eventName, $event);
+		return $event->isValid || $event->handled;
 	}
 
 }
