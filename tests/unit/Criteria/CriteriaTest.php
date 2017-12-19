@@ -36,7 +36,12 @@ class CriteriaTest extends Test
 		codecept_debug(json_encode($params['body'], JSON_PRETTY_PRINT));
 		$totalCount = $dp->getTotalItemCount();
 
+		$conds = $dp->getCriteria()->getConditions();
+
+		$data = $dp->getData();
+
 		$count = $dp->getItemCount();
+		$this->assertCount($count, $data);
 		$this->assertSame($shouldCount, $count, sprintf('That current result set has %s items', $shouldCount));
 	}
 
