@@ -16,7 +16,7 @@
 	],
 	"require": {
 		"maslosoft/addendum": "*",
-		"elasticsearch/elasticsearch": "5.0.*",
+		"elasticsearch/elasticsearch": "^6",
 		"maslosoft/embedi": "*",
 		"maslosoft/mangan": "*",
 		"maslosoft/signals": "*",
@@ -25,13 +25,18 @@
 	"minimum-stability": "stable",
 	"autoload": {
 		"psr-4": {
-			"Maslosoft\\Manganel\\": "src/"
+			"Maslosoft\\Manganel\\": "src/",
+			"Maslosoft\\ManganelTest\\Extensions\\": "tests/extensions"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Maslosoft\\ManganelTest\\Models\\": "tests/models"
 		}
 	},
 	"require-dev": {
 		"maslosoft/hedron": "*",
-		"maslosoft/manganeltest": "dev-master",
-		"maslosoft/mangantest": "dev-master",
+		"codeception/codeception": "*",
 		"maslosoft/zamm": "*"
 	}
 }
