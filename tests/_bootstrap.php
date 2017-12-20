@@ -51,13 +51,13 @@ $sMap = [
 
 $mangan = Mangan::fly();
 $mangan->connectionString = 'mongodb://localhost:27017';
-$mangan->dbName = 'ManganTest';
+$mangan->dbName = 'ManganelTest';
 $mangan->sanitizersMap = $sMap;
 $mangan->init();
 
 $mangan2 = Mangan::fly('second');
 $mangan2->connectionString = 'mongodb://localhost:27017';
-$mangan2->dbName = 'ManganTestSecond';
+$mangan2->dbName = 'ManganelTestSecond';
 $mangan2->sanitizersMap = $sMap;
 $mangan2->init();
 
