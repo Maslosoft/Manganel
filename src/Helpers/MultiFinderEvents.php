@@ -47,7 +47,7 @@ class MultiFinderEvents extends FinderEvents
 		}
 		$event = new ModelEvent();
 		Event::trigger($model, $eventName, $event);
-		return $event->isValid || $event->handled;
+		return $event->isValid;
 	}
 
 }
