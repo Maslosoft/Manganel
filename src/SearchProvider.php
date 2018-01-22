@@ -7,7 +7,7 @@
  * @license AGPL, Commercial
  *
  * @copyright Copyright (c) Peter Maselkowski <pmaselkowski@gmail.com>
- * @link http://maslosoft.com/manganel/
+ * @link https://maslosoft.com/manganel/
  */
 
 namespace Maslosoft\Manganel;

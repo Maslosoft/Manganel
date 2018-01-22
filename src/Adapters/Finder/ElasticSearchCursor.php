@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * This software package is licensed under `AGPL, Commercial` license[s].
+ *
+ * @package maslosoft/manganel
+ * @license AGPL, Commercial
+ *
+ * @copyright Copyright (c) Peter Maselkowski <pmaselkowski@gmail.com>
+ * @link https://maslosoft.com/manganel/
+ */
+
 namespace Maslosoft\Manganel\Adapters\Finder;
 
 use Maslosoft\Mangan\Interfaces\Adapters\FinderCursorInterface;
