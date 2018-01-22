@@ -150,10 +150,18 @@ class QueryBuilder implements CriteriaAwareInterface
 		catch (BadRequest400Exception $e)
 		{
 			// Throw previous exception,
-			// as it holds more meaningfull information
+			// as it holds more meaningful information
 			$json = json_encode($params, JSON_PRETTY_PRINT);
 			$previous = $e->getPrevious();
-			$message = sprintf("Exception (%s) while querying `%s`: \n%s\n", $previous->getMessage(), $this->manganel->indexId, $json);
+
+			$prevMsg = '';
+			$previous = $e->getPrevious();
+			if(!empty($previous))
+			{
+				$prevMsg = '(' . $previous->getMessage() . ') ';
+			}
+
+			$message = sprintf("Exception %swhile querying `%s`: \n%s\n", $prevMsg, $this->manganel->indexId, $json);
 			throw new BadRequest400Exception($message, 400, $e);
 		}
 
