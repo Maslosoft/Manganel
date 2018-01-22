@@ -23,6 +23,7 @@ use Maslosoft\Manganel\Decorators\QueryBuilder\ConditionDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\ConditionsDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\Operators\InDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\Operators\NotDecorator;
+use Maslosoft\Manganel\Decorators\QueryBuilder\Operators\RangeDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\Operators\SimpleTermDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\QueryString\BoostDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\QueryString\PrefixQueryDecorator;
@@ -50,6 +51,7 @@ class Manganel
 			SearchDecorator::class,
 			InDecorator::class,
 			NotDecorator::class,
+			RangeDecorator::class,
 			SimpleTermDecorator::class,
 			BoostDecorator::class,
 			PrefixQueryDecorator::class,

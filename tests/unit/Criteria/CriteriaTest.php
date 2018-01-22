@@ -98,6 +98,43 @@ class CriteriaTest extends Test
 		$this->assertSame(2, $dp->getItemCount(), 'That current result set has items');
 	}
 
+	public function testIfWillFilterByGteLteStatusAndSearch()
+	{
+		$nums = $this->makeData();
+
+		$criteria = new SearchCriteria();
+		$criteria->addCond('status', '>=', m::StatusInactive);
+		$criteria->addCond('status', '<', m::StatusBanned);
+		$criteria->search('Vienna');
+
+		$dp = new SearchProvider(m::class);
+
+		$dp->setCriteria($criteria);
+
+		$params = (new QueryBuilder())->setCriteria($criteria)->getParams();
+		codecept_debug(json_encode($params['body'], JSON_PRETTY_PRINT));
+
+		$this->assertSame(2, $dp->getItemCount(), 'That current result set has items');
+	}
+
+	public function testIfWillFilterByGteStatusAndSearch()
+	{
+		$nums = $this->makeData();
+
+		$criteria = new SearchCriteria();
+		$criteria->addCond('status', '>=', m::StatusInactive);
+		$criteria->search('Vienna');
+
+		$dp = new SearchProvider(m::class);
+
+		$dp->setCriteria($criteria);
+
+		$params = (new QueryBuilder())->setCriteria($criteria)->getParams();
+		codecept_debug(json_encode($params['body'], JSON_PRETTY_PRINT));
+
+		$this->assertSame(2, $dp->getItemCount(), 'That current result set has items');
+	}
+
 	public function testIfWillFilterByNotStatusAndSearch()
 	{
 		$nums = $this->makeData();
@@ -115,7 +152,6 @@ class CriteriaTest extends Test
 
 		$this->assertSame(1, $dp->getItemCount(), 'That current result set has items');
 	}
-
 
 	private function makeData()
 	{
