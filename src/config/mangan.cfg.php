@@ -6,6 +6,7 @@ use Maslosoft\Mangan\Decorators\Property\I18NDecorator;
 use Maslosoft\Mangan\Sanitizers\DateSanitizer;
 use Maslosoft\Mangan\Sanitizers\MongoObjectId;
 use Maslosoft\Mangan\Sanitizers\MongoWriteStringId;
+use Maslosoft\Mangan\Transformers\CriteriaArray;
 use Maslosoft\Manganel\Adapters\Finder\ElasticSearchCursor;
 use Maslosoft\Manganel\Decorators\IndexDecorator;
 use Maslosoft\Manganel\Decorators\MaxScoreDecorator;
@@ -44,5 +45,9 @@ return [
 			MongoObjectId::class => MongoWriteStringId::class,
 			DateSanitizer::class => DateWriteEsSanitizer::class
 		],
+		CriteriaArray::class => [
+			MongoObjectId::class => MongoWriteStringId::class,
+			DateSanitizer::class => DateWriteEsSanitizer::class
+		]
 	]
 ];
