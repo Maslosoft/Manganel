@@ -35,7 +35,7 @@ class ConditionsDecorator implements BodyDecoratorInterface,
 		$bool = [];
 		foreach ($decorators as $decorator)
 		{
-			/* @var $decorator DecoratorInterface  */
+			/* @var $decorator ConditionDecoratorInterface  */
 			if ($decorator instanceof ManganelAwareInterface)
 			{
 				$decorator->setManganel($this->getManganel());
