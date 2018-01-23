@@ -100,7 +100,7 @@ class SearchArrayTest extends Test
 
 		$arr = SearchArray::fromModel($model);
 		codecept_debug($arr['createdAt']);
-		$this->assertInternalType('int', $arr['createdAt']);
+		$this->assertInternalType('string', $arr['createdAt']);
 
 		$fromArray = SearchArray::toModel($arr);
 		/* @var $fromArray ModelWithDate */
