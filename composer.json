@@ -1,42 +1,51 @@
 {
-	"name": "maslosoft/manganel",
-	"description": "Elasticsearch for Mangan",
-	"license": [
-		"AGPL",
-		"Commercial"
-	],
-	"homepage": "https://maslosoft.com/manganel/",
-	"authors": [
-		{
-			"name": "Peter Maselkowski",
-			"email": "pmaselkowski@gmail.com",
-			"homepage": "https://maslosoft.com",
-			"role": "Developer"
-		}
-	],
-	"require": {
-		"maslosoft/addendum": "*",
-		"elasticsearch/elasticsearch": ">=5 <7",
-		"maslosoft/embedi": "*",
-		"maslosoft/mangan": "*",
-		"maslosoft/signals": "*",
-		"maslosoft/gazebo": "*"
-	},
-	"minimum-stability": "stable",
-	"autoload": {
-		"psr-4": {
-			"Maslosoft\\Manganel\\": "src/",
-			"Maslosoft\\ManganelTest\\Extensions\\": "tests/extensions"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Maslosoft\\ManganelTest\\Models\\": "tests/models"
-		}
-	},
-	"require-dev": {
-		"maslosoft/hedron": "*",
-		"codeception/codeception": "*",
-		"maslosoft/zamm": "*"
-	}
+  "name": "maslosoft/manganel",
+  "description": "Elasticsearch for Mangan",
+  "license": [
+    "AGPL",
+    "Commercial"
+  ],
+  "homepage": "https://maslosoft.com/manganel/",
+  "type": "library",
+  "keywords": [
+    "php",
+    "mongodb",
+    "elasticsearch",
+    "odm",
+    "database",
+    "search"
+  ],
+  "authors": [
+    {
+      "name": "Peter Maselkowski",
+      "email": "pmaselkowski@gmail.com",
+      "homepage": "https://maslosoft.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "maslosoft/addendum": "*",
+    "elasticsearch/elasticsearch": ">=5 <7",
+    "maslosoft/embedi": "*",
+    "maslosoft/mangan": "*",
+    "maslosoft/signals": "*",
+    "maslosoft/gazebo": "*"
+  },
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Maslosoft\\Manganel\\": "src/",
+      "Maslosoft\\ManganelTest\\Extensions\\": "tests/extensions"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Maslosoft\\ManganelTest\\Models\\": "tests/models"
+    }
+  },
+  "require-dev": {
+    "maslosoft/hedron": "*",
+    "codeception/codeception": "*",
+    "maslosoft/zamm": "*"
+  }
 }
