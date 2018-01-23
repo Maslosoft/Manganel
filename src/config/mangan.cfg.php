@@ -16,6 +16,7 @@ use Maslosoft\Manganel\Decorators\UnderscoreIdFieldDecorator;
 use Maslosoft\Manganel\Filters\SearchFilter;
 use Maslosoft\Manganel\Sanitizers\DateWriteEsSanitizer;
 use Maslosoft\Manganel\SearchArray;
+use Maslosoft\Manganel\SearchCriteriaArray;
 
 // @codeCoverageIgnoreStart
 // Mangan additional configuration
@@ -33,6 +34,9 @@ return [
 			EmbedRefDecorator::class,
 			EmbedRefArrayDecorator::class,
 			I18NDecorator::class,
+		],
+		SearchCriteriaArray::class => [
+			I18NDecorator::class,
 		]
 	],
 	'filters' => [
@@ -45,7 +49,7 @@ return [
 			MongoObjectId::class => MongoWriteStringId::class,
 			DateSanitizer::class => DateWriteEsSanitizer::class
 		],
-		CriteriaArray::class => [
+		SearchCriteriaArray::class => [
 			MongoObjectId::class => MongoWriteStringId::class,
 			DateSanitizer::class => DateWriteEsSanitizer::class
 		]

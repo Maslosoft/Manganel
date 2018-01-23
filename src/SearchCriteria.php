@@ -14,6 +14,9 @@ namespace Maslosoft\Manganel;
 
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Criteria;
+use Maslosoft\Mangan\Interfaces\Decorators\ConditionDecoratorTypeAwareInterface;
+use Maslosoft\Mangan\Interfaces\Decorators\ConditionDecoratorTypeInterface;
+use Maslosoft\Mangan\Transformers\CriteriaArray;
 use Maslosoft\Manganel\Traits\UniqueModelsAwareTrait;
 
 /**
@@ -21,7 +24,7 @@ use Maslosoft\Manganel\Traits\UniqueModelsAwareTrait;
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class SearchCriteria extends Criteria
+class SearchCriteria extends Criteria implements ConditionDecoratorTypeAwareInterface
 {
 
 	use UniqueModelsAwareTrait;
@@ -36,6 +39,12 @@ class SearchCriteria extends Criteria
 			$this->add($model);
 		}
 	}
+
+	public function getDecoratorType()
+	{
+		return SearchCriteriaArray::class;
+	}
+
 
 	public function add($model)
 	{

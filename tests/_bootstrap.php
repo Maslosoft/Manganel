@@ -33,32 +33,14 @@ EmbeDi::fly()->addAdapter(new ArrayAdapter($config));
 
 $signals = new Signal();
 
-$sMap = [
-	JsonArray::class => [
-		MongoObjectId::class => MongoWriteStringId::class,
-		DateSanitizer::class => DateWriteUnixSanitizer::class
-	],
-	// TODO This must be added automatically
-	SearchArray::class => [
-		MongoObjectId::class => MongoWriteStringId::class,
-		DateSanitizer::class => DateWriteUnixSanitizer::class
-	],
-	YamlArray::class => [
-		MongoObjectId::class => MongoWriteStringId::class,
-		DateSanitizer::class => DateWriteUnixSanitizer::class
-	],
-];
-
 $mangan = Mangan::fly();
 $mangan->connectionString = 'mongodb://localhost:27017';
 $mangan->dbName = 'ManganelTest';
-$mangan->sanitizersMap = $sMap;
 $mangan->init();
 
 $mangan2 = Mangan::fly('second');
 $mangan2->connectionString = 'mongodb://localhost:27017';
 $mangan2->dbName = 'ManganelTestSecond';
-$mangan2->sanitizersMap = $sMap;
 $mangan2->init();
 
 $manganel = Manganel::fly();
