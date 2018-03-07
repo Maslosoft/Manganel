@@ -45,6 +45,11 @@ class SearchCriteria extends Criteria implements ConditionDecoratorTypeAwareInte
 		return SearchCriteriaArray::class;
 	}
 
+	public function setModel(AnnotatedInterface $model)
+	{
+		$this->add($model);
+		parent::setModel($model);
+	}
 
 	public function add($model)
 	{
