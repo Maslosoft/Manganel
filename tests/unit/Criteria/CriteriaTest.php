@@ -153,6 +153,95 @@ class CriteriaTest extends Test
 		$this->assertSame(1, $dp->getItemCount(), 'That current result set has items');
 	}
 
+	public function testIfWillFilterByOrStatus()
+	{
+		$nums = $this->makeData();
+
+		$criteria = new SearchCriteria();
+		$criteria->addCond('status', 'or', [m::StatusInactive, m::StatusActive]);
+
+		$dp = new SearchProvider(m::class);
+
+		$dp->setCriteria($criteria);
+
+		$params = (new QueryBuilder())->setCriteria($criteria)->getParams();
+		codecept_debug(json_encode($params['body'], JSON_PRETTY_PRINT));
+
+		$this->assertSame(6, $dp->getItemCount(), 'That current result set has items');
+	}
+
+	public function testIfWillFilterByOrStatusAndNotCode()
+	{
+		$nums = $this->makeData();
+
+		$criteria = new SearchCriteria();
+		$criteria->addCond('status', 'or', [m::StatusInactive, m::StatusActive]);
+		$criteria->addCond('code', '!=', m::CodeInfo);
+
+		$dp = new SearchProvider(m::class);
+
+		$dp->setCriteria($criteria);
+
+		$params = (new QueryBuilder())->setCriteria($criteria)->getParams();
+		codecept_debug(json_encode($params['body'], JSON_PRETTY_PRINT));
+
+		$this->assertSame(5, $dp->getItemCount(), 'That current result set has items');
+	}
+
+	public function testIfWillFilterByOrStatusAndSearch()
+	{
+		$nums = $this->makeData();
+
+		$criteria = new SearchCriteria();
+		$criteria->addCond('status', 'or', [m::StatusInactive, m::StatusActive]);
+		$criteria->search('Amsterdam');
+
+		$dp = new SearchProvider(m::class);
+
+		$dp->setCriteria($criteria);
+
+		$params = (new QueryBuilder())->setCriteria($criteria)->getParams();
+		codecept_debug(json_encode($params['body'], JSON_PRETTY_PRINT));
+
+		$this->assertSame(1, $dp->getItemCount(), 'That current result set has items');
+	}
+
+	public function testIfWillFilterByOrStatusAndOrCode()
+	{
+		$nums = $this->makeData();
+
+		$criteria = new SearchCriteria();
+		$criteria->addCond('status', 'or', [m::StatusInactive, m::StatusActive]);
+		$criteria->addCond('code', 'or', [m::CodeCritical, m::CodeImportant]);
+
+		$dp = new SearchProvider(m::class);
+
+		$dp->setCriteria($criteria);
+
+		$params = (new QueryBuilder())->setCriteria($criteria)->getParams();
+		codecept_debug(json_encode($params['body'], JSON_PRETTY_PRINT));
+
+		$this->assertSame(7, $dp->getItemCount(), 'That current result set has items');
+	}
+
+	public function testIfWillFilterByOrStatusAndOrCodeAndSearch()
+	{
+		$nums = $this->makeData();
+
+		$criteria = new SearchCriteria();
+		$criteria->addCond('status', 'or', [m::StatusInactive, m::StatusActive]);
+		$criteria->addCond('code', 'or', [m::CodeCritical, m::CodeImportant]);
+		$criteria->search('Amsterdam');
+		$dp = new SearchProvider(m::class);
+
+		$dp->setCriteria($criteria);
+
+		$params = (new QueryBuilder())->setCriteria($criteria)->getParams();
+		codecept_debug(json_encode($params['body'], JSON_PRETTY_PRINT));
+
+		$this->assertSame(2, $dp->getItemCount(), 'That current result set has items');
+	}
+
 	private function makeData()
 	{
 		$data = [];
@@ -177,9 +266,9 @@ class CriteriaTest extends Test
 			$m->code = array_shift($row);
 			$m->title = array_shift($row);
 
-			@$nums[$m->status] ++;
-			@$nums[$m->code] ++;
-			@$nums[$m->status . '-' . $m->code] ++;
+			@$nums[$m->status]++;
+			@$nums[$m->code]++;
+			@$nums[$m->status . '-' . $m->code]++;
 
 			$saved = (new EntityManager($m))->save();
 			$this->assertTrue($saved);

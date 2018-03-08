@@ -59,7 +59,7 @@ class ConditionsDecorator implements BodyDecoratorInterface,
 			{
 				$bool[$kind] = [];
 			}
-			$bool[$kind] = array_merge($bool[$kind], $conditions);
+			$bool[$kind] = array_replace_recursive($bool[$kind], $conditions);
 		}
 		if (!empty($bool))
 		{
