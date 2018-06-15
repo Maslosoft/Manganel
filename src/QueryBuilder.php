@@ -18,6 +18,7 @@ use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaAwareInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaInterface;
 use Maslosoft\Mangan\Traits\CriteriaAwareTrait;
+use Maslosoft\Manganel\Helpers\ExceptionDecorator;
 use Maslosoft\Manganel\Helpers\QueryBuilderDecorator;
 use Maslosoft\Manganel\Helpers\RecursiveFilter;
 use Maslosoft\Manganel\Helpers\TypeNamer;
@@ -107,17 +108,7 @@ class QueryBuilder implements CriteriaAwareInterface
 		}
 		catch (BadRequest400Exception $e)
 		{
-			// Throw previous exception,
-			// as it holds more meaningfull information
-			$json = json_encode($params, JSON_PRETTY_PRINT);
-			$prevMsg = '';
-			$previous = $e->getPrevious();
-			if(!empty($previous))
-			{
-				$prevMsg = '(' . $previous->getMessage() . ') ';
-			}
-			$message = sprintf("Exception %swhile querying `%s`: \n%s\n", $prevMsg, $this->manganel->indexId, $json);
-			throw new BadRequest400Exception($message, 400, $e);
+			throw ExceptionDecorator::getDecorated($this->manganel, $e, $params);
 		}
 		if (empty($result) && empty($result['count']))
 		{
@@ -149,20 +140,8 @@ class QueryBuilder implements CriteriaAwareInterface
 		}
 		catch (BadRequest400Exception $e)
 		{
-			// Throw previous exception,
-			// as it holds more meaningful information
-			$json = json_encode($params, JSON_PRETTY_PRINT);
-			$previous = $e->getPrevious();
 
-			$prevMsg = '';
-			$previous = $e->getPrevious();
-			if(!empty($previous))
-			{
-				$prevMsg = '(' . $previous->getMessage() . ') ';
-			}
-
-			$message = sprintf("Exception %swhile querying `%s`: \n%s\n", $prevMsg, $this->manganel->indexId, $json);
-			throw new BadRequest400Exception($message, 400, $e);
+			throw ExceptionDecorator::getDecorated($this->manganel, $e, $params);
 		}
 
 		if (empty($result) && empty($result['hits']) && empty($result['hits']['hits']))

@@ -18,6 +18,7 @@ use Elasticsearch\Common\Exceptions\BadRequest400Exception;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Mangan;
 use Maslosoft\Manganel\Exceptions\ManganelException;
+use Maslosoft\Manganel\Helpers\ExceptionDecorator;
 use Maslosoft\Manganel\Helpers\RecursiveFilter;
 use Maslosoft\Manganel\Helpers\TypeNamer;
 use Maslosoft\Manganel\Meta\ManganelMeta;
@@ -134,11 +135,7 @@ class IndexManager
 		}
 		catch (BadRequest400Exception $e)
 		{
-			// Throw previous exception,
-			// as it holds more meaningfull information
-			$previous = $e->getPrevious();
-			$message = sprintf('Exception while indexing `%s`@`%s`: %s', get_class($this->model), $this->manganel->indexId, $previous->getMessage());
-			throw new BadRequest400Exception($message, 400, $e);
+			throw ExceptionDecorator::getDecorated($this->manganel, $e, $params);
 		}
 		return false;
 	}
