@@ -63,7 +63,7 @@ class DateTest extends \Codeception\Test\Unit
 		$qb = (new QueryBuilder)->setCriteria($criteria);
 		$params = $qb->getParams();
 //		codecept_debug(json_encode($params, JSON_PRETTY_PRINT));
-		codecept_debug(json_encode($params['body']['query']['bool']['filter'][0]['range'], JSON_PRETTY_PRINT));
+		codecept_debug(json_encode($params['body']['query']['bool']['filter'], JSON_PRETTY_PRINT));
 
 		$dp = new SearchProvider(new m);
 		$dp->setCriteria($criteria);

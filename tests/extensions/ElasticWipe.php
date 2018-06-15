@@ -32,12 +32,12 @@ class ElasticWipe extends Extension
 
 	public function testBefore(TestEvent $e)
 	{
-		// Wait a bit to avoid illegal index states
-		usleep(275000);
 		$mnl = Manganel::fly();
 		$params = ['index' => strtolower($mnl->index)];
 		try
 		{
+			// Wait a bit to avoid illegal index states
+			usleep(275000);
 			$mnl->getClient()->indices()->delete($params);
 		}
 		catch (Missing404Exception $e)
@@ -46,14 +46,14 @@ class ElasticWipe extends Extension
 		}
 		try
 		{
+			// Wait a bit to avoid illegal index states
+			usleep(275000);
 			$mnl->getClient()->indices()->create($params);
 		}
 		catch (Missing404Exception $e)
 		{
 			// Skip missing indexes
 		}
-		// Wait a bit to avoid illagal index states
-		usleep(275000);
 	}
 
 }

@@ -21,6 +21,7 @@ use Maslosoft\Mangan\Interfaces\ProfilerInterface;
 use Maslosoft\Mangan\Profillers\NullProfiler;
 use Maslosoft\Manganel\Decorators\QueryBuilder\ConditionDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\ConditionsDecorator;
+use Maslosoft\Manganel\Decorators\QueryBuilder\MoreLikeThisDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\Operators\InDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\Operators\NotDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\Operators\OrDecorator;
@@ -57,6 +58,7 @@ class Manganel
 			SimpleTermDecorator::class,
 			BoostDecorator::class,
 			PrefixQueryDecorator::class,
+			MoreLikeThisDecorator::class
 		]
 	];
 	public $hosts = [

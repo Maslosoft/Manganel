@@ -39,6 +39,14 @@ class SearchDecorator implements ConditionDecoratorInterface,
 
 		if (empty($q))
 		{
+			if(!empty($criteria->getConditions()))
+			{
+				return;
+			}
+			if(!empty($criteria->getMoreLike()))
+			{
+				return;
+			}
 			// Match all documents if query is null
 			// stdClass is used here to get `{}` in json, as `[]` causes bad
 			// request exception!

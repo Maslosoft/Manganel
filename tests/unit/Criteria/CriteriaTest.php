@@ -55,6 +55,9 @@ class CriteriaTest extends Test
 
 		$shouldCount = $nums[m::StatusActive . '-' . m::CodeCritical];
 
+		$params = (new QueryBuilder())->setCriteria($criteria)->getParams();
+		codecept_debug(json_encode($params['body'], JSON_PRETTY_PRINT));
+
 		$dp = new SearchProvider(m::class);
 
 		$dp->setCriteria($criteria);
