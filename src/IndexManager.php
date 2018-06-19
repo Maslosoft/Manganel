@@ -15,10 +15,13 @@ namespace Maslosoft\Manganel;
 use Closure;
 use Elasticsearch\Client;
 use Elasticsearch\Common\Exceptions\BadRequest400Exception;
+use Exception;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
+use Maslosoft\Mangan\Events\Event;
 use Maslosoft\Mangan\Mangan;
+use Maslosoft\Manganel\Events\ErrorEvent;
 use Maslosoft\Manganel\Exceptions\ManganelException;
-use Maslosoft\Manganel\Helpers\ExceptionDecorator;
+use Maslosoft\Manganel\Helpers\ExceptionHandler;
 use Maslosoft\Manganel\Helpers\RecursiveFilter;
 use Maslosoft\Manganel\Helpers\TypeNamer;
 use Maslosoft\Manganel\Meta\ManganelMeta;
@@ -31,6 +34,7 @@ use UnexpectedValueException;
  */
 class IndexManager
 {
+	const EventIndexingError = 'indexingErrorEvent';
 
 	/**
 	 * Manganel instance
@@ -135,7 +139,15 @@ class IndexManager
 		}
 		catch (BadRequest400Exception $e)
 		{
-			throw ExceptionDecorator::getDecorated($this->manganel, $e, $params);
+			throw ExceptionHandler::getDecorated($this->manganel, $e, $params);
+		}
+		catch(Exception $e)
+		{
+			if(ExceptionHandler::handled($e, $this->model, self::EventIndexingError))
+			{
+				return false;
+			}
+			throw $e;
 		}
 		return false;
 	}
@@ -153,7 +165,7 @@ class IndexManager
 	{
 		if (!$this->isIndexable)
 		{
-			return;
+			return null;
 		}
 		$params = $id ? ['id' => (string) $id] : [];
 		$data = $this->getClient()->get($this->getParams($params))['_source'];

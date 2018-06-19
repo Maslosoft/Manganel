@@ -18,7 +18,7 @@ use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaAwareInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaInterface;
 use Maslosoft\Mangan\Traits\CriteriaAwareTrait;
-use Maslosoft\Manganel\Helpers\ExceptionDecorator;
+use Maslosoft\Manganel\Helpers\ExceptionHandler;
 use Maslosoft\Manganel\Helpers\QueryBuilderDecorator;
 use Maslosoft\Manganel\Helpers\RecursiveFilter;
 use Maslosoft\Manganel\Helpers\TypeNamer;
@@ -108,7 +108,7 @@ class QueryBuilder implements CriteriaAwareInterface
 		}
 		catch (BadRequest400Exception $e)
 		{
-			throw ExceptionDecorator::getDecorated($this->manganel, $e, $params);
+			throw ExceptionHandler::getDecorated($this->manganel, $e, $params);
 		}
 		if (empty($result) && empty($result['count']))
 		{
@@ -141,7 +141,7 @@ class QueryBuilder implements CriteriaAwareInterface
 		catch (BadRequest400Exception $e)
 		{
 
-			throw ExceptionDecorator::getDecorated($this->manganel, $e, $params);
+			throw ExceptionHandler::getDecorated($this->manganel, $e, $params);
 		}
 
 		if (empty($result) && empty($result['hits']) && empty($result['hits']['hits']))
