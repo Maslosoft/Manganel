@@ -45,7 +45,7 @@ class QueryBuilderDecorator implements ModelsAwareInterface
 
 		$models = $this->getModels();
 		$numModels = count($models);
-		assert($numModels > 0);
+		
 		if ($numModels === 1)
 		{
 			(new SingleModelDecorator())
