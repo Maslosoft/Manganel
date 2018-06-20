@@ -139,6 +139,10 @@ class IndexManager
 		}
 		catch (BadRequest400Exception $e)
 		{
+			if(ExceptionHandler::handled($e, $this->model, self::EventIndexingError))
+			{
+				return false;
+			}
 			throw ExceptionHandler::getDecorated($this->manganel, $e, $params);
 		}
 		catch(Exception $e)
