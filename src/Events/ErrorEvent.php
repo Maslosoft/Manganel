@@ -18,6 +18,9 @@ use Maslosoft\Mangan\Events\ModelEvent;
 
 class ErrorEvent extends ModelEvent
 {
+	const EventIndexingError = 'indexingErrorEvent';
+	const EventNoNodes = 'noNodesAvailableErrorEvent';
+	const EventBadRequest = 'badRequestErrorEvent';
 	/**
 	 * Exception intercepted by this event
 	 * @var Exception

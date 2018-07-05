@@ -14,10 +14,12 @@ namespace Maslosoft\Manganel;
 
 use Elasticsearch\Common\Exceptions\BadRequest400Exception;
 use Elasticsearch\Common\Exceptions\Missing404Exception;
+use Elasticsearch\Common\Exceptions\NoNodesAvailableException;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaAwareInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaInterface;
 use Maslosoft\Mangan\Traits\CriteriaAwareTrait;
+use Maslosoft\Manganel\Events\ErrorEvent;
 use Maslosoft\Manganel\Helpers\ExceptionHandler;
 use Maslosoft\Manganel\Helpers\QueryBuilderDecorator;
 use Maslosoft\Manganel\Helpers\RecursiveFilter;
@@ -108,7 +110,17 @@ class QueryBuilder implements CriteriaAwareInterface
 		}
 		catch (BadRequest400Exception $e)
 		{
-			throw ExceptionHandler::getDecorated($this->manganel, $e, $params);
+			if(!ExceptionHandler::handled($e, $this->models[0], ErrorEvent::EventBadRequest))
+			{
+				throw ExceptionHandler::getDecorated($this->manganel, $e, $params);
+			}
+		}
+		catch (NoNodesAvailableException $e)
+		{
+			if(!ExceptionHandler::handled($e, $this->models[0], ErrorEvent::EventNoNodes))
+			{
+				throw ExceptionHandler::getDecorated($this->manganel, $e, $params);
+			}
 		}
 		if (empty($result) && empty($result['count']))
 		{
@@ -140,8 +152,17 @@ class QueryBuilder implements CriteriaAwareInterface
 		}
 		catch (BadRequest400Exception $e)
 		{
-
-			throw ExceptionHandler::getDecorated($this->manganel, $e, $params);
+			if(!ExceptionHandler::handled($e, $this->models[0], ErrorEvent::EventBadRequest))
+			{
+				throw ExceptionHandler::getDecorated($this->manganel, $e, $params);
+			}
+		}
+		catch(NoNodesAvailableException $e)
+		{
+			if(!ExceptionHandler::handled($e, $this->models[0], ErrorEvent::EventNoNodes))
+			{
+				throw ExceptionHandler::getDecorated($this->manganel, $e, $params);
+			}
 		}
 
 		if (empty($result) && empty($result['hits']) && empty($result['hits']['hits']))

@@ -131,12 +131,19 @@ class ElasticSearchCursor implements FinderCursorInterface
 			$this->isExecuted = true;
 			$results = [];
 			$data = $this->qb->search(null, $results);
+
+			// Something went wrong
+			if(empty($result['hits']))
+			{
+				$this->data = [];
+				return;
+			}
 			$maxScore = $results['hits']['max_score'];
 			foreach ($data as $result)
 			{
 				$document = $result['_source'];
 				/**
-				 * TODO Refactor it into plugable interface, with params:
+				 * TODO Maybe refactor it into plugable interface, with params:
 				 * $document,
 				 * $result,
 				 * $results

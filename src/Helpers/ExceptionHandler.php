@@ -24,7 +24,7 @@ use function str_replace;
 class ExceptionHandler
 {
 
-	public static function getDecorated(Manganel $manganel, BadRequest400Exception $exception, $params)
+	public static function getDecorated(Manganel $manganel, Exception $exception, $params)
 	{
 		// Throw previous exception,
 		// as it holds more meaningful information
@@ -56,19 +56,17 @@ class ExceptionHandler
 		return new BadRequest400Exception($message, 400, $exception);
 	}
 
-	public static function handled(Exception $e, $model = null, $event = null)
+	public static function handled(Exception $e, $model = null, $eventName = null)
 	{
 		if(empty($model))
 		{
 			return false;
 		}
-		if(empty($event))
-		{
-			return false;
-		}
+		assert(!empty($eventName));
+
 		$evt = new ErrorEvent($model);
 		$evt->exception = $e;
-		if(Event::hasHandler($model, $event) && Event::handled($model, $event, $evt))
+		if(Event::hasHandler($model, $eventName) && Event::handled($model, $eventName, $evt))
 		{
 			return true;
 		}

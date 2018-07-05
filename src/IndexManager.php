@@ -17,7 +17,6 @@ use Elasticsearch\Client;
 use Elasticsearch\Common\Exceptions\BadRequest400Exception;
 use Exception;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
-use Maslosoft\Mangan\Events\Event;
 use Maslosoft\Mangan\Mangan;
 use Maslosoft\Manganel\Events\ErrorEvent;
 use Maslosoft\Manganel\Exceptions\ManganelException;
@@ -28,13 +27,16 @@ use Maslosoft\Manganel\Meta\ManganelMeta;
 use UnexpectedValueException;
 
 /**
- * IndexMangager
+ * IndexManager
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
 class IndexManager
 {
-	const EventIndexingError = 'indexingErrorEvent';
+	/**
+	 * Alias to ErrorEvent::EventIndexingError
+	 */
+	const EventIndexingError = ErrorEvent::EventIndexingError;
 
 	/**
 	 * Manganel instance
