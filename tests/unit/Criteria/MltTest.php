@@ -43,6 +43,7 @@ class MltTest extends \Codeception\Test\Unit
 
 		$result = $dp->getData();
 
+		$this->assertArrayHasKey(0, $result);
 		$this->assertNotSame((string) $result[0]->_id, (string) $model->_id);
 		$this->assertCount(1, $result);
     }

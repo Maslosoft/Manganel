@@ -133,7 +133,7 @@ class ElasticSearchCursor implements FinderCursorInterface
 			$data = $this->qb->search(null, $results);
 
 			// Something went wrong
-			if(empty($result['hits']))
+			if(empty($results['hits']))
 			{
 				$this->data = [];
 				return;
