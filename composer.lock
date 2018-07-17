@@ -403,16 +403,16 @@
         },
         {
             "name": "maslosoft/mangan",
-            "version": "4.5.12",
+            "version": "4.5.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Mangan.git",
-                "reference": "5695081409fc57c9c7991d49b198f8ded3af35b2"
+                "reference": "0c0c3174638565e9eaed579b32fad056fdf9ab79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/5695081409fc57c9c7991d49b198f8ded3af35b2",
-                "reference": "5695081409fc57c9c7991d49b198f8ded3af35b2",
+                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/0c0c3174638565e9eaed579b32fad056fdf9ab79",
+                "reference": "0c0c3174638565e9eaed579b32fad056fdf9ab79",
                 "shasum": ""
             },
             "require": {
@@ -506,7 +506,7 @@
                 "persister",
                 "php"
             ],
-            "time": "2018-06-18T21:04:40+00:00"
+            "time": "2018-07-17T21:58:16+00:00"
         },
         {
             "name": "maslosoft/mongofill",
