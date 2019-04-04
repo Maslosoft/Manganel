@@ -80,11 +80,17 @@ class IndexManager
 		}
 	}
 
+	/**
+	 * Add or replace document in index
+	 *
+	 * @return bool
+	 * @throws BadRequest400Exception
+	 */
 	public function index()
 	{
 		if (!$this->isIndexable)
 		{
-			return;
+			return false;
 		}
 		// NOTE: Transformer must ensure that _id is string, not MongoId
 		$body = SearchArray::fromModel($this->model);
@@ -158,13 +164,40 @@ class IndexManager
 		return false;
 	}
 
+	/**
+	 * Delete document from index
+	 *
+	 * @return bool
+	 * @throws BadRequest400Exception
+	 */
 	public function delete()
 	{
 		if (!$this->isIndexable)
 		{
-			return;
+			return false;
 		}
-		$this->getClient()->delete($this->getParams());
+		try
+		{
+			$params = $this->getParams();
+			$this->getClient()->delete($params);
+			return true;
+		}
+		catch (BadRequest400Exception $e)
+		{
+			if(ExceptionHandler::handled($e, $this->model, self::EventIndexingError))
+			{
+				return false;
+			}
+			throw ExceptionHandler::getDecorated($this->manganel, $e, $params);
+		}
+		catch(Exception $e)
+		{
+			if(ExceptionHandler::handled($e, $this->model, self::EventIndexingError))
+			{
+				return false;
+			}
+			throw $e;
+		}
 	}
 
 	public function get($id = null)
