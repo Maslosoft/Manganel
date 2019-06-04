@@ -22,7 +22,7 @@ use Maslosoft\Manganel\SearchCriteria;
 interface ConditionDecoratorInterface
 {
 
-	// NOTE: Do not rename this contants, as these are used directly by ES
+	// NOTE: Do not rename this constants, as these are used directly by ES
 	const KindMust = 'must';
 	const KindFilter = 'filter';
 	const KindMustNot = 'must_not';
