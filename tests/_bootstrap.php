@@ -19,6 +19,11 @@ define('VENDOR_DIR', __DIR__ . '/../vendor');
 define('YII_DIR', VENDOR_DIR . '/yiisoft/yii/framework/');
 define('MANGAN_TEST_ENV', true);
 
+if (!defined('JSON_PRESERVE_ZERO_FRACTION'))
+{
+	define('JSON_PRESERVE_ZERO_FRACTION', 1024);
+}
+
 require VENDOR_DIR . '/autoload.php';
 
 // Invoker stub for windows
