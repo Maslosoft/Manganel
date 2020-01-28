@@ -50,6 +50,7 @@ class UnderscoreIdFieldDecorator implements ModelDecoratorInterface
 			$model->_id = $sanitizer->read('_id', $id);
 			unset($dbValues[self::Key]);
 		}
+		return true;
 	}
 
 	/**
@@ -67,6 +68,7 @@ class UnderscoreIdFieldDecorator implements ModelDecoratorInterface
 			$dbValues[self::Key] = $dbValues['_id'];
 			unset($dbValues['_id']);
 		}
+		return true;
 	}
 
 }

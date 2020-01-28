@@ -35,7 +35,7 @@ class SearchClassNameDecorator implements ModelDecoratorInterface
 	 */
 	public function read($model, &$dbValues, $transformatorClass = TransformatorInterface::class)
 	{
-
+		return true;
 	}
 
 	/**
@@ -69,6 +69,7 @@ class SearchClassNameDecorator implements ModelDecoratorInterface
 		{
 			$dbValues['_class'] = get_class($model);
 		}
+		return true;
 	}
 
 }
