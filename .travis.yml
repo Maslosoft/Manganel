@@ -1,14 +1,10 @@
 language: php
 sudo: true
 dist: bionic
-jdk:
-  - oraclejdk8
 addons:
   apt:
     packages:
-      - oracle-java8-set-default
-    sources:
-      - elasticsearch-2.x
+      - openjdk-11-jdk-headless
 php:
   - 7.2
   - 7.3
