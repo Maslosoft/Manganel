@@ -27,6 +27,7 @@ before_install:
   # Allow ES to start
   - sleep 15
 install:
+  - mongo --eval "printjson(rs.status())"
   - curl -XGET 'localhost:9200'
   # Ensure that tests project is empty or update might fail
   - rm -rf vendor/maslosoft/mangantest
