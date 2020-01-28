@@ -35,12 +35,12 @@ class PrefixQueryDecorator implements QueryStringDecoratorInterface
 		// - ends with letter
 		// NOTE: Passing two wildcards to query will yield nothing,
 		// thats why it is checked too.
-		if (!preg_match('~\*$~', $q))
+		if (!preg_match('~\*$~u', $q))
 		{
 			// Add `*` only if ends with any alphabet letter (phrase_prefix)
-			if (preg_match('~\p{L}$~', $q))
+			if (preg_match('~\p{L}$~u', $q))
 			{
-				$q = $q . '*';
+				$q .= '*';
 			}
 		}
 		$queryStringParams['query'] = $q;
