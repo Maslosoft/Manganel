@@ -24,6 +24,8 @@ class ModelWithDate extends Document
 {
 	public $title = '';
 
+	public $number = 0;
+
 	/**
 	 * @Sanitizer(DateSanitizer)
 	 *

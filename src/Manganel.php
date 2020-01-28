@@ -31,6 +31,7 @@ use Maslosoft\Manganel\Decorators\QueryBuilder\QueryString\BoostDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\QueryString\PrefixQueryDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\ScrollDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\SearchDecorator;
+use Maslosoft\Manganel\Decorators\QueryBuilder\SelectDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\TagDecorator;
 use Maslosoft\Manganel\Interfaces\ManganelAwareInterface;
 use Maslosoft\Manganel\Meta\ManganelMeta;
@@ -47,6 +48,7 @@ class Manganel
 
 	public $decorators = [
 		SearchCriteria::class => [
+			SelectDecorator::class,
 			ConditionDecorator::class,
 			ConditionsDecorator::class,
 			ScrollDecorator::class,

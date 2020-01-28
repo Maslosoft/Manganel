@@ -38,7 +38,7 @@ class MongoIdTest extends Test
 		$stringId = $sanitizer->write(null, $id);
 		$objectId = $sanitizer->read(null, $id);
 
-		$this->assertInternalType('string', $stringId);
+		$this->assertIsString($stringId);
 
 		$this->assertInstanceOf(MongoId::class, $objectId);
 	}
@@ -51,11 +51,11 @@ class MongoIdTest extends Test
 
 		$data = SearchArray::fromModel($model);
 
-		$this->assertInternalType('null', $data['parentId']);
+		$this->assertNull($data['parentId']);
 
 		$fromArray = SearchArray::toModel($data);
 
-		$this->assertInternalType('null', $fromArray->parentId);
+		$this->assertNull($fromArray->parentId);
 	}
 
 	public function testIfWillProperlyRemapSanitizer()
@@ -70,11 +70,11 @@ class MongoIdTest extends Test
 
 		$data = SearchArray::fromModel($model);
 
-		$this->assertInternalType('string', $data['parentId']);
+		$this->assertIsString($data['parentId']);
 
 		$fromArray = SearchArray::toModel($data);
 
-		$this->assertInternalType('string', $fromArray->parentId);
+		$this->assertIsString($fromArray->parentId);
 	}
 
 }

@@ -82,7 +82,7 @@ class SearchArrayTest extends Test
 		$model->_id = new MongoId();
 		$arr = SearchArray::fromModel($model);
 		codecept_debug($arr);
-		$this->assertInternalType('string', $arr[$key]);
+		$this->assertIsString($arr[$key]);
 
 		$fromArray = SearchArray::toModel($arr);
 		/* @var $fromArray SimpleModel */
@@ -100,7 +100,7 @@ class SearchArrayTest extends Test
 
 		$arr = SearchArray::fromModel($model);
 		codecept_debug($arr['createdAt']);
-		$this->assertInternalType('string', $arr['createdAt']);
+		$this->assertIsString($arr['createdAt']);
 
 		$fromArray = SearchArray::toModel($arr);
 		/* @var $fromArray ModelWithDate */

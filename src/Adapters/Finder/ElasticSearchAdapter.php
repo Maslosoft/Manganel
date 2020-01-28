@@ -12,6 +12,7 @@
 
 namespace Maslosoft\Manganel\Adapters\Finder;
 
+use function array_keys;
 use Maslosoft\Mangan\Interfaces\Adapters\FinderAdapterInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaInterface;
 use Maslosoft\Mangan\Interfaces\ModelAwareInterface;
@@ -81,12 +82,12 @@ class ElasticSearchAdapter implements FinderAdapterInterface
 		$this->qb->setCriteria($criteria);
 		if (!empty($fields))
 		{
-			$selected = array_flip($fields);
-			foreach ($selected as $index => $value)
+			$selected = [];
+			foreach ($fields as $index => $value)
 			{
 				$selected[$index] = true;
 			}
-			$this->qb->getCriteria()->select($fields);
+			$this->qb->getCriteria()->select($selected);
 		}
 	}
 

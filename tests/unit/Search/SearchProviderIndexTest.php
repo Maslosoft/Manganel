@@ -42,7 +42,7 @@ class SearchProviderIndexTest extends Test
 			$index = $result->getIndex();
 			codecept_debug($index);
 			$this->assertNotEmpty($index);
-			$this->assertInternalType('string', $index, 'That found result has set index');
+			$this->assertIsString($index, 'That found result has set index');
 		}
 	}
 
