@@ -29,7 +29,8 @@
     "maslosoft/embedi": "*",
     "maslosoft/mangan": "*",
     "maslosoft/signals": "*",
-    "maslosoft/gazebo": "*"
+    "maslosoft/gazebo": "*",
+    "ext-json": "*"
   },
   "minimum-stability": "stable",
   "autoload": {
@@ -44,8 +45,9 @@
     }
   },
   "require-dev": {
-    "maslosoft/hedron": "*",
     "codeception/codeception": "*",
+    "codeception/module-asserts": "^1.1",
+    "maslosoft/hedron": "*",
     "maslosoft/zamm": "*"
   }
 }
