@@ -23,6 +23,7 @@ use Maslosoft\Mangan\Helpers\CompositionIterator;
 use Maslosoft\Manganel\Meta\DocumentPropertyMeta;
 use Maslosoft\Manganel\Meta\ManganelMeta;
 use MongoId;
+use function strip_tags;
 use function strpos;
 
 class TextExtractor
@@ -95,6 +96,15 @@ class TextExtractor
 
 					// Ignore ID's
 					if(MongoId::isValid($value))
+					{
+						continue;
+					}
+					if(strpos($value, '<') !== false)
+					{
+						$value = strip_tags($value);
+					}
+					$value = trim($value);
+					if(empty($value))
 					{
 						continue;
 					}
