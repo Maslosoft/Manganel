@@ -1,53 +1,53 @@
 {
-  "name": "maslosoft/manganel",
-  "description": "Elasticsearch for Mangan",
-  "license": [
-    "AGPL-3.0-only",
-    "proprietary"
-  ],
-  "homepage": "https://maslosoft.com/manganel/",
-  "type": "library",
-  "keywords": [
-    "php",
-    "mongodb",
-    "elasticsearch",
-    "odm",
-    "database",
-    "search"
-  ],
-  "authors": [
-    {
-      "name": "Peter Maselkowski",
-      "email": "pmaselkowski@gmail.com",
-      "homepage": "https://maslosoft.com",
-      "role": "Developer"
+    "name": "maslosoft/manganel",
+    "description": "Elasticsearch for Mangan",
+    "license": [
+        "AGPL-3.0-only",
+        "proprietary"
+    ],
+    "homepage": "https://maslosoft.com/manganel/",
+    "type": "library",
+    "keywords": [
+        "php",
+        "mongodb",
+        "elasticsearch",
+        "odm",
+        "database",
+        "search"
+    ],
+    "authors": [
+        {
+            "name": "Peter Maselkowski",
+            "email": "pmaselkowski@gmail.com",
+            "homepage": "https://maslosoft.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "maslosoft/addendum": "*",
+        "elasticsearch/elasticsearch": ">=5 <7",
+        "maslosoft/embedi": "*",
+        "maslosoft/mangan": "*",
+        "maslosoft/signals": "*",
+        "maslosoft/gazebo": "*",
+        "ext-json": "*"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Maslosoft\\Manganel\\": "src/",
+            "Maslosoft\\ManganelTest\\Extensions\\": "tests/extensions"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Maslosoft\\ManganelTest\\Models\\": "tests/models"
+        }
+    },
+    "require-dev": {
+        "codeception/codeception": "^4",
+        "codeception/module-asserts": "^1.1",
+        "maslosoft/hedron": "*",
+        "maslosoft/zamm": "*"
     }
-  ],
-  "require": {
-    "maslosoft/addendum": "*",
-    "elasticsearch/elasticsearch": ">=5 <7",
-    "maslosoft/embedi": "*",
-    "maslosoft/mangan": "*",
-    "maslosoft/signals": "*",
-    "maslosoft/gazebo": "*",
-    "ext-json": "*"
-  },
-  "minimum-stability": "stable",
-  "autoload": {
-    "psr-4": {
-      "Maslosoft\\Manganel\\": "src/",
-      "Maslosoft\\ManganelTest\\Extensions\\": "tests/extensions"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Maslosoft\\ManganelTest\\Models\\": "tests/models"
-    }
-  },
-  "require-dev": {
-    "codeception/codeception": "*",
-    "codeception/module-asserts": "^1.1",
-    "maslosoft/hedron": "*",
-    "maslosoft/zamm": "*"
-  }
 }
