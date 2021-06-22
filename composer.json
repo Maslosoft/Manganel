@@ -30,7 +30,8 @@
         "maslosoft/mangan": "*",
         "maslosoft/signals": "*",
         "maslosoft/gazebo": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "php": ">= 7.3"
     },
     "minimum-stability": "stable",
     "autoload": {
