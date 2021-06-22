@@ -6,7 +6,6 @@ use Maslosoft\Mangan\Decorators\Property\I18NDecorator;
 use Maslosoft\Mangan\Sanitizers\DateSanitizer;
 use Maslosoft\Mangan\Sanitizers\MongoObjectId;
 use Maslosoft\Mangan\Sanitizers\MongoWriteStringId;
-use Maslosoft\Mangan\Transformers\CriteriaArray;
 use Maslosoft\Manganel\Adapters\Finder\ElasticSearchCursor;
 use Maslosoft\Manganel\Decorators\IndexDecorator;
 use Maslosoft\Manganel\Decorators\MaxScoreDecorator;
