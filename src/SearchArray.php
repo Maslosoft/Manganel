@@ -13,7 +13,8 @@
 namespace Maslosoft\Manganel;
 
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
-use Maslosoft\Mangan\Transformers\RawArray;
+use Maslosoft\Mangan\Interfaces\Transformators\TransformatorInterface;
+use Maslosoft\Mangan\Transformers\Transformer;
 use Maslosoft\Manganel\Meta\ManganelMeta;
 
 /**
@@ -21,7 +22,7 @@ use Maslosoft\Manganel\Meta\ManganelMeta;
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class SearchArray extends RawArray
+class SearchArray extends Transformer implements TransformatorInterface
 {
 
 	protected static function getMeta(AnnotatedInterface $model)
