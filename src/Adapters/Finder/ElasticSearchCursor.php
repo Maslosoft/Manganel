@@ -85,7 +85,7 @@ class ElasticSearchCursor implements FinderCursorInterface
 	 *
 	 * @return int
 	 */
-	public function count()
+	public function count(): int
 	{
 		$this->execute();
 		return count($this->data);
@@ -93,31 +93,34 @@ class ElasticSearchCursor implements FinderCursorInterface
 
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="Iterator impl">
+
+	#[\ReturnTypeWillChange]
 	public function current()
 	{
 		$this->execute();
 		return current($this->data);
 	}
 
+	#[\ReturnTypeWillChange]
 	public function key()
 	{
 		$this->execute();
 		return key($this->data);
 	}
 
-	public function next()
+	public function next(): void
 	{
 		$this->execute();
 		next($this->data);
 	}
 
-	public function rewind()
+	public function rewind(): void
 	{
 		$this->execute();
-		return reset($this->data);
+		reset($this->data);
 	}
 
-	public function valid()
+	public function valid(): bool
 	{
 		$this->execute();
 		$key = key($this->data);
