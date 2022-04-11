@@ -44,9 +44,9 @@ use Maslosoft\Manganel\Meta\ManganelMeta;
 class Manganel
 {
 
-	const DefaultIndexId = 'manganel';
+	public const DefaultIndexId = 'manganel';
 
-	public $decorators = [
+	public array $decorators = [
 		SearchCriteria::class => [
 			SelectDecorator::class,
 			ConditionDecorator::class,
@@ -63,19 +63,19 @@ class Manganel
 			MoreLikeThisDecorator::class
 		]
 	];
-	public $hosts = [
+	public array $hosts = [
 		'localhost:9200'
 	];
 	public $auth = null;
-	public $username = '';
-	public $password = '';
-	public $params = [];
+	public string $username = '';
+	public string $password = '';
+	public array $params = [];
 
 	/**
 	 * TODO Enforce lowercase
 	 */
-	public $index = 'my_index';
-	public $indexId = self::DefaultIndexId;
+	public string $index = 'my_index';
+	public string $indexId = self::DefaultIndexId;
 
 	/**
 	 * Whether to use refresh option when indexing document.
@@ -104,9 +104,9 @@ class Manganel
 
 	/**
 	 * Version number holder
-	 * @var string
+	 * @var ?string
 	 */
-	private static $_version = null;
+	private static ?string $_version = null;
 
 	/**
 	 * Instances of manganel
@@ -131,7 +131,7 @@ class Manganel
 	 * @codeCoverageIgnore This is implicitly tested
 	 * @param string $indexId
 	 */
-	public function __construct($indexId = self::DefaultIndexId)
+	public function __construct(string $indexId = self::DefaultIndexId)
 	{
 		if (empty($indexId))
 		{
