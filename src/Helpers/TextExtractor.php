@@ -14,6 +14,7 @@ namespace Maslosoft\Manganel\Helpers;
 
 
 use function array_merge;
+use function array_unique;
 use function in_array;
 use function is_array;
 use function is_string;
@@ -117,6 +118,8 @@ class TextExtractor
 		{
 			$texts = array_merge($texts, self::extract($subModel, $minBoost));
 		}
+
+		$texts = array_unique($texts);
 
 		return $texts;
 	}
