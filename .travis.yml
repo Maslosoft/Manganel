@@ -6,9 +6,9 @@ addons:
     packages:
       - openjdk-11-jdk-headless
 php:
-  - 7.2
-  - 7.3
   - 7.4
+  - 8.0
+  - 8.1
   - nightly
   - hhvm
 matrix:
