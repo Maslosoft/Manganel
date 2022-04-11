@@ -124,6 +124,14 @@ class SearchCriteria extends Criteria implements ConditionDecoratorTypeAwareInte
 			$boosted[$fieldName] = $boost;
 		}
 
+		foreach($boosted as $fieldName => $boost)
+		{
+			if($boost === 1.0)
+			{
+				unset($boosted[$fieldName]);
+			}
+		}
+
 		return $boosted;
 	}
 
