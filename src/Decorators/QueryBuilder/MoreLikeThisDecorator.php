@@ -12,10 +12,8 @@
 
 namespace Maslosoft\Manganel\Decorators\QueryBuilder;
 
-use Maslosoft\Manganel\Helpers\TypeNamer;
 use Maslosoft\Manganel\Interfaces\ManganelAwareInterface;
 use Maslosoft\Manganel\Interfaces\QueryBuilder\ConditionDecoratorInterface;
-use Maslosoft\Manganel\Manganel;
 use Maslosoft\Manganel\SearchCriteria;
 use Maslosoft\Manganel\Traits\ManganelAwareTrait;
 
@@ -25,12 +23,12 @@ class MoreLikeThisDecorator implements ConditionDecoratorInterface,
 {
 	use ManganelAwareTrait;
 
-	const Ns = __NAMESPACE__;
+	public const Ns = __NAMESPACE__;
 
-	public function decorate(&$conditions, SearchCriteria $criteria)
+	public function decorate(&$conditions, SearchCriteria $criteria): void
 	{
 		$mlt = $criteria->getMoreLike();
-		if (empty($mlt))
+		if ($mlt === null)
 		{
 			return;
 		}
