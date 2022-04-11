@@ -17,6 +17,7 @@ use Maslosoft\Manganel\Interfaces\QueryBuilder\QueryStringDecoratorInterface;
 use Maslosoft\Manganel\Meta\ManganelMeta;
 use Maslosoft\Manganel\SearchCriteria;
 use UnexpectedValueException;
+use function var_dump;
 
 /**
  * BoostDecorator
@@ -26,17 +27,14 @@ use UnexpectedValueException;
 class BoostDecorator implements QueryStringDecoratorInterface
 {
 
-	public function decorate(&$queryStringParams, SearchCriteria $criteria)
+	public function decorate(&$queryStringParams, SearchCriteria $criteria): void
 	{
 		$fields = [];
+
 		$model = $criteria->getModel();
-		// when no model provided could not determine boosting
-		if (empty($model))
-		{
-			return;
-		}
-		$meta = ManganelMeta::create($model);
-		$boosted = $meta->properties('searchBoost');
+
+		$boosted = $criteria->getBoosted();
+
 		/* @var $boosted float[] */
 		foreach ($boosted as $fieldName => $boost)
 		{
@@ -44,8 +42,16 @@ class BoostDecorator implements QueryStringDecoratorInterface
 			{
 				// Decorate fields, so for instance i18n fields
 				// will map boosting to `title.en` etc.
-				$cd = new ConditionDecorator($model);
-				$name = key($cd->decorate($fieldName));
+				if($model !== null)
+				{
+					$cd = new ConditionDecorator($model);
+					$name = key($cd->decorate($fieldName));
+				}
+				else
+				{
+					// Fallback to non-decorated fields if model is not provided
+					$name = $fieldName;
+				}
 				$fields[$name] = $this->unify($name, $boost, $fields);
 			}
 		}

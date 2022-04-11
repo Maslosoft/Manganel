@@ -12,6 +12,7 @@
 
 namespace Maslosoft\Manganel;
 
+use Maslosoft\Manganel\Meta\ManganelMeta;
 use function is_array;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Criteria;
@@ -32,7 +33,9 @@ class SearchCriteria extends Criteria implements ConditionDecoratorTypeAwareInte
 
 	use UniqueModelsAwareTrait;
 
-	private $query = '';
+	private string $query = '';
+
+	private array $boosted = [];
 
 	/**
 	 * @var MoreLike|null
@@ -86,6 +89,46 @@ class SearchCriteria extends Criteria implements ConditionDecoratorTypeAwareInte
 	public function search($query)
 	{
 		$this->query = $query;
+	}
+
+	/**
+	 * Boost fields in form of field name as key and float as value. This will
+	 * override any other boosts.
+	 *
+	 * Example `$fields` parameter:
+	 * ```
+	 * [
+	 * 	'keywords' => 7.2
+	 * ]
+	 * ```
+	 *
+	 *
+	 * @param $fields
+	 * @return void
+	 */
+	public function boost($fields): void
+	{
+		$this->boosted = $fields;
+	}
+
+	public function getBoosted(): array
+	{
+		$boosted = [];
+		$model = $this->getModel();
+		// when no model provided could not determine boosting
+		if ($model !== null)
+		{
+			$meta = ManganelMeta::create($model);
+			$boosted = $meta->properties('searchBoost');
+		}
+
+		// Override manually set in Criteria
+		foreach($this->boosted as $fieldName => $boost)
+		{
+			$boosted[$fieldName] = $boost;
+		}
+
+		return $boosted;
 	}
 
 	/**
