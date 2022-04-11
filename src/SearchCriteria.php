@@ -13,13 +13,9 @@
 namespace Maslosoft\Manganel;
 
 use Maslosoft\Manganel\Meta\ManganelMeta;
-use function is_array;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Criteria;
-use Maslosoft\Mangan\Interfaces\DataProviderInterface;
 use Maslosoft\Mangan\Interfaces\Decorators\ConditionDecoratorTypeAwareInterface;
-use Maslosoft\Mangan\Interfaces\Decorators\ConditionDecoratorTypeInterface;
-use Maslosoft\Mangan\Transformers\CriteriaArray;
 use Maslosoft\Manganel\Options\MoreLike;
 use Maslosoft\Manganel\Traits\UniqueModelsAwareTrait;
 
@@ -154,7 +150,6 @@ class SearchCriteria extends Criteria implements ConditionDecoratorTypeAwareInte
 //    }
 //  }
 //}
-		$this->moreLike = $options;
 	}
 
 	/**
