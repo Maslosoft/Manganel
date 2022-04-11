@@ -12,6 +12,7 @@
 
 namespace Maslosoft\Manganel\Decorators\QueryBuilder;
 
+use Maslosoft\Manganel\Decorators\QueryBuilder\MoreLikeThis\MltBoostDecorator;
 use Maslosoft\Manganel\Interfaces\ManganelAwareInterface;
 use Maslosoft\Manganel\Interfaces\QueryBuilder\ConditionDecoratorInterface;
 use Maslosoft\Manganel\SearchCriteria;
@@ -25,12 +26,26 @@ class MoreLikeThisDecorator implements ConditionDecoratorInterface,
 
 	public const Ns = __NAMESPACE__;
 
+	/**
+	 * @param                $conditions
+	 * @param SearchCriteria $criteria
+	 * @return void
+	 *@see MltBoostDecorator
+	 */
 	public function decorate(&$conditions, SearchCriteria $criteria): void
 	{
 		$mlt = $criteria->getMoreLike();
 		if ($mlt === null)
 		{
 			return;
+		}
+		// Ignore if Criteria have boosted fields
+		$boosted = $criteria->getBoosted();
+		if(!empty($boosted))
+		{
+			// NOTE: There are issues with MLT multi-model-multi-boosted-queries, so for enabled for all
+			// @see MltBoostDecorator
+//			return;
 		}
 
 		$conditions = [
