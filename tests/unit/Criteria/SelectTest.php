@@ -19,7 +19,7 @@ class SelectTest extends Unit
      */
     protected $tester;
     
-    protected function _before()
+    protected function _before(): void
     {
 		$model = new ModelWithDate;
 		$model->title = 'test';
@@ -28,12 +28,12 @@ class SelectTest extends Unit
 		$this->assertTrue($saved);
     }
 
-    protected function _after()
+    protected function _after(): void
     {
     }
 
     // tests
-    public function testSelectingSomeFields()
+    public function testSelectingSomeFields(): void
     {
 		$model = new ModelWithDate;
     	$criteria = new SearchCriteria(null, $model);
@@ -54,7 +54,7 @@ class SelectTest extends Unit
 
 	}
 
-	public function testSelectingAllFields()
+	public function testSelectingAllFields(): void
 	{
 		$model = new ModelWithDate;
 		codecept_debug('Select with number');
@@ -75,7 +75,7 @@ class SelectTest extends Unit
 		$this->assertSame(4, $found->number, 'Field `number` was selected');
 	}
 
-	public function testSelectingWithoutExplicitSelect()
+	public function testSelectingWithoutExplicitSelect(): void
 	{
 		$model = new ModelWithDate;
 		codecept_debug('Select again without explicit select');
@@ -84,7 +84,7 @@ class SelectTest extends Unit
 
 		$qb = (new QueryBuilder)->setCriteria($criteria);
 		$params = $qb->getParams();
-		codecept_debug(json_encode($params, JSON_PRETTY_PRINT));
+		codecept_debug(json_encode($params, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT));
 
 		$finder = new SearchFinder([$model]);
 		$found = $finder->find($criteria);
