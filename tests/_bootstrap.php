@@ -66,3 +66,5 @@ echo "ES version: " . $info['version']['number'] . PHP_EOL;
 echo "Using database: " . $mangan->dbName . PHP_EOL;
 echo "Using database: " . $mangan2->dbName . PHP_EOL;
 echo "Using index: " . $manganel->index . PHP_EOL;
+
+define('ES_VERSION', $info['version']['number']);

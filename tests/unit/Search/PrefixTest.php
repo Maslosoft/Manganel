@@ -10,6 +10,8 @@ use Maslosoft\Manganel\SearchProvider;
 use Maslosoft\ManganelTest\Models\ModelWithBoostedField;
 use MongoId;
 use UnitTester;
+use function version_compare;
+use const ES_VERSION;
 
 class PrefixTest extends Test
 {
@@ -19,7 +21,7 @@ class PrefixTest extends Test
 	 */
 	protected $tester;
 
-	protected function _before()
+	protected function _before(): void
 	{
 		$model = new ModelWithBoostedField();
 		$model->_id = new MongoId;
@@ -37,7 +39,7 @@ class PrefixTest extends Test
 		$this->assertNotEmpty($val, 'That document is in index');
 	}
 
-	public function testIfWillFindModelWithPartialString()
+	public function testIfWillFindModelWithPartialString(): void
 	{
 		$model = new ModelWithBoostedField();
 		$dp = new SearchProvider($model);
@@ -59,7 +61,7 @@ class PrefixTest extends Test
 		}
 	}
 
-	public function testIfWillFindModelWithPartialStringAndUserAddedWildcard()
+	public function testIfWillFindModelWithPartialStringAndUserAddedWildcard(): void
 	{
 		$model = new ModelWithBoostedField();
 		$dp = new SearchProvider($model);
@@ -81,7 +83,7 @@ class PrefixTest extends Test
 		}
 	}
 
-	public function testIfWillFindModelWithFullStringEndingWithSpace()
+	public function testIfWillFindModelWithFullStringEndingWithSpace(): void
 	{
 		// Prepare a bit different data
 		foreach (['mangan', 'manganel'] as $title)
@@ -116,10 +118,16 @@ class PrefixTest extends Test
 		$results = $dp->getData(true);
 		$this->assertNotEmpty($results);
 
-		codecept_debug('TODO: This returns 3 (should 2), but it matches `_class` field. Line: ' . (__LINE__ + 2));
+		codecept_debug('NOTE: This returns 3 in ES 5 (should 2), but it matches `_class` field. Line: ' . (__LINE__ + 2));
 		codecept_debug('See: https://github.com/Maslosoft/Manganel/issues/14');
-		$this->assertCount(3, $results);
-
+		if(version_compare(ES_VERSION, '6', '<'))
+		{
+			$this->assertCount(2, $results);
+		}
+		else
+		{
+			$this->assertCount(2, $results);
+		}
 		// Search with space
 		$criteria = new SearchCriteria(null, $model);
 		$criteria->search('mangan ');
