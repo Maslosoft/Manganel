@@ -15,7 +15,7 @@ namespace Maslosoft\Manganel\Traits;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 
 /**
- * Use this trait to provide mutli-model feature to classes.
+ * Use this trait to provide multi-model feature to classes.
  *
  * NOTE: It will keep only one instance type in models
  *
@@ -28,13 +28,14 @@ trait UniqueModelsAwareTrait
 	 * Annotated model
 	 * @var AnnotatedInterface[]
 	 */
-	private $models = [];
+	private array $models = [];
 
 	/**
 	 * Annotated models
-	 * @var AnnotatedInterface[]
+	 *
+	 * @return array
 	 */
-	public function getModels()
+	public function getModels(): array
 	{
 		return $this->models;
 	}
@@ -44,11 +45,11 @@ trait UniqueModelsAwareTrait
 	 * @param AnnotatedInterface[] $models
 	 * @return $this
 	 */
-	public function setModels($models)
+	public function setModels($models): self
 	{
 		// Unique based on class name
 		// See: http://stackoverflow.com/a/2561283/5444623
-		$map = function($value)
+		$map = static function($value)
 		{
 			if (is_object($value))
 			{
@@ -67,7 +68,7 @@ trait UniqueModelsAwareTrait
 	 * @param AnnotatedInterface $model
 	 * @return boolean Whether model was added
 	 */
-	public function addModel(AnnotatedInterface $model)
+	public function addModel(AnnotatedInterface $model): bool
 	{
 		if (!$this->hasModel($model))
 		{
@@ -83,7 +84,7 @@ trait UniqueModelsAwareTrait
 	 * @param AnnotatedInterface $model
 	 * @return boolean Whether model was removed
 	 */
-	public function removeModel(AnnotatedInterface $model)
+	public function removeModel(AnnotatedInterface $model): bool
 	{
 		if (!$this->hasModel($model))
 		{
@@ -98,11 +99,11 @@ trait UniqueModelsAwareTrait
 			}
 		}
 
-		// Should not happen, model not found even if should exists
+		// Should not happen, model not found even if should exist
 		return false;
 	}
 
-	public function hasModel(AnnotatedInterface $model)
+	public function hasModel(AnnotatedInterface $model): bool
 	{
 		foreach ($this->models as $existing)
 		{
