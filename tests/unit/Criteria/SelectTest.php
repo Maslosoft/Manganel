@@ -37,6 +37,9 @@ class SelectTest extends Unit
     {
 		$model = new ModelWithDate;
     	$criteria = new SearchCriteria(null, $model);
+
+		// NOTE: There *must* be some condition, as selecting fields is not supported at match_all
+		$criteria->addCond('title', 'eq', 'test');
     	$criteria->select(['id', 'title']);
 
 		$qb = (new QueryBuilder)->setCriteria($criteria);
