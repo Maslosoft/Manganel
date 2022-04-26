@@ -214,7 +214,7 @@ class QueryBuilder implements CriteriaAwareInterface
 
 		$params = [
 			'index' => strtolower($this->manganel->index),
-			'type' => $type,
+			'type' => IndexManager::DocType,
 			'body' => $body
 		];
 //		return $params;
