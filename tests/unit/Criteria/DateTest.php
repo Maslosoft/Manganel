@@ -1,6 +1,7 @@
 <?php
 namespace Criteria;
 
+use Codeception\Test\Unit;
 use Maslosoft\Cache\Cache;
 use Maslosoft\Mangan\EntityManager;
 use Maslosoft\Mangan\Mangan;
@@ -11,17 +12,18 @@ use Maslosoft\Manganel\SearchCriteriaArray;
 use Maslosoft\Manganel\SearchProvider;
 use Maslosoft\ManganelTest\Models\Criteria\ModelWithDate as m;
 use MongoDate;
+use UnitTester;
 
-class DateTest extends \Codeception\Test\Unit
+class DateTest extends Unit
 {
     /**
-     * @var \UnitTester
+     * @var UnitTester
      */
     protected $tester;
     
     private $time = 0;
 
-    protected function _before()
+    protected function _before(): void
     {
 		// Ensure equal time for all tests
 		$this->time = time();
@@ -29,11 +31,11 @@ class DateTest extends \Codeception\Test\Unit
     	$this->makeData();
     }
 
-    protected function _after()
+    protected function _after(): void
     {
     }
 
-    public function testManganSanitizersMap()
+    public function testManganSanitizersMap(): void
 	{
 		$m = Mangan::fly();
 		codecept_debug($m->connectionId);
@@ -47,7 +49,7 @@ class DateTest extends \Codeception\Test\Unit
 		$this->assertArrayHasKey(SearchCriteriaArray::class, $d);
 	}
 
-    public function testIfWillFilterByDateRange()
+    public function testIfWillFilterByDateRange(): void
     {
 		$dp = new SearchProvider(new m);
 		$count = $dp->getItemCount();
@@ -63,7 +65,7 @@ class DateTest extends \Codeception\Test\Unit
 		$qb = (new QueryBuilder)->setCriteria($criteria);
 		$params = $qb->getParams();
 //		codecept_debug(json_encode($params, JSON_PRETTY_PRINT));
-		codecept_debug(json_encode($params['body']['query']['bool']['filter'], JSON_PRETTY_PRINT));
+//		codecept_debug(json_encode($params['body']['query']['bool']['filter'], JSON_PRETTY_PRINT));
 
 		$dp = new SearchProvider(new m);
 		$dp->setCriteria($criteria);
@@ -72,7 +74,7 @@ class DateTest extends \Codeception\Test\Unit
 		$this->assertSame(3, $count);
     }
 
-	private function makeData()
+	private function makeData(): void
 	{
 		$data = [];
 		// First value is status, second is code
@@ -81,7 +83,7 @@ class DateTest extends \Codeception\Test\Unit
 		$data[] = new MongoDate($this->time + (Cache::Day * -3));
 		$data[] = new MongoDate($this->time + (Cache::Day * -2));
 		$data[] = new MongoDate($this->time + (Cache::Day * -1));
-		$data[] = new MongoDate($this->time + (Cache::Day * 1));
+		$data[] = new MongoDate($this->time + (Cache::Day));
 		$data[] = new MongoDate($this->time + (Cache::Day * 2));
 		$data[] = new MongoDate($this->time + (Cache::Day * 3));
 		$data[] = new MongoDate($this->time + (Cache::Day * 4));
