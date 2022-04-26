@@ -8,7 +8,10 @@ use Maslosoft\Mangan\EntityManager;
 use Maslosoft\Manganel\IndexManager;
 use Maslosoft\Manganel\SearchFinder;
 use Maslosoft\ManganelTest\Models\WithBaseAttributes;
+use Maslosoft\ManganelTest\Models\WithBaseAttributesSecond;
+use MongoId;
 use UnitTester;
+use function codecept_debug;
 
 class CountTest extends Test
 {
@@ -19,7 +22,7 @@ class CountTest extends Test
 	protected $tester;
 
 	// tests
-	public function testIfWillCount()
+	public function testIfWillCount(): void
 	{
 
 		$models = [
@@ -44,7 +47,45 @@ class CountTest extends Test
 		$this->assertSame(3, $count);
 	}
 
-	public function testIfWillCountByCriteria()
+	public function testIfWillCountOnlyOneType(): void
+	{
+		$models = [
+			new WithBaseAttributesSecond(),
+			new WithBaseAttributesSecond(),
+			new WithBaseAttributesSecond(),
+			new WithBaseAttributes(),
+			new WithBaseAttributes()
+		];
+
+		$ids = [
+			new MongoId('6267fee5bf858d94cd0e65c5'),
+			new MongoId('6267fee5bf858d94cd0e65c6'),
+			new MongoId('6267fee5bf858d94cd0e65c7'),
+			new MongoId('6267fee5bf858d94cd0e65c8'),
+			new MongoId('6267fee5bf858d94cd0e65c9'),
+		];
+
+		codecept_debug((string)new MongoId);
+
+		foreach ($models as $i => $model)
+		{
+			$model->_id = $ids[$i];
+			$em = new EntityManager($model);
+			$this->assertTrue($em->insert());
+
+			$im = new IndexManager($model);
+			$this->assertTrue($im->index());
+		}
+
+		$model = new WithBaseAttributes();
+		$finder = new SearchFinder($model);
+
+		$count = $finder->count();
+
+		$this->assertSame(2, $count, 'Expected 2 instances of WithBaseAttributes when not using search, ie when using match_all');
+	}
+
+	public function testIfWillCountByCriteria(): void
 	{
 		$model = new WithBaseAttributes();
 		$model->string = 'foo';
@@ -90,9 +131,9 @@ class CountTest extends Test
 		$this->assertSame(3, $criteriaCount);
 	}
 
-	public function testIfWillCountByAttributes()
+	public function testIfWillCountByAttributes(): void
 	{
-		$model = new WithBaseAttributes();
+		$model = new WithBaseAttributesSecond();
 		$model->string = 'foo';
 		$em = new EntityManager($model);
 		$em->insert();
@@ -125,7 +166,7 @@ class CountTest extends Test
 			'string' => 'foo'
 		]);
 
-		$this->assertSame(3, $attributesCount);
+		$this->assertSame(2, $attributesCount, 'Expected 2 objects having `foo` of type `WithBaseAttributes`');
 	}
 
 }
