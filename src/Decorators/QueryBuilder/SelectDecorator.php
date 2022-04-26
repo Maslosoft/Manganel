@@ -11,7 +11,7 @@ use function in_array;
 
 class SelectDecorator implements BodyDecoratorInterface
 {
-	public function decorate(&$conditions, SearchCriteria $criteria)
+	public function decorate(&$body, SearchCriteria $criteria): void
 	{
 		$fields = array_keys($criteria->getSelect());
 		if (empty($fields))
@@ -25,10 +25,10 @@ class SelectDecorator implements BodyDecoratorInterface
 		}
 		$c = $criteria->getConditions();
 		// Empty conditions results in match_all, which fails when there is a _source too
-		// Exception request does not support [_source]
+		// BadRequest400Exception: Exception request does not support [_source]
 		if(!empty($c))
 		{
-			$conditions['_source'] = $fields;
+			$body['_source'] = $fields;
 		}
 	}
 }
