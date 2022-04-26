@@ -23,7 +23,7 @@ class MultiModelTest extends Test
 	protected $tester;
 
 	// tests
-	public function testIfWillFindDocumentsAndCreateItsInstancesWithSearchProvider()
+	public function testIfWillFindDocumentsAndCreateItsInstancesWithSearchProvider(): void
 	{
 		$model = $this->prepare();
 
@@ -39,7 +39,7 @@ class MultiModelTest extends Test
 
 		$results = $dp->getData();
 
-		$this->assertSame(3, count($results), 'That one result was found');
+		$this->assertCount(3, $results, 'That one result was found');
 
 		$this->assertArrayHasKey(0, $results, 'That results starts with key 0');
 
@@ -48,7 +48,7 @@ class MultiModelTest extends Test
 		$this->assertInstanceOf(AnnotatedInterface::class, $result);
 	}
 
-	public function testIfWillFindProperlyCountWithSearchProviderPagination()
+	public function testIfWillFindProperlyCountWithSearchProviderPagination(): void
 	{
 		$models = $this->prepare();
 
@@ -67,9 +67,9 @@ class MultiModelTest extends Test
 
 		$results = $dp->getData();
 
-		$this->assertSame(2, count($results), 'That 2 results was returned');
+		$this->assertCount(2, $results, 'That 2 results was returned');
 
-		$this->assertTrue(array_key_exists(0, $results), 'That results starts with key 0');
+		$this->assertArrayHasKey(0, $results, 'That results starts with key 0');
 
 		foreach ($results as $i => $result)
 		{
@@ -79,7 +79,7 @@ class MultiModelTest extends Test
 		}
 	}
 
-	private function prepare()
+	private function prepare(): array
 	{
 		$cities = [
 			'New York',
@@ -94,7 +94,7 @@ class MultiModelTest extends Test
 			'Shanghai',
 			'Shanghai',
 			'New Delhi',
-			'New Hempshire'
+			'New Hampshire'
 		];
 
 		foreach ($cities as $city)
