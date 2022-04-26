@@ -12,10 +12,8 @@
 
 namespace Maslosoft\Manganel\Adapters\Finder;
 
-use function array_keys;
 use Maslosoft\Mangan\Interfaces\Adapters\FinderAdapterInterface;
 use Maslosoft\Mangan\Interfaces\CriteriaInterface;
-use Maslosoft\Mangan\Interfaces\ModelAwareInterface;
 use Maslosoft\Manganel\QueryBuilder;
 use Maslosoft\Manganel\SearchCriteria;
 
@@ -29,10 +27,10 @@ class ElasticSearchAdapter implements FinderAdapterInterface
 
 	/**
 	 *
-	 * @var QueryBuilder
+	 * @var QueryBuilder|null
 	 */
-	private $qb = null;
-	private $models = [];
+	private ?QueryBuilder $qb;
+	private array $models;
 
 	public function __construct($models)
 	{
@@ -41,19 +39,19 @@ class ElasticSearchAdapter implements FinderAdapterInterface
 		$this->models = $models;
 	}
 
-	public function count(CriteriaInterface $criteria)
+	public function count(CriteriaInterface $criteria): int
 	{
 		$this->ensure($criteria);
 		return $this->qb->setCriteria($criteria)->count();
 	}
 
-	public function findMany(CriteriaInterface $criteria, $fields = array())
+	public function findMany(CriteriaInterface $criteria, $fields = []): ElasticSearchCursor
 	{
 		$this->prepare($criteria, $fields);
 		return new ElasticSearchCursor($this->qb);
 	}
 
-	public function findOne(CriteriaInterface $criteria, $fields = array())
+	public function findOne(CriteriaInterface $criteria, $fields = [])
 	{
 		$this->prepare($criteria, $fields);
 		$data = (new ElasticSearchCursor($this->qb))->current();
@@ -69,12 +67,12 @@ class ElasticSearchAdapter implements FinderAdapterInterface
 	 * @internal Used for debugging purposes, should not be used for any manipulations!
 	 * @return QueryBuilder
 	 */
-	public function getQueryBuilder()
+	public function getQueryBuilder(): QueryBuilder
 	{
 		return $this->qb;
 	}
 
-	private function prepare(CriteriaInterface $criteria, $fields)
+	private function prepare(CriteriaInterface $criteria, $fields): void
 	{
 		$this->ensure($criteria);
 		assert($criteria instanceof SearchCriteria);
@@ -91,7 +89,7 @@ class ElasticSearchAdapter implements FinderAdapterInterface
 		}
 	}
 
-	private function ensure(&$criteria)
+	private function ensure(&$criteria): void
 	{
 		if (!$criteria instanceof SearchCriteria)
 		{
