@@ -25,7 +25,7 @@
     ],
     "require": {
         "maslosoft/addendum": "*",
-        "elasticsearch/elasticsearch": ">=5 <7",
+        "elasticsearch/elasticsearch": ">=5 <8",
         "maslosoft/embedi": "*",
         "maslosoft/mangan": "*",
         "maslosoft/signals": "*",

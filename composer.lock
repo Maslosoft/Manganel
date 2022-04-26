@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "49a34d422f4a5d9f7f081b080397fd6c",
+    "content-hash": "6a05a86a7d3f550eaf0052c4497c944f",
     "packages": [
         {
             "name": "alcaeus/mongo-php-adapter",
@@ -76,33 +76,32 @@
         },
         {
             "name": "elasticsearch/elasticsearch",
-            "version": "v6.8.2",
+            "version": "v7.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elastic/elasticsearch-php.git",
-                "reference": "619c78266999c6e431df9ca0f844e8f656ac145b"
+                "reference": "1890f9d7fde076b5a3ddcf579a802af05b2e781b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/619c78266999c6e431df9ca0f844e8f656ac145b",
-                "reference": "619c78266999c6e431df9ca0f844e8f656ac145b",
+                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/1890f9d7fde076b5a3ddcf579a802af05b2e781b",
+                "reference": "1890f9d7fde076b5a3ddcf579a802af05b2e781b",
                 "shasum": ""
             },
             "require": {
                 "ext-json": ">=1.3.7",
                 "ezimuel/ringphp": "^1.1.2",
                 "php": "^7.3 || ^8.0",
-                "psr/log": "~1.0"
+                "psr/log": "^1|^2|^3"
             },
             "require-dev": {
-                "doctrine/inflector": "^1.3",
+                "ext-yaml": "*",
+                "ext-zip": "*",
                 "mockery/mockery": "^1.2",
                 "phpstan/phpstan": "^0.12",
                 "phpunit/phpunit": "^9.3",
                 "squizlabs/php_codesniffer": "^3.4",
-                "symfony/finder": "~4.0",
-                "symfony/yaml": "~4.0",
-                "symplify/git-wrapper": ">=9.0 <9.3.27"
+                "symfony/finder": "~4.0"
             },
             "suggest": {
                 "ext-curl": "*",
@@ -119,7 +118,8 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache-2.0"
+                "Apache-2.0",
+                "LGPL-2.1-only"
             ],
             "authors": [
                 {
@@ -137,9 +137,9 @@
             ],
             "support": {
                 "issues": "https://github.com/elastic/elasticsearch-php/issues",
-                "source": "https://github.com/elastic/elasticsearch-php/tree/v6.8.2"
+                "source": "https://github.com/elastic/elasticsearch-php/tree/v7.17.0"
             },
-            "time": "2021-07-14T14:41:55+00:00"
+            "time": "2022-02-03T13:40:04+00:00"
         },
         {
             "name": "ezimuel/guzzlestreams",
@@ -568,16 +568,16 @@
         },
         {
             "name": "maslosoft/mangan",
-            "version": "6.0.0",
+            "version": "6.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Mangan.git",
-                "reference": "fb13790e5c64aed57d6ec6db6a9b3f1eab734ae6"
+                "reference": "3b84a6acf64e7def12efc1f1a38fd10df8fe6922"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/fb13790e5c64aed57d6ec6db6a9b3f1eab734ae6",
-                "reference": "fb13790e5c64aed57d6ec6db6a9b3f1eab734ae6",
+                "url": "https://api.github.com/repos/Maslosoft/Mangan/zipball/3b84a6acf64e7def12efc1f1a38fd10df8fe6922",
+                "reference": "3b84a6acf64e7def12efc1f1a38fd10df8fe6922",
                 "shasum": ""
             },
             "require": {
@@ -585,7 +585,7 @@
                 "ext-gd": "*",
                 "ext-json": "*",
                 "maslosoft/addendum": "^7",
-                "maslosoft/cli-shared": "*",
+                "maslosoft/cli-shared": "^1 | ^2",
                 "maslosoft/embedi": "^2",
                 "maslosoft/gazebo": "^2",
                 "maslosoft/signals": "^4",
@@ -678,9 +678,9 @@
             "support": {
                 "docs": "https://maslosoft.com/mangan/docs/",
                 "issues": "https://github.com/Maslosoft/Mangan/issues",
-                "source": "https://github.com/Maslosoft/Mangan/tree/6.0.0"
+                "source": "https://github.com/Maslosoft/Mangan/tree/6.0.1"
             },
-            "time": "2022-02-22T18:43:45+00:00"
+            "time": "2022-04-26T15:09:37+00:00"
         },
         {
             "name": "maslosoft/signals",
@@ -805,22 +805,22 @@
         },
         {
             "name": "mongodb/mongodb",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mongodb/mongo-php-library.git",
-                "reference": "e4aa59ab15b6fe00a0e56b6772f8b515a0f01bf0"
+                "reference": "e4a7594ac4b31635fa77455c4038a7013024ba28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mongodb/mongo-php-library/zipball/e4aa59ab15b6fe00a0e56b6772f8b515a0f01bf0",
-                "reference": "e4aa59ab15b6fe00a0e56b6772f8b515a0f01bf0",
+                "url": "https://api.github.com/repos/mongodb/mongo-php-library/zipball/e4a7594ac4b31635fa77455c4038a7013024ba28",
+                "reference": "e4a7594ac4b31635fa77455c4038a7013024ba28",
                 "shasum": ""
             },
             "require": {
                 "ext-hash": "*",
                 "ext-json": "*",
-                "ext-mongodb": "^1.12.0",
+                "ext-mongodb": "^1.13.0",
                 "jean85/pretty-package-versions": "^1.2 || ^2.0.1",
                 "php": "^7.2 || ^8.0",
                 "symfony/polyfill-php80": "^1.19"
@@ -833,7 +833,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.11.x-dev"
+                    "dev-master": "1.12.x-dev"
                 }
             },
             "autoload": {
@@ -868,9 +868,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mongodb/mongo-php-library/issues",
-                "source": "https://github.com/mongodb/mongo-php-library/tree/1.11.0"
+                "source": "https://github.com/mongodb/mongo-php-library/tree/1.12.0"
             },
-            "time": "2021-12-14T23:38:18+00:00"
+            "time": "2022-03-23T20:18:39+00:00"
         },
         {
             "name": "psr/container",
@@ -2395,21 +2395,22 @@
         },
         {
             "name": "maslosoft/miniview",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/MiniView.git",
-                "reference": "78c1be3a8676698cbc23d23bce0d05c18ccb2d55"
+                "reference": "893bd985825c89e752943b8df62f14c3cdda77ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/MiniView/zipball/78c1be3a8676698cbc23d23bce0d05c18ccb2d55",
-                "reference": "78c1be3a8676698cbc23d23bce0d05c18ccb2d55",
+                "url": "https://api.github.com/repos/Maslosoft/MiniView/zipball/893bd985825c89e752943b8df62f14c3cdda77ce",
+                "reference": "893bd985825c89e752943b8df62f14c3cdda77ce",
                 "shasum": ""
             },
             "require-dev": {
-                "codeception/codeception": "*",
-                "maslosoft/hedron": "~1"
+                "codeception/codeception": "^4",
+                "codeception/module-asserts": "^1",
+                "maslosoft/hedron": "^1"
             },
             "suggest": {
                 "latte/latte": "Use tatte templates",
@@ -2436,9 +2437,9 @@
             "homepage": "https://maslosoft.com/miniview/",
             "support": {
                 "issues": "https://github.com/Maslosoft/MiniView/issues",
-                "source": "https://github.com/Maslosoft/MiniView/tree/master"
+                "source": "https://github.com/Maslosoft/MiniView/tree/1.1.2"
             },
-            "time": "2017-02-16T07:45:53+00:00"
+            "time": "2022-04-11T19:14:35+00:00"
         },
         {
             "name": "maslosoft/staple",
