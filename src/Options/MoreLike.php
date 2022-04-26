@@ -12,11 +12,11 @@
 
 namespace Maslosoft\Manganel\Options;
 
+use Maslosoft\Manganel\IndexManager;
 use function is_array;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Interfaces\DataProviderInterface;
 use Maslosoft\Manganel\Helpers\Strings;
-use Maslosoft\Manganel\Helpers\TypeNamer;
 use Maslosoft\Manganel\Manganel;
 use ReflectionClass;
 
@@ -120,7 +120,7 @@ class MoreLike
 		}
 	}
 
-	public function toArray()
+	public function toArray(): array
 	{
 		$options = [];
 		$like = [];
@@ -137,7 +137,7 @@ class MoreLike
 			{
 				$like[] = [
 					'_index' => Manganel::create($model)->index,
-					'_type' => TypeNamer::nameType($model),
+					'_type' => IndexManager::DocType,
 					'_id' => (string)$model->_id
 				];
 			}
