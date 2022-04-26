@@ -49,6 +49,7 @@
         "codeception/codeception": "^4",
         "codeception/module-asserts": "^1",
         "maslosoft/hedron": "*",
-        "maslosoft/zamm": "*"
+        "maslosoft/zamm": "*",
+        "monolog/monolog": "^2.5"
     }
 }
