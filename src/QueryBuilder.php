@@ -40,9 +40,9 @@ class QueryBuilder implements CriteriaAwareInterface
 
 	/**
 	 * Manganel instance
-	 * @var Manganel
+	 * @var Manganel|null
 	 */
-	private $manganel = null;
+	private ?Manganel $manganel;
 
 	public function __construct($model = null)
 	{
@@ -65,7 +65,7 @@ class QueryBuilder implements CriteriaAwareInterface
 	 * @param AnnotatedInterface|AnnotatedInterface[] $model
 	 * @return void
 	 */
-	public function add($model)
+	public function add($model): void
 	{
 		if (is_array($model))
 		{
@@ -83,7 +83,7 @@ class QueryBuilder implements CriteriaAwareInterface
 	 * @param CriteriaInterface|array $criteria
 	 * @return static
 	 */
-	public function setCriteria($criteria)
+	public function setCriteria($criteria): QueryBuilder
 	{
 		$this->criteria = $criteria;
 		assert($criteria instanceof SearchCriteria);
@@ -92,11 +92,11 @@ class QueryBuilder implements CriteriaAwareInterface
 	}
 
 	/**
-	 *
-	 * @param string $q
+	 * @param string|null $q
 	 * @return int
+	 * @throws BadRequest400Exception
 	 */
-	public function count($q = null)
+	public function count(string $q = null): int
 	{
 		$params = $this->getParams($q);
 		try
@@ -122,7 +122,7 @@ class QueryBuilder implements CriteriaAwareInterface
 				throw ExceptionHandler::getDecorated($this->manganel, $e, $params);
 			}
 		}
-		if (empty($result) && empty($result['count']))
+		if (empty($result) || empty($result['count']))
 		{
 			return 0; // @codeCoverageIgnore
 		}
@@ -133,11 +133,12 @@ class QueryBuilder implements CriteriaAwareInterface
 	 * Get search results - hits from elasticsearch response.
 	 * Optionally raw results might be obtained by reference via second param.
 	 *
-	 * @param string $q
-	 * @param array $result
+	 * @param string|null $q
+	 * @param array       $result
 	 * @return array
+	 * @throws BadRequest400Exception
 	 */
-	public function search($q = null, &$result = [])
+	public function search(string $q = null, array &$result = []): array
 	{
 		$params = $this->getParams($q);
 
@@ -165,7 +166,7 @@ class QueryBuilder implements CriteriaAwareInterface
 			}
 		}
 
-		if (empty($result) && empty($result['hits']) && empty($result['hits']['hits']))
+		if (empty($result) || empty($result['hits']) || empty($result['hits']['hits']))
 		{
 			return [];
 		}
@@ -181,7 +182,7 @@ class QueryBuilder implements CriteriaAwareInterface
 		{
 			$criteria = new SearchCriteria($criteria);
 		}
-		if (empty($criteria))
+		if ($criteria === null)
 		{
 			$criteria = new SearchCriteria;
 		}
