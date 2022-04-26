@@ -6,6 +6,7 @@ use Codeception\TestCase\Test;
 use Maslosoft\Mangan\Model\Image;
 use Maslosoft\Mangan\Signals\AfterSave;
 use Maslosoft\Manganel\Helpers\TypeNamer;
+use Maslosoft\Manganel\IndexManager;
 use Maslosoft\Manganel\Manganel;
 use Maslosoft\Manganel\Receiver;
 use Maslosoft\Manganel\SearchArray;
@@ -38,7 +39,7 @@ class NestedDocumentTest extends Test
 
 		$params = [
 			'index' => $mnl->index,
-			'type' => TypeNamer::nameType($model),
+			'type' => IndexManager::DocType,
 			'id' => (string) $model->_id,
 			'body' => SearchArray::fromModel($model)
 		];
@@ -74,7 +75,7 @@ class NestedDocumentTest extends Test
 
 		$get = [
 			'index' => $mnl->index,
-			'type' => TypeNamer::nameType($model),
+			'type' => IndexManager::DocType,
 			'id' => (string) $model->_id,
 		];
 		$found = $client->get($get)['_source'];

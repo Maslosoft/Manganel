@@ -8,6 +8,7 @@ use Maslosoft\Mangan\EntityManager;
 use Maslosoft\Mangan\Signals\AfterDelete;
 use Maslosoft\Mangan\Signals\AfterSave;
 use Maslosoft\Manganel\Helpers\TypeNamer;
+use Maslosoft\Manganel\IndexManager;
 use Maslosoft\Manganel\Manganel;
 use Maslosoft\Manganel\Receiver;
 use Maslosoft\Manganel\SearchArray;
@@ -26,7 +27,7 @@ class SimpleDocumentTest extends Test
 	protected $tester;
 
 	// tests
-	public function testIfCanStoreSimpleDocument()
+	public function testIfCanStoreSimpleDocument(): void
 	{
 		$model = new SimpleModel();
 		$model->_id = new MongoId;
@@ -37,7 +38,7 @@ class SimpleDocumentTest extends Test
 
 		$params = [
 			'index' => $mnl->index,
-			'type' => TypeNamer::nameType($model),
+			'type' => IndexManager::DocType,
 			'id' => (string) $model->_id,
 			'body' => SearchArray::fromModel($model)
 		];
@@ -65,7 +66,7 @@ class SimpleDocumentTest extends Test
 
 		$get = [
 			'index' => $mnl->index,
-			'type' => TypeNamer::nameType($model),
+			'type' => IndexManager::DocType,
 			'id' => (string) $model->_id,
 		];
 		
@@ -87,7 +88,7 @@ class SimpleDocumentTest extends Test
 
 		$get = [
 			'index' => $mnl->index,
-			'type' => TypeNamer::nameType($model),
+			'type' => IndexManager::DocType,
 			'id' => (string) $model->_id,
 		];
 		$found = $client->get($get)['_source'];
@@ -109,7 +110,7 @@ class SimpleDocumentTest extends Test
 
 		$get = [
 			'index' => $mnl->index,
-			'type' => TypeNamer::nameType($model),
+			'type' => IndexManager::DocType,
 			'id' => (string) $model->_id,
 		];
 		$found = $client->get($get)['_source'];
@@ -121,7 +122,7 @@ class SimpleDocumentTest extends Test
 		try
 		{
 			$client->get($get);
-			$this->assertFalse(true, 'That missing exception was not thrown');
+			$this->fail('That missing exception was not thrown');
 		}
 		catch (Missing404Exception $e)
 		{
@@ -144,7 +145,7 @@ class SimpleDocumentTest extends Test
 
 		$get = [
 			'index' => $mnl->index,
-			'type' => TypeNamer::nameType($model),
+			'type' => IndexManager::DocType,
 			'id' => (string) $model->_id,
 		];
 		$found = $client->get($get)['_source'];
@@ -179,7 +180,7 @@ class SimpleDocumentTest extends Test
 
 		$get = [
 			'index' => $mnl->index,
-			'type' => TypeNamer::nameType($model),
+			'type' => IndexManager::DocType,
 			'id' => (string) $model->_id,
 		];
 		try
@@ -208,7 +209,7 @@ class SimpleDocumentTest extends Test
 
 		$get = [
 			'index' => $mnl->index,
-			'type' => TypeNamer::nameType($model),
+			'type' => IndexManager::DocType,
 			'id' => (string) $model->_id,
 		];
 		try

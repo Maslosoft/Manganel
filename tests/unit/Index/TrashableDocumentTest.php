@@ -7,6 +7,7 @@ use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Maslosoft\Mangan\Model\Trash;
 use Maslosoft\Mangan\Signals\AfterSave;
 use Maslosoft\Manganel\Helpers\TypeNamer;
+use Maslosoft\Manganel\IndexManager;
 use Maslosoft\Manganel\Manganel;
 use Maslosoft\Manganel\Receiver;
 use Maslosoft\ManganelTest\Models\TrashableModel;
@@ -38,7 +39,7 @@ class TrashableDocumentTest extends Test
 
 		$get = [
 			'index' => $mnl->index,
-			'type' => TypeNamer::nameType($model),
+			'type' => IndexManager::DocType,
 			'id' => (string) $model->_id,
 		];
 		$found = $client->get($get)['_source'];
