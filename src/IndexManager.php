@@ -3,11 +3,11 @@
 /**
  * This software package is licensed under `AGPL-3.0-only, proprietary` license[s].
  *
- * @package maslosoft/manganel
- * @license AGPL-3.0-only, proprietary
+ * @package   maslosoft/manganel
+ * @license   AGPL-3.0-only, proprietary
  *
  * @copyright Copyright (c) Peter Maselkowski <pmaselkowski@gmail.com>
- * @link https://maslosoft.com/manganel/
+ * @link      https://maslosoft.com/manganel/
  */
 
 namespace Maslosoft\Manganel;
@@ -25,6 +25,8 @@ use Maslosoft\Manganel\Helpers\RecursiveFilter;
 use Maslosoft\Manganel\Helpers\TypeNamer;
 use Maslosoft\Manganel\Meta\ManganelMeta;
 use UnexpectedValueException;
+use function array_key_exists;
+use function array_replace_recursive;
 
 /**
  * IndexManager
@@ -36,31 +38,35 @@ class IndexManager
 	/**
 	 * Alias to ErrorEvent::EventIndexingError
 	 */
-	const EventIndexingError = ErrorEvent::EventIndexingError;
+	public const EventIndexingError = ErrorEvent::EventIndexingError;
+
+	public const DocType = '_doc';
+
+	public const TypeField = '_type_';
 
 	/**
 	 * Manganel instance
-	 * @var Manganel
+	 * @var Manganel|null
 	 */
-	private $manganel = null;
+	private ?Manganel $manganel = null;
 
 	/**
 	 * Model meta data
-	 * @var ManganelMeta
+	 * @var ManganelMeta|null
 	 */
-	private $meta = null;
+	private ?ManganelMeta $meta = null;
 
 	/**
 	 * Annotated model
 	 * @var AnnotatedInterface
 	 */
-	private $model;
+	private AnnotatedInterface $model;
 
 	/**
 	 * Whether model is indexable
 	 * @var bool
 	 */
-	private $isIndexable = false;
+	private bool $isIndexable = false;
 
 	public function __construct($model)
 	{
@@ -86,7 +92,7 @@ class IndexManager
 	 * @return bool
 	 * @throws BadRequest400Exception
 	 */
-	public function index()
+	public function index(): bool
 	{
 		if (!$this->isIndexable)
 		{
@@ -117,7 +123,7 @@ class IndexManager
 			// Need to check if exists, or update will fail
 			$existsParams = [
 				'index' => $fullParams['index'],
-				'type' => $fullParams['type'],
+				'type' => self::DocType,
 				'id' => $fullParams['id']
 			];
 			$exists = $this->getClient()->exists($existsParams);
@@ -144,18 +150,16 @@ class IndexManager
 				// For earlier ES
 				return true;
 			}
-		}
-		catch (BadRequest400Exception $e)
+		} catch (BadRequest400Exception $e)
 		{
-			if(ExceptionHandler::handled($e, $this->model, self::EventIndexingError))
+			if (ExceptionHandler::handled($e, $this->model, self::EventIndexingError))
 			{
 				return false;
 			}
 			throw ExceptionHandler::getDecorated($this->manganel, $e, $params);
-		}
-		catch(Exception $e)
+		} catch (Exception $e)
 		{
-			if(ExceptionHandler::handled($e, $this->model, self::EventIndexingError))
+			if (ExceptionHandler::handled($e, $this->model, self::EventIndexingError))
 			{
 				return false;
 			}
@@ -170,7 +174,7 @@ class IndexManager
 	 * @return bool
 	 * @throws BadRequest400Exception
 	 */
-	public function delete()
+	public function delete(): bool
 	{
 		if (!$this->isIndexable)
 		{
@@ -181,18 +185,16 @@ class IndexManager
 			$params = $this->getParams();
 			$this->getClient()->delete($params);
 			return true;
-		}
-		catch (BadRequest400Exception $e)
+		} catch (BadRequest400Exception $e)
 		{
-			if(ExceptionHandler::handled($e, $this->model, self::EventIndexingError))
+			if (ExceptionHandler::handled($e, $this->model, self::EventIndexingError))
 			{
 				return false;
 			}
 			throw ExceptionHandler::getDecorated($this->manganel, $e, $params);
-		}
-		catch(Exception $e)
+		} catch (Exception $e)
 		{
-			if(ExceptionHandler::handled($e, $this->model, self::EventIndexingError))
+			if (ExceptionHandler::handled($e, $this->model, self::EventIndexingError))
 			{
 				return false;
 			}
@@ -206,7 +208,7 @@ class IndexManager
 		{
 			return null;
 		}
-		$params = $id ? ['id' => (string) $id] : [];
+		$params = $id ? ['id' => (string)$id] : [];
 		$data = $this->getClient()->get($this->getParams($params))['_source'];
 		return SearchArray::toModel($data);
 	}
@@ -215,18 +217,18 @@ class IndexManager
 	 * Get client
 	 * @return Client
 	 */
-	public function getClient()
+	public function getClient(): Client
 	{
 		return $this->manganel->getClient();
 	}
 
-	private function getParams($params = [])
+	private function getParams($params = []): array
 	{
 		// Check refresh option
 		if ($this->manganel->refresh instanceof Closure)
 		{
 			$func = $this->manganel->refresh;
-			$refresh = (bool) $func($this->model);
+			$refresh = (bool)$func($this->model);
 		}
 		else
 		{
@@ -234,11 +236,19 @@ class IndexManager
 		}
 		$result = [
 			'index' => strtolower($this->manganel->index),
-			'type' => TypeNamer::nameType($this->model),
-			'id' => (string) $this->model->_id,
-			'refresh' => $refresh
+			'type' => self::DocType,
+			'id' => (string)$this->model->_id,
+			'refresh' => $refresh,
 		];
-		return array_merge($result, $params);
+
+		// Add custom type field on inserts to body
+		if (array_key_exists('body', $params))
+		{
+			$result['body'] = [
+				self::TypeField => TypeNamer::nameType($this->model)
+			];
+		}
+		return array_replace_recursive($result, $params);
 	}
 
 }

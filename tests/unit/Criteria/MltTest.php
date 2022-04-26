@@ -35,7 +35,7 @@ class MltTest extends \Codeception\Test\Unit
     	$like->minDocFreq = 1;
     	$criteria->moreLike($like);
 		$params = (new QueryBuilder)->setCriteria($criteria)->getParams();
-		codecept_debug(json_encode($params['body'], JSON_PRETTY_PRINT));
+		codecept_debug(json_encode($params['body'], JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT));
 
 		$dp = new SearchProvider(SimpleModel::class);
 
@@ -43,12 +43,13 @@ class MltTest extends \Codeception\Test\Unit
 
 		$result = $dp->getData();
 
+		$this->assertNotEmpty($result);
 		$this->assertArrayHasKey(0, $result);
 		$this->assertNotSame((string) $result[0]->_id, (string) $model->_id);
 		$this->assertCount(1, $result);
     }
 
-    private function makeData()
+    private function makeData(): SimpleModel
 	{
 		$model = new SimpleModel;
 		$model->_id = new MongoId('5b23eb6da3d24b9b6e772cc5');

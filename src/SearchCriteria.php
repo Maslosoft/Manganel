@@ -72,7 +72,7 @@ class SearchCriteria extends Criteria implements ConditionDecoratorTypeAwareInte
 	 * @param $model
 	 * @return $this
 	 */
-	public function add($model)
+	public function add($model): SearchCriteria
 	{
 		$this->addModel($model);
 		return $this;
@@ -82,7 +82,7 @@ class SearchCriteria extends Criteria implements ConditionDecoratorTypeAwareInte
 	 * Perform scored full text search
 	 * @param $query
 	 */
-	public function search($query)
+	public function search($query): void
 	{
 		$this->query = $query;
 	}
@@ -139,7 +139,7 @@ class SearchCriteria extends Criteria implements ConditionDecoratorTypeAwareInte
 	 * Fond document similar to provided document(s) or other options
 	 * @param MoreLike $options
 	 */
-	public function moreLike(MoreLike $options)
+	public function moreLike(MoreLike $options): void
 	{
 		$this->moreLike = $options;
 		// Example query
@@ -149,7 +149,7 @@ class SearchCriteria extends Criteria implements ConditionDecoratorTypeAwareInte
 //				"like": [
 //        {
 //			"_index": "dev_maslosoft_com",
-//          "_type": "Content_Page",
+//          "_type": "_doc",
 //          "_id": "5ad49885a3d24b6a4d288be3"
 //        }
 //      ],
@@ -163,7 +163,7 @@ class SearchCriteria extends Criteria implements ConditionDecoratorTypeAwareInte
 	/**
 	 * @return MoreLike|null
 	 */
-	public function getMoreLike()
+	public function getMoreLike(): ?MoreLike
 	{
 		return $this->moreLike;
 	}

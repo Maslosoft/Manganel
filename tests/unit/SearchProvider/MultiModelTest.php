@@ -34,8 +34,8 @@ class MultiModelTest extends Test
 
 		$dp->setCriteria($criteria);
 
-		$this->assertSame(3, $dp->getTotalItemCount(), 'That total is 1 item');
-		$this->assertSame(3, $dp->getItemCount(), 'That current result set has 1 item');
+		$this->assertSame(3, $dp->getTotalItemCount(), 'That total is 1 item of each type');
+		$this->assertSame(3, $dp->getItemCount(), 'That current result set has 1 item of each type');
 
 		$results = $dp->getData();
 

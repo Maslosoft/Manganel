@@ -3,11 +3,11 @@
 /**
  * This software package is licensed under `AGPL-3.0-only, proprietary` license[s].
  *
- * @package maslosoft/manganel
- * @license AGPL-3.0-only, proprietary
+ * @package   maslosoft/manganel
+ * @license   AGPL-3.0-only, proprietary
  *
  * @copyright Copyright (c) Peter Maselkowski <pmaselkowski@gmail.com>
- * @link https://maslosoft.com/manganel/
+ * @link      https://maslosoft.com/manganel/
  */
 
 namespace Maslosoft\Manganel\Helpers;
@@ -44,20 +44,9 @@ class QueryBuilderDecorator implements ModelsAwareInterface
 	{
 
 		$models = $this->getModels();
-		$numModels = count($models);
-
-		if ($numModels === 1)
-		{
-			(new SingleModelDecorator())
-					->setManganel($this->manganel)
-					->decorate($body, $criteria);
-		}
-		else
-		{
-			(new MultiModelDecorator($models))
-					->setManganel($this->manganel)
-					->decorate($body, $criteria);
-		}
+		(new MultiModelDecorator($models))
+			->setManganel($this->manganel)
+			->decorate($body, $criteria);
 	}
 
 }

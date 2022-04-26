@@ -9,6 +9,7 @@ use Maslosoft\Manganel\IndexManager;
 use Maslosoft\Manganel\SearchFinder;
 use Maslosoft\ManganelTest\Models\WithBaseAttributes;
 use Maslosoft\ManganelTest\Models\WithBaseAttributesSecond;
+use Maslosoft\ManganelTest\Models\WithBaseAttributesThird;
 use MongoId;
 use UnitTester;
 use function codecept_debug;
@@ -70,6 +71,7 @@ class CountTest extends Test
 		foreach ($models as $i => $model)
 		{
 			$model->_id = $ids[$i];
+			$model->int = $i;
 			$em = new EntityManager($model);
 			$this->assertTrue($em->insert());
 
@@ -78,11 +80,11 @@ class CountTest extends Test
 		}
 
 		$model = new WithBaseAttributes();
-		$finder = new SearchFinder($model);
+		$finder = new SearchFinder($models[4]);
 
 		$count = $finder->count();
 
-		$this->assertSame(2, $count, 'Expected 2 instances of WithBaseAttributes when not using search, ie when using match_all');
+		$this->assertSame(2, $count, 'Expected 2 instances of `WithBaseAttributes` when not using search, ie when using match_all');
 	}
 
 	public function testIfWillCountByCriteria(): void
@@ -156,7 +158,7 @@ class CountTest extends Test
 		$model->string = 'blah';
 		$em->insert($model);
 
-		$finder = new SearchFinder($model);
+		$finder = new SearchFinder([new WithBaseAttributes, new WithBaseAttributesSecond]);
 
 		$count = $finder->count();
 
@@ -166,7 +168,46 @@ class CountTest extends Test
 			'string' => 'foo'
 		]);
 
-		$this->assertSame(2, $attributesCount, 'Expected 2 objects having `foo` of type `WithBaseAttributes`');
+		$this->assertSame(3, $attributesCount, 'Expected 3 objects having `foo` of type `WithBaseAttributes` and `WithBaseAttributesSecond`');
 	}
 
+	public function testIfWillCountByAttributesWithTwoDifferentModels(): void
+	{
+		$model = new WithBaseAttributesSecond();
+		$model->string = 'foo';
+		$em = new EntityManager($model);
+		$em->insert();
+
+		$model = new WithBaseAttributes();
+		$model->string = 'foo';
+		$em->insert($model);
+
+		$model = new WithBaseAttributesThird();
+		$model->string = 'foo';
+		$em->insert($model);
+
+		// Some other models
+
+		$model = new WithBaseAttributes();
+		$model->string = 'blah';
+		$em->insert($model);
+
+		$model = new WithBaseAttributes();
+		$model->string = 'blah';
+		$em->insert($model);
+
+		$finder = new SearchFinder(
+			[new WithBaseAttributes(), new WithBaseAttributesThird()]
+		);
+
+		$count = $finder->count();
+
+		$this->assertSame(4, $count);
+
+		$attributesCount = $finder->countByAttributes([
+			'string' => 'foo'
+		]);
+
+		$this->assertSame(2, $attributesCount, 'Expected 2 objects having `foo` of type `WithBaseAttributes` and `WithBaseAttributesThird`');
+	}
 }

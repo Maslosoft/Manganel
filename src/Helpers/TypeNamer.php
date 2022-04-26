@@ -14,6 +14,7 @@ namespace Maslosoft\Manganel\Helpers;
 
 use Maslosoft\Mangan\Helpers\CollectionNamer;
 use Maslosoft\Manganel\Meta\ManganelMeta;
+use function strtolower;
 
 /**
  * TypeNamer
@@ -23,7 +24,7 @@ use Maslosoft\Manganel\Meta\ManganelMeta;
 class TypeNamer extends CollectionNamer
 {
 
-	public static function nameType($model)
+	public static function nameType($model): string
 	{
 		$enforcedType = ManganelMeta::create($model)->type()->type;
 		if (!empty($enforcedType))
@@ -31,7 +32,8 @@ class TypeNamer extends CollectionNamer
 			$model = new $enforcedType;
 		}
 		$collectionName = parent::nameCollection($model);
-		return str_replace('.', '_', $collectionName);
+		// NOTE: Must be lowercased or filter will *not* match
+		return strtolower($collectionName);
 	}
 
 }
