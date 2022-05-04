@@ -19,30 +19,37 @@ use function json_decode;
 use Maslosoft\Mangan\Events\Event;
 use Maslosoft\Manganel\Events\ErrorEvent;
 use Maslosoft\Manganel\Manganel;
-use function str_replace;
 
 class ExceptionHandler
 {
 
-	public static function getDecorated(Manganel $manganel, Exception $exception, $params)
+	public static function getDecorated(Manganel $manganel, Exception $exception, $params): BadRequest400Exception
 	{
 		// Throw previous exception,
 		// as it holds more meaningful information
-		$json = json_encode($params, JSON_PRETTY_PRINT);
+		$json = json_encode($params, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
 
 		$msg = $exception->getMessage();
-
-		$decoded = json_decode($msg);
+		$reason = '';
+		$decoded = json_decode($msg, false, 512, JSON_THROW_ON_ERROR);
 		if (!empty($decoded) && !empty($decoded->error->root_cause[0]->reason))
 		{
 			$msg = $decoded->error->root_cause[0]->reason;
+			if(!empty($decoded->error->reason))
+			{
+				$reason = $decoded->error->reason;
+			}
 		}
 
 		$prevMsg = '';
 		$previous = $exception->getPrevious();
-		if (!empty($previous))
+		if ($previous !== null)
 		{
 			$prevMsg = '(' . $previous->getMessage() . ')';
+		}
+		if (!empty($reason))
+		{
+			$prevMsg .= ' ' . $reason;
 		}
 
 		$params = [
