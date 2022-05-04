@@ -47,6 +47,8 @@ class BoostDecorator extends FieldsBoosting implements QueryStringDecoratorInter
 		// Add also _all or it would search only boosted fields
 		$boosts[] = '_all';
 
+		sort($boosts);
+
 		$queryStringParams['fields'] = $boosts;
 	}
 
