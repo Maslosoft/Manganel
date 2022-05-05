@@ -22,7 +22,6 @@ use Maslosoft\Manganel\SearchCriteria;
 use Maslosoft\Manganel\Traits\ManganelAwareTrait;
 use Maslosoft\Manganel\Traits\ModelsAwareTrait;
 use function array_unique;
-use function codecept_debug;
 
 /**
  * MultiModelDecorator
@@ -44,7 +43,6 @@ class MultiModelDecorator implements ManganelAwareInterface,
 	public function decorate(&$body, SearchCriteria $initialCriteria): void
 	{
 		$queries = [];
-		$filters = [];
 		$types = [];
 		foreach ($this->models as $model)
 		{
@@ -102,7 +100,6 @@ class MultiModelDecorator implements ManganelAwareInterface,
 		{
 			$body[$key] = $value;
 		}
-		codecept_debug($body);
 	}
 
 }
