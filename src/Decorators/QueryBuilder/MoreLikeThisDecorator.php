@@ -30,7 +30,7 @@ class MoreLikeThisDecorator implements ConditionDecoratorInterface,
 	 * @param                $conditions
 	 * @param SearchCriteria $criteria
 	 * @return void
-	 *@see MltBoostDecorator
+	 * @see MltBoostDecorator
 	 */
 	public function decorate(&$conditions, SearchCriteria $criteria): void
 	{
@@ -41,11 +41,9 @@ class MoreLikeThisDecorator implements ConditionDecoratorInterface,
 		}
 		// Ignore if Criteria have boosted fields
 		$boosted = $criteria->getBoosted();
-		if(!empty($boosted))
+		if (!empty($boosted))
 		{
-			// NOTE: There are issues with MLT multi-model-multi-boosted-queries, so for enabled for all
-			// @see MltBoostDecorator
-//			return;
+			return;
 		}
 
 		$conditions = [

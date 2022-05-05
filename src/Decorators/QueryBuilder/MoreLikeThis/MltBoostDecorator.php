@@ -23,14 +23,9 @@ class MltBoostDecorator extends FieldsBoosting implements ConditionDecoratorInte
 			return;
 		}
 
-		// NOTE: There are issues with MLT multi-model-multi-boosted-queries, so for now disabled
-		// @see MoreLikeThisDecorator
-		return;
-
 		$boostFactors = $this->getBoostFactors($criteria);
 
-		// Fill in _all too... or not
-//		$boostFactors['_all'] = 1.0;
+		// Do *NOT* fill _all field in boosted fields
 
 		$boostedMlts = [];
 		$boostForFields = [];
@@ -61,33 +56,15 @@ class MltBoostDecorator extends FieldsBoosting implements ConditionDecoratorInte
 			];
 		}
 
-		// Rest keys to be numeric
+		// Assure keys to be numeric
 		$boostedMlts = array_values($boostedMlts);
 
-		\Maslosoft\Components\Helpers\Dump::js($conditions);
-
 		$conditions = $boostedMlts;
-//			$boostedMlts
-//			];
-//
-//		$conditions = [
-//			'dis_max' => [
-//				'queries' => $boostedMlts
-//			]
-//		];
-
-		\Maslosoft\Components\Helpers\Dump::js($conditions);
-
-//		$conditions = [
-//			[
-//				'more_like_this' => $mlt->toArray()
-//			]
-//		];
 	}
 
 
 	public function getKind()
 	{
-		return self::KindMust;
+		return self::KindShould;
 	}
 }
