@@ -77,7 +77,8 @@ class MultiModelDecorator implements ManganelAwareInterface,
 			$queries[] = $query;
 		}
 
-		$queries = array_unique($queries, SORT_REGULAR);
+		// NOTE: It is important to have regular array here
+		$queries = array_values(array_unique($queries, SORT_REGULAR));
 
 		$body['query']['bool'] = [
 			'must' => [
