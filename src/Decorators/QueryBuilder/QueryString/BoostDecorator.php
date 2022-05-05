@@ -12,14 +12,10 @@
 
 namespace Maslosoft\Manganel\Decorators\QueryBuilder\QueryString;
 
-use Maslosoft\Mangan\Criteria\ConditionDecorator;
 use Maslosoft\Manganel\Decorators\QueryBuilder\Common\FieldsBoosting;
 use Maslosoft\Manganel\Interfaces\QueryBuilder\QueryStringDecoratorInterface;
-use Maslosoft\Manganel\Meta\ManganelMeta;
 use Maslosoft\Manganel\SearchCriteria;
-use UnexpectedValueException;
-use function key;
-use function var_dump;
+use function array_values;
 
 /**
  * BoostDecorator
@@ -49,7 +45,8 @@ class BoostDecorator extends FieldsBoosting implements QueryStringDecoratorInter
 
 		sort($boosts);
 
-		$queryStringParams['fields'] = $boosts;
+		// NOTE: It is possibly important to have regular array here
+		$queryStringParams['fields'] = array_values($boosts);
 	}
 
 
