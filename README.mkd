@@ -1,7 +1,7 @@
 <!--header-->
 <!-- Auto generated do not modify between `header` and `/header` -->
 
-# <a href="https://maslosoft.com/manganel/">Maslosoft Manganel</a>
+# <a href="https://maslosoft.com/manganel/"><img src="https://maslosoft.com/manganel/manganel.svg" style="height:24px;" alt="Manganel Logo"></a> <a href="https://maslosoft.com/manganel/">Maslosoft Manganel</a>
 <a href="https://maslosoft.com/manganel/">_Elasticsearch for Mangan_</a>
 
 <a href="https://packagist.org/packages/maslosoft/manganel" title="Latest Stable Version">
