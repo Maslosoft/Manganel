@@ -1,8 +1,8 @@
 <!--header-->
 <!-- Auto generated do not modify between `header` and `/header` -->
 
-# <a href="http://maslosoft.com/manganel/">Maslosoft Manganel</a>
-<a href="http://maslosoft.com/manganel/">_Elasticsearch for Mangan_</a>
+# <a href="https://maslosoft.com/manganel/">Maslosoft Manganel</a>
+<a href="https://maslosoft.com/manganel/">_Elasticsearch for Mangan_</a>
 
 <a href="https://packagist.org/packages/maslosoft/manganel" title="Latest Stable Version">
 <img src="https://poser.pugx.org/maslosoft/manganel/v/stable.svg" alt="Latest Stable Version" style="height: 20px;"/>
@@ -11,17 +11,42 @@
 <img src="https://poser.pugx.org/maslosoft/manganel/license.svg" alt="License" style="height: 20px;"/>
 </a>
 <a href="https://scrutinizer-ci.com/g/Maslosoft/Manganel/?branch=master">
-    <img src="https://scrutinizer-ci.com/g/Maslosoft/Manganel/badges/quality-score.png?b=master" />
+	<img src="https://scrutinizer-ci.com/g/Maslosoft/Manganel/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"/>
 </a>
 <a href="https://scrutinizer-ci.com/g/Maslosoft/Manganel/?branch=master">
-<img src="https://scrutinizer-ci.com/g/Maslosoft/Manganel/badges/coverage.png?b=master">
+	<img src="https://scrutinizer-ci.com/g/Maslosoft/Manganel/badges/coverage.png?b=master" alt="Code Coverage" />
 </a>
-<img src="https://travis-ci.org/Maslosoft/Manganel.svg?branch=master"/>
 
 ### Quick Install
 ```bash
 composer require maslosoft/manganel
 ```
+
+### Documentation
+
+<a href="https://maslosoft.com/manganel/docs/">Full Manganel Documentation</a>
+
+
+
+
+# Elastic Search Provider for [Mangan MongoDB ODM](/mangan/)
+
+MongoDB allows us to store complex structures in database.
+To use it's features in object oriented fashion - [Mangan Object Document Mapper (ODM)](/mangan/)
+project was created.
+
+While storing arbitrary nested sets of objects is a huge advantage compared
+to flat structure of relational database, searching this sets (collections)
+might be challenging.
+
+Fortunatelly, [ElasticSearch](https://elastic.co/) allows us to store
+similarly structured documents in **full text search index**.
+
+Manganel project was created to make flawless searching and indexing
+of documents created and maintained by [Mangan](/mangan/). With minimal
+configuration and by adding extra annotations, Manganel makes our
+MongoDB collection searchable with sets of state of the art features
+like scoring, fulltext search, fuzzy search, filtering.
 
 <!--/header-->
 
