@@ -27,11 +27,11 @@
         "maslosoft/addendum": "*",
         "elasticsearch/elasticsearch": ">5 <8",
         "maslosoft/embedi": "*",
-        "maslosoft/mangan": "*",
+        "maslosoft/mangan": ">=7",
         "maslosoft/signals": "*",
         "maslosoft/gazebo": "*",
         "ext-json": "*",
-        "php": ">= 7.4"
+        "php": ">= 8.2"
     },
     "minimum-stability": "stable",
     "autoload": {
@@ -48,7 +48,6 @@
     "require-dev": {
         "codeception/codeception": "^4",
         "codeception/module-asserts": "^1",
-        "maslosoft/hedron": "*",
         "maslosoft/zamm": "*",
         "monolog/monolog": "^2.5"
     }
