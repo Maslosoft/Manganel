@@ -24,14 +24,15 @@
         }
     ],
     "require": {
+        "php": ">= 8.2",
+        "ext-mongodb": "*",
+        "ext-json": "*",
         "maslosoft/addendum": "*",
         "elasticsearch/elasticsearch": ">5 <8",
         "maslosoft/embedi": "*",
         "maslosoft/mangan": ">=7",
         "maslosoft/signals": "*",
-        "maslosoft/gazebo": "*",
-        "ext-json": "*",
-        "php": ">= 8.2"
+        "maslosoft/gazebo": "*"
     },
     "minimum-stability": "stable",
     "autoload": {
