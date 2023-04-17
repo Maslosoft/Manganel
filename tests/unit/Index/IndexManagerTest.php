@@ -8,7 +8,7 @@ use Maslosoft\Mangan\Transformers\JsonArray;
 use Maslosoft\Manganel\IndexManager;
 use Maslosoft\Manganel\SearchArray;
 use Maslosoft\ManganelTest\Models\SimpleModel;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class IndexManagerTest extends Test

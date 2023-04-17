@@ -9,7 +9,7 @@ use Maslosoft\Manganel\QueryBuilder;
 use Maslosoft\ManganelTest\Models\Criteria\With\SimpleDocumentWithActive;
 use Maslosoft\ManganelTest\Models\Criteria\With\SimpleDocumentWithStatus;
 use Maslosoft\ManganelTest\Models\SimpleModel;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class MultiCriteriaTest extends Test

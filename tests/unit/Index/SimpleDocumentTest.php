@@ -15,7 +15,7 @@ use Maslosoft\Manganel\SearchArray;
 use Maslosoft\ManganelTest\Models\ExplicitlyNonIndexableModel;
 use Maslosoft\ManganelTest\Models\NonIndexableModel;
 use Maslosoft\ManganelTest\Models\SimpleModel;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class SimpleDocumentTest extends Test

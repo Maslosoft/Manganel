@@ -9,7 +9,7 @@ use Maslosoft\Mangan\Sanitizers\StringSanitizer;
 use Maslosoft\Mangan\Traits\I18NAbleTrait;
 use Maslosoft\Manganel\Interfaces\ScoreAwareInterface;
 use Maslosoft\Manganel\Traits\ScoreAwareTrait;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 
 /**
  * ModelWithBoostedFieldAndTagsI18N

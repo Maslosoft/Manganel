@@ -23,7 +23,7 @@ use Maslosoft\Addendum\Utilities\ClassChecker;
 use Maslosoft\Mangan\Helpers\CompositionIterator;
 use Maslosoft\Manganel\Meta\DocumentPropertyMeta;
 use Maslosoft\Manganel\Meta\ManganelMeta;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use function strip_tags;
 use function strpos;
 

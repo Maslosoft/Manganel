@@ -12,7 +12,7 @@ use Maslosoft\Manganel\QueryBuilder;
 use Maslosoft\Manganel\SearchCriteria;
 use Maslosoft\Manganel\SearchProvider;
 use Maslosoft\ManganelTest\Models\SimpleModel;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use function json_encode;
 use const JSON_PRETTY_PRINT;
 use const JSON_THROW_ON_ERROR;

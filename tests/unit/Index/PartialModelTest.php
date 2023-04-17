@@ -7,7 +7,7 @@ use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Maslosoft\Manganel\IndexManager;
 use Maslosoft\ManganelTest\Models\Partial\BaseModel;
 use Maslosoft\ManganelTest\Models\Partial\ExtendedModel;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class PartialModelTest extends Test

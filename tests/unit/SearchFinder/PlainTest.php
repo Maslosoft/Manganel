@@ -8,7 +8,7 @@ use Maslosoft\Manganel\SearchFinder;
 use Maslosoft\ManganelTest\Models\CompositePrimaryKey;
 use Maslosoft\ManganelTest\Models\Plain\PlainWithBasicAttributes;
 use Maslosoft\ManganelTest\Models\SimplePrimaryKey;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class PlainTest extends Test

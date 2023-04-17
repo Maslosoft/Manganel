@@ -12,16 +12,16 @@
 
 namespace Maslosoft\Manganel\Meta;
 
-use Maslosoft\Addendum\Collections\Meta;
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Addendum\Options\MetaOptions;
+use Maslosoft\Mangan\Meta\ManganMeta;
 use Maslosoft\Manganel\Options\ManganelMetaOptions;
 
 /**
  * Manganel metadata container class
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class ManganelMeta extends Meta
+class ManganelMeta extends ManganMeta
 {
 
 	/**

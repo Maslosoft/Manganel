@@ -12,7 +12,7 @@
 
 namespace Maslosoft\Manganel\Helpers;
 
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
 

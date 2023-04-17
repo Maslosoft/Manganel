@@ -13,7 +13,7 @@ use Maslosoft\Mangan\Sanitizers\MongoWriteStringId;
 use Maslosoft\Manganel\Meta\ManganelMeta;
 use Maslosoft\Manganel\SearchArray;
 use Maslosoft\ManganelTest\Models\ModelWithSimpleTree;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 /**

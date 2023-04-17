@@ -7,7 +7,7 @@ use Maslosoft\Manganel\Filters\SearchFilter;
 use Maslosoft\Manganel\IndexManager;
 use Maslosoft\Manganel\Meta\ManganelMeta;
 use Maslosoft\ManganelTest\Models\ExplicitlyNonIndexableField;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class SearchFilterTest extends Test

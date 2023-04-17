@@ -10,7 +10,7 @@ namespace Maslosoft\ManganelTest\Models;
 
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Sanitizers\MongoObjectId;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 
 /**
  * This model is meant to **be** indexed but without password and details fields.

@@ -11,7 +11,7 @@ use Maslosoft\Manganel\SearchFinder;
 use Maslosoft\ManganelTest\Models\CompositePrimaryKey;
 use Maslosoft\ManganelTest\Models\ModelWithI18N;
 use Maslosoft\ManganelTest\Models\WithBaseAttributes;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class ExistsTest extends Test

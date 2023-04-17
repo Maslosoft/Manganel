@@ -7,7 +7,7 @@ use Maslosoft\Manganel\IndexManager;
 use Maslosoft\Manganel\QueryBuilder;
 use Maslosoft\ManganelTest\Models\SimpleModel;
 use Maslosoft\ManganelTest\Models\SimpleModelSecond;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class MultiCountQueryTest extends Test

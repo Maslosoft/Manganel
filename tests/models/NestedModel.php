@@ -11,7 +11,7 @@ namespace Maslosoft\ManganelTest\Models;
 use Maslosoft\Mangan\Document;
 use Maslosoft\Mangan\Model\Image;
 use Maslosoft\Mangan\Sanitizers\DateSanitizer;
-use MongoDate;
+use MongoDB\BSON\UTCDateTime as MongoDate;
 
 /**
  * Example model containing nested data, taken from other project

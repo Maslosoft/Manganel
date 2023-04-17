@@ -11,7 +11,7 @@ namespace Maslosoft\ManganelTest\Models\Criteria;
 
 use Maslosoft\Mangan\Document;
 use Maslosoft\Mangan\Sanitizers\DateSanitizer;
-use MongoDate;
+use MongoDB\BSON\UTCDateTime as MongoDate;
 
 /**
  * Class ModelWithDate

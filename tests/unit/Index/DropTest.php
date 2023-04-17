@@ -7,7 +7,7 @@ use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Maslosoft\Manganel\IndexManager;
 use Maslosoft\Manganel\Manganel;
 use Maslosoft\ManganelTest\Models\SimpleModel;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class DropTest extends Test

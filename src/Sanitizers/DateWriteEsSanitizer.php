@@ -14,7 +14,7 @@ namespace Maslosoft\Manganel\Sanitizers;
 
 use DateTime;
 use Maslosoft\Mangan\Sanitizers\DateSanitizer;
-use MongoDate;
+use MongoDB\BSON\UTCDateTime as MongoDate;
 
 /**
  * UnixDateSanitizer
@@ -27,7 +27,7 @@ use MongoDate;
 class DateWriteEsSanitizer extends DateSanitizer
 {
 
-	const ISODate = 'Y-m-d*H:i:s*';
+	public const ISODate = 'Y-m-d*H:i:s*';
 
 	public function read($model, $dbValue)
 	{
@@ -44,7 +44,7 @@ class DateWriteEsSanitizer extends DateSanitizer
 		// Assume timestamp
 		if (is_int($dbValue) || (is_string($dbValue) && preg_match('~^\d+$~', $dbValue)))
 		{
-			return new MongoDate((int) $dbValue);
+			return new MongoDate((int) $dbValue * 1000);
 		}
 		elseif (is_string($dbValue))
 		{
@@ -52,23 +52,23 @@ class DateWriteEsSanitizer extends DateSanitizer
 			$dt = DateTime::createFromFormat(DateTime::ISO8601, $dbValue);
 			if (empty($dt))
 			{
-				return new MongoDate(time());
+				return new MongoDate(time() * 1000);
 			}
 			$time = $dt->format('U');
-			return new MongoDate($time);
+			return new MongoDate($time * 1000);
 		}
 
 		// Create from date time string
 		$dt = new DateTime($dbValue);
 		$time = $dt->format('U');
-		return new MongoDate($time);
+		return new MongoDate($time * 1000);
 	}
 
 	public function write($model, $dbValue)
 	{
 		if ($dbValue instanceof MongoDate)
 		{
-			$time = $dbValue->sec;
+			$time = $dbValue->toDateTime()->getTimestamp();
 		}
 		elseif (!empty($time))
 		{
@@ -86,7 +86,7 @@ class DateWriteEsSanitizer extends DateSanitizer
 		{
 			$dt = DateTime::createFromFormat('c', $time);
 		}
-		return date('c', (int) (new MongoDate((int) $time))->sec);
+		return date('c', (int) (new MongoDate((int) $time * 1000))->toDateTime()->getTimestamp());
 	}
 
 }

@@ -14,12 +14,13 @@ namespace Maslosoft\Manganel;
 
 
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
+use Maslosoft\Mangan\Meta\ManganMeta;
 use Maslosoft\Mangan\Transformers\RawArray;
 use Maslosoft\Manganel\Meta\ManganelMeta;
 
 class SearchCriteriaArray extends RawArray
 {
-	protected static function getMeta(AnnotatedInterface $model)
+	protected static function getMeta(AnnotatedInterface $model): ManganMeta
 	{
 		return ManganelMeta::create($model);
 	}

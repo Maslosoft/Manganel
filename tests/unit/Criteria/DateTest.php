@@ -11,7 +11,7 @@ use Maslosoft\Manganel\SearchCriteria;
 use Maslosoft\Manganel\SearchCriteriaArray;
 use Maslosoft\Manganel\SearchProvider;
 use Maslosoft\ManganelTest\Models\Criteria\ModelWithDate as m;
-use MongoDate;
+use MongoDB\BSON\UTCDateTime as MongoDate;
 use UnitTester;
 
 class DateTest extends Unit
@@ -26,7 +26,7 @@ class DateTest extends Unit
     protected function _before(): void
     {
 		// Ensure equal time for all tests
-		$this->time = time();
+		$this->time = time() * 1000;
 
     	$this->makeData();
     }

@@ -6,7 +6,7 @@ use Codeception\TestCase\Test;
 use Maslosoft\Manganel\IndexManager;
 use Maslosoft\Manganel\QueryBuilder;
 use Maslosoft\ManganelTest\Models\SimpleModel;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class SimpleQueryTest extends Test

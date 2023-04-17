@@ -11,7 +11,7 @@ use Maslosoft\Manganel\SearchProvider;
 use Maslosoft\ManganelTest\Models\SimpleModel;
 use Maslosoft\ManganelTest\Models\SimpleModelSecond;
 use Maslosoft\ManganelTest\Models\SimpleModelThird;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class MultiModelTest extends Test

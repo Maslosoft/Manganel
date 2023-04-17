@@ -14,7 +14,7 @@ use Maslosoft\Manganel\Interfaces\MaxScoreAwareInterface;
 use Maslosoft\Manganel\Interfaces\ScoreAwareInterface;
 use Maslosoft\Manganel\Traits\MaxScoreAwareTrait;
 use Maslosoft\Manganel\Traits\ScoreAwareTrait;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 
 /**
  * SimpleModel

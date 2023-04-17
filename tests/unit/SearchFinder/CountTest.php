@@ -10,7 +10,7 @@ use Maslosoft\Manganel\SearchFinder;
 use Maslosoft\ManganelTest\Models\WithBaseAttributes;
 use Maslosoft\ManganelTest\Models\WithBaseAttributesSecond;
 use Maslosoft\ManganelTest\Models\WithBaseAttributesThird;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 use function codecept_debug;
 

@@ -8,7 +8,7 @@ use Maslosoft\Manganel\SearchCriteria;
 use Maslosoft\Manganel\SearchProvider;
 use Maslosoft\ManganelTest\Models\ModelWithIndex;
 use Maslosoft\ManganelTest\Models\ModelWithScore;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class SearchProviderIndexTest extends Test

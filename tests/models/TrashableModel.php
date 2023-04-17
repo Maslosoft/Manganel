@@ -11,7 +11,7 @@ namespace Maslosoft\ManganelTest\Models;
 use Maslosoft\Mangan\Document;
 use Maslosoft\Mangan\Sanitizers\MongoObjectId;
 use Maslosoft\Mangan\Traits\Model\TrashableTrait;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 
 /**
  * SimpleModel

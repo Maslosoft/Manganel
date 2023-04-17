@@ -10,7 +10,7 @@ use Maslosoft\Manganel\SearchProvider;
 use Maslosoft\ManganelTest\Models\ModelWithBoostedField;
 use Maslosoft\ManganelTest\Models\ModelWithBoostedField2;
 use Maslosoft\ManganelTest\Models\ModelWithBoostedField3;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 use function codecept_debug;
 

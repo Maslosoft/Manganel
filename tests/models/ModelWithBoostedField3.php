@@ -6,7 +6,7 @@ use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Mangan\Sanitizers\MongoObjectId;
 use Maslosoft\Manganel\Interfaces\ScoreAwareInterface;
 use Maslosoft\Manganel\Traits\ScoreAwareTrait;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 
 /**
  * ModelWithBoostedField

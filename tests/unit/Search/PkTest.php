@@ -8,7 +8,7 @@ use Maslosoft\Mangan\EntityManager;
 use Maslosoft\Manganel\Helpers\Debug\DebugFinder;
 use Maslosoft\Manganel\SearchFinder;
 use Maslosoft\ManganelTest\Models\Criteria\ModelWithFilterableFields;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 
 class PkTest extends \Codeception\Test\Unit
 {

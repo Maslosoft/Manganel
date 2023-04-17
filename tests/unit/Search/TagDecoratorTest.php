@@ -9,7 +9,7 @@ use Maslosoft\Manganel\SearchCriteria;
 use Maslosoft\Manganel\SearchProvider;
 use Maslosoft\ManganelTest\Models\ModelWithBoostedField;
 use Maslosoft\ManganelTest\Models\ModelWithBoostedFieldAndTags;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class TagDecoratorTest extends Test

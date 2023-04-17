@@ -13,7 +13,7 @@
 namespace Maslosoft\Manganel\Decorators\QueryBuilder\Operators;
 
 use Maslosoft\Manganel\Interfaces\QueryBuilder\OperatorDecoratorInterface;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 
 /**
  * SimpleTermDecorator

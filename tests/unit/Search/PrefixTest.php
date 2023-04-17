@@ -8,7 +8,7 @@ use Maslosoft\Manganel\QueryBuilder;
 use Maslosoft\Manganel\SearchCriteria;
 use Maslosoft\Manganel\SearchProvider;
 use Maslosoft\ManganelTest\Models\ModelWithBoostedField;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 use function version_compare;
 use const ES_VERSION;

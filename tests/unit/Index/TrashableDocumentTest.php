@@ -11,7 +11,7 @@ use Maslosoft\Manganel\IndexManager;
 use Maslosoft\Manganel\Manganel;
 use Maslosoft\Manganel\Receiver;
 use Maslosoft\ManganelTest\Models\TrashableModel;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class TrashableDocumentTest extends Test

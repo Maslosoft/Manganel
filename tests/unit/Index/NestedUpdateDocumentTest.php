@@ -5,7 +5,7 @@ namespace Index;
 use Codeception\TestCase\Test;
 use Maslosoft\Manganel\IndexManager;
 use Maslosoft\ManganelTest\Models\Nested\ModelWithEmbedArray;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class NestedUpdateDocumentTest extends Test

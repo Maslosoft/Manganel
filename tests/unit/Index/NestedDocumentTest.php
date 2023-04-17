@@ -11,7 +11,7 @@ use Maslosoft\Manganel\Manganel;
 use Maslosoft\Manganel\Receiver;
 use Maslosoft\Manganel\SearchArray;
 use Maslosoft\ManganelTest\Models\NestedModel;
-use MongoId;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class NestedDocumentTest extends Test

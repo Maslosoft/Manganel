@@ -12,8 +12,8 @@ use Maslosoft\Manganel\SearchArray;
 use Maslosoft\ManganelTest\Models\ExplicitlyNonIndexableField;
 use Maslosoft\ManganelTest\Models\ModelWithDate;
 use Maslosoft\ManganelTest\Models\SimpleModel;
-use MongoDate;
-use MongoId;
+use MongoDB\BSON\UTCDateTime as MongoDate;
+use MongoDB\BSON\ObjectId as MongoId;
 use UnitTester;
 
 class SearchArrayTest extends Test
@@ -104,10 +104,10 @@ class SearchArrayTest extends Test
 
 		$fromArray = SearchArray::toModel($arr);
 		/* @var $fromArray ModelWithDate */
-		codecept_debug(date('c', $model->createdAt->sec));
+		codecept_debug(date('c', $model->createdAt->toDateTime()->getTimestamp()));
 		$this->assertInstanceOf(MongoDate::class, $model->createdAt);
 		$this->assertInstanceOf(MongoDate::class, $fromArray->createdAt);
-		$this->assertSame((int) $model->createdAt->sec, (int) $fromArray->createdAt->sec);
+		$this->assertSame((int) $model->createdAt->toDateTime()->getTimestamp(), (int) $fromArray->createdAt->toDateTime()->getTimestamp());
 	}
 
 }

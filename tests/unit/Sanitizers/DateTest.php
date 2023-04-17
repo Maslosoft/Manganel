@@ -4,7 +4,7 @@ namespace Sanitizers;
 
 use Codeception\TestCase\Test;
 use Maslosoft\Manganel\Sanitizers\DateWriteEsSanitizer;
-use MongoDate;
+use MongoDB\BSON\UTCDateTime as MongoDate;
 use UnitTester;
 
 class DateTest extends Test
@@ -24,8 +24,8 @@ class DateTest extends Test
 		$this->assertInstanceof(MongoDate::class, $date);
 
 		// NOTE: Just check date, as TZ might be different
-		$this->assertSame('2016-08-03', date('Y-m-d', $date->sec));
-		codecept_debug(date('c', $date->sec));
+		$this->assertSame('2016-08-03', date('Y-m-d', $date->toDateTime()->getTimestamp()));
+		codecept_debug(date('c', $date->toDateTime()->getTimestamp()));
 	}
 
 }
