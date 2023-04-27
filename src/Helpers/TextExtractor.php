@@ -13,6 +13,7 @@
 namespace Maslosoft\Manganel\Helpers;
 
 
+use Maslosoft\Mangan\Helpers\IdHelper;
 use function array_merge;
 use function array_unique;
 use function in_array;
@@ -23,7 +24,6 @@ use Maslosoft\Addendum\Utilities\ClassChecker;
 use Maslosoft\Mangan\Helpers\CompositionIterator;
 use Maslosoft\Manganel\Meta\DocumentPropertyMeta;
 use Maslosoft\Manganel\Meta\ManganelMeta;
-use MongoDB\BSON\ObjectId as MongoId;
 use function strip_tags;
 use function strpos;
 
@@ -96,7 +96,7 @@ class TextExtractor
 					}
 
 					// Ignore ID's
-					if(MongoId::isValid($value))
+					if(IdHelper::isId($value))
 					{
 						continue;
 					}
